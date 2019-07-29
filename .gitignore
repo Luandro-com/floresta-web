@@ -11,6 +11,9 @@
 .history
 .next
 
+dist/
+out/
+
 # Icon must end with two \r
 Icon
 
