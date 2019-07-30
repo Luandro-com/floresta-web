@@ -29,7 +29,7 @@ export default function CategoryLayout({ slug }) {
 				return (
 					<section>
 						<BackButton />
-						<div>{projectCategories[0].description}</div>
+						<div>{projectCategories[0] && projectCategories[0].description}</div>
 						<h2>Projetos</h2>
 						<ul>
 							{projectCategories.projects &&

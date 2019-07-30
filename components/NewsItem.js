@@ -1,9 +1,29 @@
-export default function NewsItem({ description, link }) {
+export default function NewsItem({ title, media, description, link }) {
 	return (
-		<li>
-			<div>
-				<a href={link}>{description}</a>
+		<a href={link}>
+			<div className="container">
+				<div className="media" />
+				<div className="title">
+					<h3>{title}</h3>
+				</div>
+				<div className="description" dangerouslySetInnerHTML={{ __html: description }} />
 			</div>
-		</li>
+			<style jsx>{`
+				.container {
+					width: 80%;
+					display: flex;
+					flex-flow: column;
+				}
+				.media {
+					height: 200px;
+					background-image: url("${media}");
+					background-size: cover;
+				}
+				.title {
+					width: 100%;
+					background: blue;
+				}
+			`}</style>
+		</a>
 	);
 }

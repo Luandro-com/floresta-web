@@ -9,6 +9,8 @@ export const NEWS_ALL = gql`
 			id
 			description
 			link
+			title
+			media
 		}
 	}
 `;
@@ -22,7 +24,7 @@ export default function NewsList() {
 				return (
 					<section>
 						<h1>Notícias</h1>
-						<ul>{newsAll.map((news) => <NewsItem {...news} key={news.id} />)}</ul>
+						<div className="list">{newsAll.map((news) => <NewsItem {...news} key={news.id} />)}</div>
 						{/* {areMorePosts ? (
 							<button onClick={() => loadMorePosts(allPosts, fetchMore)}>
 								{' '}
@@ -33,40 +35,18 @@ export default function NewsList() {
 						)} */}
 						<style jsx>{`
 							section {
-								padding-bottom: 20px;
-							}
-							li {
-								display: block;
-								margin-bottom: 10px;
+								padding-top: 10vh;
+								text-align: center;
 							}
 							div {
-								align-items: center;
 								display: flex;
+								flex-flow: column;
+								align-items: center;
+								justify-content: center;
 							}
-							a {
-								font-size: 14px;
-								margin-right: 10px;
-								text-decoration: none;
-								padding-bottom: 0;
-								border: 0;
-							}
-							span {
-								font-size: 14px;
-								margin-right: 5px;
-							}
-							ul {
-								margin: 0;
-								padding: 0;
-							}
-							button:before {
-								align-self: center;
-								border-style: solid;
-								border-width: 6px 4px 0 4px;
-								border-color: #ffffff transparent transparent transparent;
-								content: '';
-								height: 0;
-								margin-right: 5px;
-								width: 0;
+							@media screen and (min-width: 480px) {
+								flex-flow: row;
+								justify-content: space-around;
 							}
 						`}</style>
 					</section>

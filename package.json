@@ -14,7 +14,8 @@
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-apollo": "^2.1.11",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "react-svg": "^10.0.13"
   },
   "author": "",
   "license": "ISC"

@@ -22,7 +22,7 @@ export default function TagList() {
 				return (
 					<section>
 						<h1>Tags</h1>
-						<ul>{projectTags.map((tag) => <TagItem {...tag} key={tag.id} />)}</ul>
+						<div className="list">{projectTags.map((tag) => <TagItem {...tag} key={tag.id} />)}</div>
 						{/* {areMorePosts ? (
 							<button onClick={() => loadMorePosts(allPosts, fetchMore)}>
 								{' '}
@@ -33,40 +33,8 @@ export default function TagList() {
 						)} */}
 						<style jsx>{`
 							section {
-								padding-bottom: 20px;
-							}
-							li {
-								display: block;
-								margin-bottom: 10px;
-							}
-							div {
-								align-items: center;
-								display: flex;
-							}
-							a {
-								font-size: 14px;
-								margin-right: 10px;
-								text-decoration: none;
-								padding-bottom: 0;
-								border: 0;
-							}
-							span {
-								font-size: 14px;
-								margin-right: 5px;
-							}
-							ul {
-								margin: 0;
-								padding: 0;
-							}
-							button:before {
-								align-self: center;
-								border-style: solid;
-								border-width: 6px 4px 0 4px;
-								border-color: #ffffff transparent transparent transparent;
-								content: '';
-								height: 0;
-								margin-right: 5px;
-								width: 0;
+								text-align: center;
+								padding-top: 10vh;
 							}
 						`}</style>
 					</section>

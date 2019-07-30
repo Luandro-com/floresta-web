@@ -8,8 +8,18 @@ import NewsList from '../components/NewsList';
 export default () => (
 	<App>
 		<HomeWelcome />
-		<CategoryList />
-		<TagList />
-		<NewsList />
+		<div className="pattern">
+			<CategoryList />
+			<NewsList />
+			<TagList />
+		</div>
+		<style jsx>{`
+			.pattern {
+				background: gray;
+				background-image: url("");
+				margin-top: -5vh;
+				padding-bottom: 20vh;
+			}
+		`}</style>
 	</App>
 );

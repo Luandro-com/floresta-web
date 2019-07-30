@@ -9,6 +9,8 @@ export const PROJECT_CATEGORIES = gql`
 			id
 			slug
 			name
+			icon
+			media
 		}
 	}
 `;
@@ -20,10 +22,13 @@ export default function CategoryList() {
 				if (loading) return <div>Loading</div>;
 				// const areMorePosts = allPosts.length < _allPostsMeta.count
 				return (
-					<section>
-						<h1>Linhas de ação</h1>
-						<ul>{projectCategories.map((category) => <CategoryItem {...category} key={category.id} />)}</ul>
-						{/* {areMorePosts ? (
+					<div id="category-list">
+						<section>
+							<h2>Linhas de ação</h2>
+							<div className="container">
+								{projectCategories.map((category) => <CategoryItem {...category} key={category.id} />)}
+							</div>
+							{/* {areMorePosts ? (
 							<button onClick={() => loadMorePosts(allPosts, fetchMore)}>
 								{' '}
 								{loading ? 'Loading...' : 'Show More'}{' '}
@@ -31,45 +36,28 @@ export default function CategoryList() {
 						) : (
 							''
 						)} */}
+						</section>
 						<style jsx>{`
 							section {
-								padding-bottom: 20px;
+								width: 100%;
+								text-align: center;
 							}
-							li {
-								display: block;
-								margin-bottom: 10px;
+							h2 {
+								padding-top: 10vh;
 							}
-							div {
-								align-items: center;
+							.container {
+								width: 100%;
 								display: flex;
+								flex-flow: column;
+								align-items: center;
+								justify-content: center;
 							}
-							a {
-								font-size: 14px;
-								margin-right: 10px;
-								text-decoration: none;
-								padding-bottom: 0;
-								border: 0;
-							}
-							span {
-								font-size: 14px;
-								margin-right: 5px;
-							}
-							ul {
-								margin: 0;
-								padding: 0;
-							}
-							button:before {
-								align-self: center;
-								border-style: solid;
-								border-width: 6px 4px 0 4px;
-								border-color: #ffffff transparent transparent transparent;
-								content: '';
-								height: 0;
-								margin-right: 5px;
-								width: 0;
-							}
+							@media screen and (min-width: 640px) {
+								.container {
+									flex-flow: row wrap;
+								}
 						`}</style>
-					</section>
+					</div>
 				);
 			}}
 		</Query>
