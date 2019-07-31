@@ -1,16 +1,30 @@
+import colors from '../lib/colors';
+
 export default ({ children }) => (
 	<main>
 		{children}
 		<style jsx global>{`
 			* {
-				font-family: Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono',
-					'Bitstream Vera Sans Mono', 'Courier New', monospace, serif;
+				font-family: 'Titillium Web', sans-serif;
 			}
 			body {
 				margin: 0;
+				background: ${colors.dark};
+				color: ${colors.light};
+			}
+			h1 {
+				font-family: 'Varela Round', sans-serif;
+			}
+			h2 {
+				font-family: 'Amatic SC', cursive;
+				font-size: 1.8em;
+				color: ${colors.light};
+				font-weight: 100;
 			}
 			a {
-				color: #22bad9;
+				color: white;
+				font-family: 'Amatic SC', cursive;
+				text-decoration: none;
 			}
 			p {
 				font-size: 14px;

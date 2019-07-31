@@ -21,7 +21,7 @@ export default function TagList() {
 				// const areMorePosts = allPosts.length < _allPostsMeta.count
 				return (
 					<section>
-						<h1>Tags</h1>
+						<h2>Tags</h2>
 						<div className="list">{projectTags.map((tag) => <TagItem {...tag} key={tag.id} />)}</div>
 						{/* {areMorePosts ? (
 							<button onClick={() => loadMorePosts(allPosts, fetchMore)}>
@@ -35,6 +35,13 @@ export default function TagList() {
 							section {
 								text-align: center;
 								padding-top: 10vh;
+							}
+							.list {
+								width: 80%;
+								display: flex;
+								flex-flow: row wrap;
+								align-items: center;
+								justify-content: space-around;
 							}
 						`}</style>
 					</section>

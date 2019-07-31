@@ -1,3 +1,5 @@
+import colors from '../lib/colors';
+
 export default function NewsItem({ title, media, description, link }) {
 	return (
 		<a href={link}>
@@ -21,7 +23,7 @@ export default function NewsItem({ title, media, description, link }) {
 				}
 				.title {
 					width: 100%;
-					background: blue;
+					background: ${colors.dark};
 				}
 			`}</style>
 		</a>

@@ -50,7 +50,6 @@ export default function CategoryList() {
 								display: flex;
 								flex-flow: column;
 								align-items: center;
-								justify-content: center;
 							}
 							@media screen and (min-width: 640px) {
 								.container {

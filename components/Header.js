@@ -2,6 +2,9 @@ import Link from 'next/link';
 import { withRouter } from 'next/router';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import colors from '../lib/colors';
+import AnyImage from './AnyImage';
+
 export const CONTENT = gql`
 	query {
 		content {
@@ -24,7 +27,7 @@ const Header = ({ router: { pathname } }) => (
 						<div className="logo">
 							<Link prefetch href="/">
 								<a className={pathname === '/' ? 'is-active' : ''}>
-									<img src={logo} />
+									<AnyImage src={logo} size="40vh" />
 								</a>
 							</Link>
 						</div>
@@ -49,27 +52,30 @@ const Header = ({ router: { pathname } }) => (
 								target="_blank"
 								href={facebookLink ? facebookLink : 'https://facebook.com'}
 							>
-								Facebook
+								<img src="/static/facebook_icon.png" style={{ width: 10 }} />
 							</a>
 							<a
 								className="icon"
 								target="_blank"
 								href={youtubeLink ? youtubeLink : 'https://youtube.com'}
 							>
-								Youtube
+								<img src="/static/youtube_icon.png" />
 							</a>
 						</div>
 					</div>
 					<style jsx>{`
 						img {
-							width: 150px;
+							width: 15px;
+							margin: 0 auto;
 						}
 						a {
 							text-decoration: none;
 							color: white;
 							text-transform: uppercase;
-							font-size: 0.9em;
-							margin-right: 20px;
+							font-size: 22px;
+							padding: 4px 15px;
+							border-radius: 7px;
+							margin-right: 15px;
 						}
 						.burger {
 							color: white;
@@ -78,18 +84,27 @@ const Header = ({ router: { pathname } }) => (
 						.links {
 							display: none;
 						}
-						.is-active {
-							text-decoration: underline;
+						.is-active,
+						a:hover {
+							background: ${colors.color1};
+						}
+						a:hover img {
+							filter: brightness(0) invert(1);
 						}
 						.icon {
-							width: 40px;
-							height: 40px;
+							width: 24px;
+							height: 14px;
+							padding: 10px 5px;
 							border-radius: 100%;
-							background: blanchedalmond;
+							background: white;
 							font-size: 0;
+							text-align: center;
+							display: flex;
+							align-items: center;
 						}
 						@media screen and (min-width: 968px) {
 							.links {
+								font-size: 30px;
 								padding-top: 25px;
 								width: 85%;
 								margin: 0 auto;

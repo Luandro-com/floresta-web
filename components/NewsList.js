@@ -1,6 +1,7 @@
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import ErrorMessage from './ErrorMessage';
+import Carousel from 'nuka-carousel';
 import NewsItem from './NewsItem';
 
 export const NEWS_ALL = gql`
@@ -23,8 +24,9 @@ export default function NewsList() {
 				// const areMorePosts = allPosts.length < _allPostsMeta.count
 				return (
 					<section>
-						<h1>Notícias</h1>
-						<div className="list">{newsAll.map((news) => <NewsItem {...news} key={news.id} />)}</div>
+						<h2>Notícias</h2>
+						<Carousel>{newsAll.map((news) => <NewsItem {...news} key={news.id} />)}</Carousel>
+						<div className="list" />
 						{/* {areMorePosts ? (
 							<button onClick={() => loadMorePosts(allPosts, fetchMore)}>
 								{' '}
