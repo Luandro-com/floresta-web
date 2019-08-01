@@ -29,7 +29,7 @@ export default ({ text, background }) => {
 				.info {
 					margin: 0 auto;
 					position: relative;
-					bottom: -50%;
+					bottom: -45vh;
 					width: 80%;
 					text-align: center;
 					text-transform: uppercase;
@@ -39,8 +39,18 @@ export default ({ text, background }) => {
 				@media screen and (min-width: 480px) {
 					.info {
 						width: 50%;
-						bottom: -25%;
+						font-size: 18px;
+					}
+				@media screen and (min-width: 968px) {
+					.info {
+						font-size: 24px;
+						bottom: -40vh;
+					}
+				}
+				@media screen and (min-width: 1024px) {
+					.info {
 						font-size: 30px;
+						bottom: -35vh;
 					}
 				}
 			`}</style>

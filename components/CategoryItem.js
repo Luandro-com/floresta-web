@@ -19,6 +19,10 @@ export default function CategoryItem({ slug, name, icon, media }) {
 				</div>
 			</a>
 			<style jsx>{`
+				.container {
+					margin: 25px auto;
+					cursor: pointer;
+				}
 				a {
 					text-decoration: none;
 					display: flex;
@@ -33,9 +37,6 @@ export default function CategoryItem({ slug, name, icon, media }) {
 					font-size: 14px;
 					color: ${colors.color1};
 					text-transform: uppercase;
-				}
-				.container {
-					margin: 25px auto;
 				}
 				.images {
 					width: 60%;
@@ -66,18 +67,18 @@ export default function CategoryItem({ slug, name, icon, media }) {
 					justify-content: center;
 				}
 				@media screen and (min-width: 968px) {
+					.container {
+						margin: 0 auto;
+					}
 					a {
 						width: ${boxWidthB}px;
 						height: ${boxHeightB}px;
-					}
-					.container {
-						margin: 0 auto;
 					}
 					.images {
 						height: ${boxHeightB}px;
 					}
 					.icon {
-						left: -${boxWidth / 9.5}px;
+						left: -${boxWidthB / 8}px;
 					}
 				}
 			`}</style>

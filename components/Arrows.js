@@ -1,6 +1,6 @@
 import colors from '../lib/colors';
 
-export default () => (
+export default ({ top }) => (
 	<div className="arrow">
 		<span />
 		<span />
@@ -8,12 +8,12 @@ export default () => (
 		<style jsx>{`
 			.arrow {
 				position: absolute;
-				top: 150%;
+				top: ${top || '140%'};
 				left: 50%;
 				transform: translate(-50%, -50%);
 			}
 			.arrow span {
-				margin-top: -15px;
+				margin-top: -35px;
 				display: block;
 				width: 35px;
 				height: 35px;

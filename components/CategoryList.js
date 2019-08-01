@@ -46,6 +46,8 @@ export default function CategoryList() {
 								padding-top: 10vh;
 							}
 							.container {
+								padding-top: 10vh;
+								margin: 0 auto;
 								width: 100%;
 								display: flex;
 								flex-flow: column;
@@ -55,6 +57,13 @@ export default function CategoryList() {
 								.container {
 									flex-flow: row wrap;
 								}
+							}
+							@media screen and (min-width: 1024px) {
+								.container {
+									flex-flow: row wrap;
+									width: 968px;
+								}
+							}
 						`}</style>
 					</div>
 				);
