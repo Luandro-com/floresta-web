@@ -2,7 +2,7 @@ import colors from '../lib/colors';
 import { animateScroll as scroll } from 'react-scroll';
 import Arrows from './Arrows';
 
-export default ({ text, background }) => {
+export default ({ text, background, arrow, height }) => {
 	let viewSize = 800;
 	if (process.browser) {
 		viewSize = window.innerHeight - 50;
@@ -11,17 +11,19 @@ export default ({ text, background }) => {
 		<section
 			style={{
 				backgroundColor: colors.dark,
-				backgroundImage: `url(/static/header_home.png)`,
-				height: '100vh',
+				backgroundImage: `url(${background})`,
+				height: height || '100vh',
 				backgroundPosition: 'bottom',
 				backgroundSize: 'cover'
 			}}
 		>
 			<div className="info">
 				<h2>{text && text}</h2>
-				<a onClick={() => scroll.scrollTo(viewSize)}>
-					<Arrows animate />
-				</a>
+				{arrow && (
+					<a onClick={() => scroll.scrollTo(viewSize)}>
+						<Arrows animate />
+					</a>
+				)}
 			</div>
 			<style jsx>{`
 			a {

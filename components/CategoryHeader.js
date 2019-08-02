@@ -2,6 +2,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import ErrorMessage from './ErrorMessage';
 import CategoryHeaderItem from './CategoryHeaderItem';
+import colors from '../lib/colors';
 
 export const PROJECT_CATEGORIES = gql`
 	query {
@@ -9,6 +10,8 @@ export const PROJECT_CATEGORIES = gql`
 			id
 			slug
 			name
+			description
+			icon
 		}
 	}
 `;
@@ -21,18 +24,38 @@ export default function CategoryList({ slug }) {
 				// const areMorePosts = allPosts.length < _allPostsMeta.count
 				return (
 					<section>
-						<h2>
-							{projectCategories.filter((c) => c.slug === slug)[0] ? (
-								projectCategories.filter((c) => c.slug === slug)[0].name
-							) : (
-								'Inválido'
-							)}
-						</h2>
-						<ul>
-							{projectCategories.map((category) => (
-								<CategoryHeaderItem {...category} key={category.id} />
-							))}
-						</ul>
+						<div className="container">
+							<div className="title">
+								<img src="/static/grafismo_p.png" />
+								<h2>
+									{projectCategories.filter((c) => c.slug === slug)[0] ? (
+										projectCategories.filter((c) => c.slug === slug)[0].name
+									) : (
+										'Inválido'
+									)}
+								</h2>
+							</div>
+							<div className="divider" />
+							<div className="list">
+								{projectCategories.map((category) => (
+									<CategoryHeaderItem
+										{...category}
+										key={category.id}
+										current={
+											category.slug === projectCategories.filter((c) => c.slug === slug)[0].slug
+										}
+									/>
+								))}
+							</div>
+						</div>
+						<div
+							className="description"
+							dangerouslySetInnerHTML={{
+								__html: projectCategories.filter((c) => c.slug === slug)[0].description
+									? projectCategories.filter((c) => c.slug === slug)[0].description
+									: ''
+							}}
+						/>
 						{/* {areMorePosts ? (
 							<button onClick={() => loadMorePosts(allPosts, fetchMore)}>
 								{' '}
@@ -43,40 +66,82 @@ export default function CategoryList({ slug }) {
 						)} */}
 						<style jsx>{`
 							section {
-								padding-bottom: 20px;
+								padding: 5vh 0 0;
+								background: ${colors.light2};
 							}
-							li {
-								display: block;
-								margin-bottom: 10px;
+							h2 {
+								font-size: 2em;
+								text-align: center;
+							}
+							img {
+								display: none;
+								position: absolute;
+								left: -3.5%;
 							}
 							div {
 								align-items: center;
 								display: flex;
 							}
-							a {
-								font-size: 14px;
-								margin-right: 10px;
-								text-decoration: none;
-								padding-bottom: 0;
-								border: 0;
+							.divider {
+								display: none;
+								height: 100px;
+								background: ${colors.dark};
+								width: 2px;
+								margin: 0 5vw;
 							}
-							span {
-								font-size: 14px;
-								margin-right: 5px;
+							.container {
+								width: 90%;
+								margin: 0 auto;
+								flex-flow: column;
+								align-items: center;
+								justify-content: center;
 							}
-							ul {
-								margin: 0;
-								padding: 0;
+							.description {
+								color: ${colors.dark};
+								margin: 5vh auto 0;
+								width: 90%;
 							}
-							button:before {
-								align-self: center;
-								border-style: solid;
-								border-width: 6px 4px 0 4px;
-								border-color: #ffffff transparent transparent transparent;
-								content: '';
-								height: 0;
-								margin-right: 5px;
-								width: 0;
+							@media screen and (min-width: 968px) {
+								h2 {
+									font-size: 2.5em;
+								}
+								section {
+								}
+								img {
+									display: block;
+									width: 155px;
+								}
+								.container {
+									flex-flow: row;
+									width: 720px;
+								}
+								.title {
+									width: 20%;
+								}
+								.list {
+									width: 80%;
+								}
+								.divider {
+									display: block;
+								}
+								.description {
+									width: 720px;
+								}
+							}
+							@media screen and (min-width: 1024px) {
+								img {
+									width: 175px;
+								}
+								.container,
+								.description {
+									width: 800px;
+								}
+							}
+							@media screen and (min-width: 1280px) {
+								.container,
+								.description {
+									width: 968px;
+								}
 							}
 						`}</style>
 					</section>

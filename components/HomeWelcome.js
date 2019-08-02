@@ -18,7 +18,7 @@ const HomeWelcome = ({ router: { pathname } }) => (
 		{({ loading, error, data: { content } }) => {
 			if (error) return <h2>Oops</h2>;
 			if (loading) return <div>Loading</div>;
-			return <Welcome text={content.subTitle} background={content.banner} />;
+			return <Welcome text={content.subTitle} background={'/static/header_home.png'} arrow />;
 		}}
 	</Query>
 );
