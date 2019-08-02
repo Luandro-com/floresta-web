@@ -27,7 +27,7 @@ export default () => {
 			<style jsx>{`
 				.pattern {
 					background: ${colors.light2};
-					background-image: url("/static/grafismo.png");
+					// background-image: url("/static/grafismo.png");
 					background-repeat: round;
 					margin-top: -5vh;
 					padding-bottom: 20vh;

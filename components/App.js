@@ -25,7 +25,8 @@ export default ({ children }) => (
 				font-family: 'Varela Round', sans-serif;
 			}
 			h2,
-			h3 {
+			h3,
+			h4 {
 				font-family: 'Amatic SC', cursive;
 				font-size: 1.8em;
 				color: ${colors.light};
@@ -37,8 +38,15 @@ export default ({ children }) => (
 				text-decoration: none;
 			}
 			p {
+				color: ${colors.light};
 				font-size: 14px;
 				line-height: 24px;
+			}
+			.color1 p {
+				color: ${colors.color1};
+			}
+			.dark p {
+				color: ${colors.dark};
 			}
 			article {
 				margin: 0 auto;

@@ -12,7 +12,7 @@ export const PROJECT_TAGS = gql`
 		}
 	}
 `;
-export default function TagList() {
+export default function TagList({ width, column, titleColor, color, weight, fontSize, padding, radius }) {
 	return (
 		<Query query={PROJECT_TAGS}>
 			{({ loading, error, data: { projectTags }, fetchMore }) => {
@@ -22,7 +22,11 @@ export default function TagList() {
 				return (
 					<section>
 						<h2>Tags</h2>
-						<div className="list">{projectTags.map((tag) => <TagItem {...tag} key={tag.id} />)}</div>
+						<div className="list">
+							{projectTags.map((tag) => (
+								<TagItem {...tag} key={tag.id} color={color} padding={padding} radius={radius} />
+							))}
+						</div>
 						{/* {areMorePosts ? (
 							<button onClick={() => loadMorePosts(allPosts, fetchMore)}>
 								{' '}
@@ -33,13 +37,19 @@ export default function TagList() {
 						)} */}
 						<style jsx>{`
 							section {
-								text-align: center;
-								padding-top: 10vh;
+								width: ${width || '100%'};
+								text-align: ${column ? 'left' : 'center'};
+								// padding-top: 10vh;
+							}
+							h2 {
+								color: ${titleColor || 'inherit'};
+								font-weight: ${weight || 'inherit'};
+								font-size: ${fontSize || 'inherit'};
 							}
 							.list {
 								width: 80%;
 								display: flex;
-								flex-flow: row wrap;
+								flex-flow: ${column ? 'column' : 'row wrap'};
 								align-items: center;
 								justify-content: space-around;
 							}

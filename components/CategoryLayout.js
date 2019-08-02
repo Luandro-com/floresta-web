@@ -4,6 +4,7 @@ import ErrorMessage from './ErrorMessage';
 import ProjectItem from './ProjectItem';
 import BackButton from './BackButton';
 import TagList from './TagList';
+import colors from '../lib/colors';
 
 export const CATEGORY = gql`
 	query($slug: String!) {
@@ -15,6 +16,11 @@ export const CATEGORY = gql`
 				slug
 				name
 				media
+				description
+				tags {
+					slug
+					name
+				}
 			}
 		}
 	}
@@ -28,13 +34,15 @@ export default function CategoryLayout({ slug }) {
 				// const areMorePosts = allPosts.length < _allPostsMeta.count
 				return (
 					<section>
-						<BackButton />
-						<div>{projectCategories[0] && projectCategories[0].description}</div>
-						<h2>Projetos</h2>
-						<ul>
-							{projectCategories.projects &&
-								projectCategories.projects.map((project) => <ProjectItem {...project} key={news.id} />)}
-						</ul>
+						<div className="back">
+							<BackButton />
+						</div>
+						<div className="list">
+							{projectCategories[0].projects &&
+								projectCategories[0].projects.map((project) => (
+									<ProjectItem {...project} key={project.id} />
+								))}
+						</div>
 						{/* {areMorePosts ? (
 							<button onClick={() => loadMorePosts(allPosts, fetchMore)}>
 								{' '}
@@ -43,43 +51,45 @@ export default function CategoryLayout({ slug }) {
 						) : (
 							''
 						)} */}
-						<TagList />
+						<div className="tag-list">
+							<TagList
+								column
+								titleColor={colors.dark}
+								color={colors.color1}
+								width={'50px'}
+								weight={400}
+								fontSize={'2em'}
+								padding={'5px 25px'}
+								radius={5}
+							/>
+						</div>
 						<style jsx>{`
 							section {
-								padding-bottom: 20px;
-							}
-							li {
-								display: block;
-								margin-bottom: 10px;
+								margin: 0 auto;
+								padding-top: 5vh;
 							}
 							div {
 								align-items: center;
 								display: flex;
 							}
-							a {
-								font-size: 14px;
-								margin-right: 10px;
-								text-decoration: none;
-								padding-bottom: 0;
-								border: 0;
+							.back {
+								position: absolute;
+								right: 15%;
+								cursor: pointer;
 							}
-							span {
-								font-size: 14px;
-								margin-right: 5px;
+							.tag-list {
+								width: 50px;
+								margin-top: -20%;
+								margin-left: 5vw;
 							}
-							ul {
-								margin: 0;
-								padding: 0;
+							@media screen and (min-width: 968px) {
+								width: 720px;
+								display: flex;
+								flex-flow: row nowrap;
+								justify-content: space-between;
 							}
-							button:before {
-								align-self: center;
-								border-style: solid;
-								border-width: 6px 4px 0 4px;
-								border-color: #ffffff transparent transparent transparent;
-								content: '';
-								height: 0;
-								margin-right: 5px;
-								width: 0;
+							@media screen and (min-width: 1024px) {
+								width: 968px;
 							}
 						`}</style>
 					</section>

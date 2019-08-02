@@ -9,7 +9,7 @@ export default function NewsItem({ title, media, description, link }) {
 					<h3>{title || ''}</h3>
 				</div>
 				<div
-					className="description"
+					className="description dark"
 					dangerouslySetInnerHTML={{ __html: description ? description.substring(0, 500) : '' }}
 				/>
 			</div>
@@ -39,6 +39,9 @@ export default function NewsItem({ title, media, description, link }) {
 				.description {
 					color: ${colors.dark};
 					height: 130px;
+					text-align: left;
+					width: 90%;
+					margin: 0 auto;
 				}
 			`}</style>
 		</a>
