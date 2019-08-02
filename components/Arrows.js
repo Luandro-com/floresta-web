@@ -13,12 +13,12 @@ export default ({ top }) => (
 				transform: translate(-50%, -50%);
 			}
 			.arrow span {
-				margin-top: -35px;
+				margin-top: -40px;
 				display: block;
 				width: 35px;
 				height: 35px;
-				border-bottom: 3px solid ${colors.light};
-				border-right: 3px solid ${colors.light};
+				border-bottom: 2px solid ${colors.light};
+				border-right: 2px solid ${colors.light};
 				transform: rotate(45deg);
 				animation: animate 2s infinite;
 			}

@@ -1,6 +1,5 @@
 import App from '../components/App';
 import HomeWelcome from '../components/HomeWelcome';
-import Welcome from '../components/Welcome';
 import CategoryList from '../components/CategoryList';
 import TagList from '../components/TagList';
 import NewsList from '../components/NewsList';
@@ -16,10 +15,10 @@ export default () => (
 		</div>
 		<style jsx>{`
 			.pattern {
-				background: ${colors.color1};
-				background-image: url("");
+				background: ${colors.dark2};
+				background-image: url("/static/grafismo.png");
+				background-repeat: round;
 				margin-top: -5vh;
-				padding-bottom: 20vh;
 			}
 		`}</style>
 	</App>

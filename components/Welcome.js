@@ -1,4 +1,3 @@
-import Header from './Header';
 import colors from '../lib/colors';
 import { animateScroll as scroll } from 'react-scroll';
 import Arrows from './Arrows';
@@ -18,7 +17,6 @@ export default ({ text, background }) => {
 				backgroundSize: 'cover'
 			}}
 		>
-			<Header />
 			<div className="info">
 				<h2>{text && text}</h2>
 				<a onClick={() => scroll.scrollTo(viewSize)}>
@@ -26,10 +24,13 @@ export default ({ text, background }) => {
 				</a>
 			</div>
 			<style jsx>{`
+			a {
+				margin-top: -50vh;
+			}
 				.info {
 					margin: 0 auto;
 					position: relative;
-					bottom: -45vh;
+					bottom: -65vh;
 					width: 80%;
 					text-align: center;
 					text-transform: uppercase;
@@ -44,13 +45,11 @@ export default ({ text, background }) => {
 				@media screen and (min-width: 968px) {
 					.info {
 						font-size: 24px;
-						bottom: -40vh;
 					}
 				}
 				@media screen and (min-width: 1024px) {
 					.info {
 						font-size: 30px;
-						bottom: -35vh;
 					}
 				}
 			`}</style>

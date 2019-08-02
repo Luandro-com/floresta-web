@@ -4,6 +4,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import colors from '../lib/colors';
 import AnyImage from './AnyImage';
+import HamburgerButton from './HamburgerButton';
 
 export const CONTENT = gql`
 	query {
@@ -24,8 +25,13 @@ const Header = ({ router: { pathname } }) => {
 				if (loading) return <div>Loading</div>;
 				return (
 					<header>
-						<div className="burger" onClick={() => menuToggle(!menuState)}>
-							X
+						<div className="burger">
+							<HamburgerButton
+								color={colors.light}
+								open={menuState}
+								action={() => menuToggle(!menuState)}
+								size={25}
+							/>
 						</div>
 						<div className={menuState ? 'links open' : 'links'}>
 							<div className="logo">
@@ -49,20 +55,22 @@ const Header = ({ router: { pathname } }) => {
 								<Link prefetch href="/about">
 									<a className={pathname === '/about' ? 'is-active' : ''}>Notícias</a>
 								</Link>
-								<a
-									className="icon"
-									target="_blank"
-									href={facebookLink ? facebookLink : 'https://facebook.com'}
-								>
-									<img src="/static/facebook_icon.png" style={{ width: 10 }} />
-								</a>
-								<a
-									className="icon"
-									target="_blank"
-									href={youtubeLink ? youtubeLink : 'https://youtube.com'}
-								>
-									<img src="/static/youtube_icon.png" />
-								</a>
+								<div className="social">
+									<a
+										className="icon"
+										target="_blank"
+										href={facebookLink ? facebookLink : 'https://facebook.com'}
+									>
+										<img src="/static/facebook_icon.png" style={{ width: 10 }} />
+									</a>
+									<a
+										className="icon"
+										target="_blank"
+										href={youtubeLink ? youtubeLink : 'https://youtube.com'}
+									>
+										<img src="/static/youtube_icon.png" />
+									</a>
+								</div>
 							</div>
 						</div>
 						<style jsx>{`
@@ -80,22 +88,35 @@ const Header = ({ router: { pathname } }) => {
 								margin-right: 15px;
 							}
 							.burger {
-								color: white;
-								text-align: left;
+								left: 5%;
+								position: fixed;
+								top: 2.5%;
 								background: ${colors.dark};
-								padding: 7.5px 30px;
+								border-radius: 50%;
+								padding: 8px;
+								z-index: 999;
+								display: flex;
+								align-items: center;
+								justify-content: center;
 							}
 							.links {
+								width: 100%;
 								height: 100vh;
-								position: absolute;
+								position: fixed;
 								left: -300vw;
-								// transform: translate(0, -300px)
 								transition: left 0.6s;
 								background: ${colors.dark};
 								display: flex;
 								flex-flow: column;
 								align-items: center;
-								justify-content: space-between;
+								justify-content: flex-start;
+								z-index: 99;
+							}
+							.social {
+								padding-top: 3vh;
+								display: flex;
+								flex-flow: row nowrap;
+								align-items: center;
 							}
 							.is-active,
 							a:hover {
@@ -118,12 +139,28 @@ const Header = ({ router: { pathname } }) => {
 								display: flex;
 								align-items: center;
 							}
+							@media screen and (max-width: 968px) {
+								.logo {
+									padding-top: 18vh;
+								}
+								.menu {
+									display: flex;
+									flex-flow: column;
+									align-items: center;
+									justify-content: space-between;
+								}
+							}
 							@media screen and (min-width: 968px) {
 								.links {
-									font-size: 30px;
-									padding-top: 25px;
-									width: 85%;
-									margin: 0 auto;
+									width: 968px;
+									margin-left: -484px;
+									// font-size: 30px;
+									height: 60px;
+									position: absolute;
+									left: 50%;
+									top: 5%;
+									background: none;
+									justify-content: flex-start;
 									flex-flow: row nowrap;
 								}
 								.menu {
@@ -132,19 +169,12 @@ const Header = ({ router: { pathname } }) => {
 									width: 90%;
 									display: flex;
 									flex-flow: row no-wrap;
-									align-items: center;
+									align-items: baseline;
 									justify-content: flex-end;
-								}
-								.menu * {
-									// padding: 0 15px;
+									background: none;
 								}
 								.burger {
 									display: none;
-								}
-							}
-							@media screen and (min-width: 968px) {
-								.menu {
-									background: ${colors.dark};
 								}
 							}
 							@media screen and (min-width: 1024px) {

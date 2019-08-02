@@ -1,9 +1,10 @@
 import ReactSVG from 'react-svg';
 import colors from '../lib/colors';
+import AnyImage from './AnyImage';
 const boxHeight = 120;
 const boxWidth = 250;
 const boxWidthB = 350;
-const boxHeightB = 130;
+const boxHeightB = 135;
 
 export default function CategoryItem({ slug, name, icon, media }) {
 	return (
@@ -11,7 +12,7 @@ export default function CategoryItem({ slug, name, icon, media }) {
 			<a href={`category?slug=${slug}`}>
 				<div className="images" style={{ backgroundImage: `url(${media})` }}>
 					<div className="icon">
-						<ReactSVG src={icon} />
+						<AnyImage src={icon} width={boxHeight - 20} />
 					</div>
 				</div>
 				<div className="info">
@@ -29,7 +30,7 @@ export default function CategoryItem({ slug, name, icon, media }) {
 					align-items: center;
 					justify-content: center;
 					border-radius: 15px;
-					width: ${boxWidth}px;
+					width: ${boxWidth - 30}px;
 					height: ${boxHeight}px;
 					background: ${colors.light};
 				}
@@ -39,9 +40,12 @@ export default function CategoryItem({ slug, name, icon, media }) {
 					text-transform: uppercase;
 				}
 				.images {
+					position: relative;
+					left: -15px;
+					top: 1px;
 					width: 60%;
 					height: ${boxHeight}px;
-					border-radius: 15px 0 0 15px;
+					border-radius: 30px 0 0 30px;
 					background-size: cover;
 					display: flex;
 					flex-flow: row nowrap;
@@ -60,6 +64,8 @@ export default function CategoryItem({ slug, name, icon, media }) {
 					justify-content: center;
 				}
 				.info {
+					position: relative;
+					left: -8px;
 					width: 40%;
 					height: ${boxHeight}px;
 					display: flex;

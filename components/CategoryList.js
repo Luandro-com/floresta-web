@@ -46,7 +46,7 @@ export default function CategoryList() {
 								padding-top: 10vh;
 							}
 							.container {
-								padding-top: 10vh;
+								padding-top: 2vh;
 								margin: 0 auto;
 								width: 100%;
 								display: flex;
