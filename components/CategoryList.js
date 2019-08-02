@@ -56,6 +56,7 @@ export default function CategoryList() {
 							@media screen and (min-width: 640px) {
 								.container {
 									flex-flow: row wrap;
+									align-content: flex-end;
 								}
 							}
 							@media screen and (min-width: 1024px) {

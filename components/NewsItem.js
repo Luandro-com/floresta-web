@@ -2,13 +2,16 @@ import colors from '../lib/colors';
 
 export default function NewsItem({ title, media, description, link }) {
 	return (
-		<a href={link || ''}>
+		<a target="_blank" href={link || ''}>
 			<div className="container">
 				<div className="media" />
 				<div className="title">
 					<h3>{title || ''}</h3>
 				</div>
-				<div className="description" dangerouslySetInnerHTML={{ __html: description ? description.substring(0, 500) : '' }} />
+				<div
+					className="description"
+					dangerouslySetInnerHTML={{ __html: description ? description.substring(0, 500) : '' }}
+				/>
 			</div>
 			<style jsx>{`
 				h3 {

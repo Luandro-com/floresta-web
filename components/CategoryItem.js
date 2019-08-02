@@ -42,7 +42,6 @@ export default function CategoryItem({ slug, name, icon, media }) {
 				.images {
 					position: relative;
 					left: -15px;
-					top: 1px;
 					width: 60%;
 					height: ${boxHeight}px;
 					border-radius: 30px 0 0 30px;
@@ -75,7 +74,7 @@ export default function CategoryItem({ slug, name, icon, media }) {
 				}
 				@media screen and (min-width: 968px) {
 					.container {
-						margin: 0 auto;
+						margin: 20px auto;
 					}
 					a {
 						width: ${boxWidthB}px;
