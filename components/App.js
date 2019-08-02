@@ -24,7 +24,8 @@ export default ({ children }) => (
 			h1 {
 				font-family: 'Varela Round', sans-serif;
 			}
-			h2 {
+			h2,
+			h3 {
 				font-family: 'Amatic SC', cursive;
 				font-size: 1.8em;
 				color: ${colors.light};

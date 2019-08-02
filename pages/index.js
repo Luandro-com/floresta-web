@@ -19,6 +19,7 @@ export default () => (
 				background-image: url("/static/grafismo.png");
 				background-repeat: round;
 				margin-top: -5vh;
+				padding-bottom: 20vh;
 			}
 		`}</style>
 	</App>

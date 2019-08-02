@@ -34,11 +34,12 @@ const Header = ({ router: { pathname } }) => {
 							/>
 						</div>
 						<div className={menuState ? 'links open' : 'links'}>
-							<div className="logo">
-								<Link prefetch href="/">
+							<Link prefetch href="/">
+								<div className="logo">
 									<AnyImage src={logo} size="40vh" />
-								</Link>
-							</div>
+								</div>
+							</Link>
+
 							<div className="menu">
 								<Link prefetch href="/about">
 									<a className={pathname === '/about' ? 'is-active' : ''}>Sobre</a>
@@ -86,6 +87,9 @@ const Header = ({ router: { pathname } }) => {
 								padding: 4px 15px;
 								border-radius: 7px;
 								margin-right: 15px;
+							}
+							.logo {
+								cursor: pointer;
 							}
 							.burger {
 								left: 5%;

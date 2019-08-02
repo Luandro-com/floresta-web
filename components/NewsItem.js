@@ -2,28 +2,40 @@ import colors from '../lib/colors';
 
 export default function NewsItem({ title, media, description, link }) {
 	return (
-		<a href={link}>
+		<a href={link || ''}>
 			<div className="container">
 				<div className="media" />
 				<div className="title">
-					<h3>{title}</h3>
+					<h3>{title || ''}</h3>
 				</div>
-				<div className="description" dangerouslySetInnerHTML={{ __html: description }} />
+				<div className="description" dangerouslySetInnerHTML={{ __html: description ? description.substring(0, 500) : '' }} />
 			</div>
 			<style jsx>{`
+				h3 {
+					text-align: left;
+					padding-left: 3vw;
+					font-size: 1.2em;
+				}
 				.container {
-					width: 80%;
+					background: ${colors.light};
 					display: flex;
 					flex-flow: column;
+					border-radius: 20px;
+
 				}
 				.media {
 					height: 200px;
-					background-image: url("${media}");
+					background-image: url("${media || ''}");
 					background-size: cover;
+					border-radius: 20px 20px 0 0;
 				}
 				.title {
 					width: 100%;
 					background: ${colors.dark};
+				}
+				.description {
+					color: ${colors.dark};
+					height: 130px;
 				}
 			`}</style>
 		</a>

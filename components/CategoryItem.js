@@ -47,6 +47,7 @@ export default function CategoryItem({ slug, name, icon, media }) {
 					height: ${boxHeight}px;
 					border-radius: 30px 0 0 30px;
 					background-size: cover;
+					background-repeat: no-repeat;
 					display: flex;
 					flex-flow: row nowrap;
 					justify-content: space-between;

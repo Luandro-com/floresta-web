@@ -20,7 +20,7 @@ export default ({ text, background }) => {
 			<div className="info">
 				<h2>{text && text}</h2>
 				<a onClick={() => scroll.scrollTo(viewSize)}>
-					<Arrows />
+					<Arrows animate />
 				</a>
 			</div>
 			<style jsx>{`
