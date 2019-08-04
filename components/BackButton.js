@@ -1,11 +1,12 @@
 import Router from 'next/router';
 import colors from '../lib/colors';
 
-export default function BackButton() {
+export default function BackButton({ to }) {
 	return (
-		<button>
+		<button onClick={() => Router.push(to)}>
 			Voltar
 			<style jsx>{`
+				cursor: pointer;
 				background: ${colors.dark};
 				text-transform: uppercase;
 				padding: 5px 15px;

@@ -1,9 +1,11 @@
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import ErrorMessage from './ErrorMessage';
-import ProjectItem from './ProjectItem';
 import BackButton from './BackButton';
 import TagList from './TagList';
+import ProjectList from '../components/ProjectList';
+import Project from '../components/Project';
+
 import colors from '../lib/colors';
 
 export const CATEGORY = gql`
@@ -25,7 +27,7 @@ export const CATEGORY = gql`
 		}
 	}
 `;
-export default function CategoryLayout({ slug }) {
+export default function PageLayout({ slug, main }) {
 	return (
 		<Query query={CATEGORY} variables={{ slug }}>
 			{({ loading, error, data: { projectCategories }, fetchMore }) => {
@@ -35,14 +37,9 @@ export default function CategoryLayout({ slug }) {
 				return (
 					<section>
 						<div className="back">
-							<BackButton />
+							<BackButton to={main === 'projects' ? '/' : '/'} />
 						</div>
-						<div className="list">
-							{projectCategories[0].projects &&
-								projectCategories[0].projects.map((project) => (
-									<ProjectItem {...project} key={project.id} />
-								))}
-						</div>
+						{main === 'projects' ? <ProjectList projects={projectCategories[0].projects} /> : <Project />}
 						{/* {areMorePosts ? (
 							<button onClick={() => loadMorePosts(allPosts, fetchMore)}>
 								{' '}

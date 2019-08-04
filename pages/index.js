@@ -11,7 +11,7 @@ export default () => (
 		<div className="pattern">
 			<CategoryList />
 			<NewsList />
-			<TagList />
+			<TagList fontSize="2em" color={colors.color1} />
 		</div>
 		<style jsx>{`
 			.pattern {

@@ -1,7 +1,6 @@
 import App from '../components/App';
 import Router from 'next/router';
 import Link from 'next/link';
-
 import Welcome from '../components/Welcome';
 import CategoryHeader from '../components/CategoryHeader';
 import PageLayout from '../components/PageLayout';
@@ -14,12 +13,12 @@ export default () => {
 	}
 	return (
 		<App>
-			<Welcome background={'/static/header_categories.png'} height="80vh" />
+			<Welcome background={'/static/header_project.png'} height="80vh" />
 			<div className="pattern">
 				{slug ? (
 					<div>
 						<CategoryHeader slug={slug} />
-						<PageLayout slug={slug} main="projects" />
+						{/* <PageLayout slug={slug} main="project" /> */}
 					</div>
 				) : (
 					<span>Loading...</span>
