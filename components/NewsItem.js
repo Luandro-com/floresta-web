@@ -1,19 +1,21 @@
-import colors from '../lib/colors';
+import colors from "../lib/colors"
 
 export default function NewsItem({ title, media, description, link }) {
-	return (
-		<a target="_blank" href={link || ''}>
-			<div className="container">
-				<div className="media" />
-				<div className="title">
-					<h3>{title || ''}</h3>
-				</div>
-				<div
-					className="description dark"
-					dangerouslySetInnerHTML={{ __html: description ? description.substring(0, 500) : '' }}
-				/>
-			</div>
-			<style jsx>{`
+  return (
+    <a target='_blank' href={link || ""}>
+      <div className='container'>
+        <div className='media' />
+        <div className='title'>
+          <h3>{title || ""}</h3>
+        </div>
+        <div
+          className='description dark'
+          dangerouslySetInnerHTML={{
+            __html: description ? description.substring(0, 150) + "..." : ""
+          }}
+        />
+      </div>
+      <style jsx>{`
 				h3 {
 					text-align: left;
 					padding-left: 3vw;
@@ -28,7 +30,7 @@ export default function NewsItem({ title, media, description, link }) {
 				}
 				.media {
 					height: 200px;
-					background-image: url("${media || ''}");
+					background-image: url("${media || ""}");
 					background-size: cover;
 					border-radius: 20px 20px 0 0;
 				}
@@ -44,6 +46,6 @@ export default function NewsItem({ title, media, description, link }) {
 					margin: 0 auto;
 				}
 			`}</style>
-		</a>
-	);
+    </a>
+  )
 }

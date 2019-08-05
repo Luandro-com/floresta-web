@@ -1,80 +1,99 @@
-import Link from 'next/link';
-import { withRouter } from 'next/router';
-import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
-import colors from '../lib/colors';
-import AnyImage from './AnyImage';
-import HamburgerButton from './HamburgerButton';
+import Link from "next/link"
+import { withRouter } from "next/router"
+import { Query } from "react-apollo"
+import gql from "graphql-tag"
+import colors from "../lib/colors"
+import AnyImage from "./AnyImage"
+import HamburgerButton from "./HamburgerButton"
 
 export const CONTENT = gql`
-	query {
-		content {
-			logo
-			youtubeLink
-			facebookLink
-		}
-	}
-`;
+  query {
+    content {
+      logo
+      youtubeLink
+      facebookLink
+    }
+  }
+`
 
 const Header = ({ router: { pathname } }) => {
-	const [ menuState, menuToggle ] = React.useState(false);
-	return (
-		<Query query={CONTENT}>
-			{({ loading, error, data: { content: { logo, youtubeLink, facebookLink } } }) => {
-				if (error) return <h2>Oops</h2>;
-				if (loading) return <div>Loading</div>;
-				return (
-					<header>
-						<div className="burger">
-							<HamburgerButton
-								color={colors.light}
-								open={menuState}
-								action={() => menuToggle(!menuState)}
-								size={25}
-							/>
-						</div>
-						<div className={menuState ? 'links open' : 'links'}>
-							<Link prefetch href="/">
-								<div className="logo">
-									<AnyImage src={logo} size="40vh" />
-								</div>
-							</Link>
+  const [menuState, menuToggle] = React.useState(false)
+  return (
+    <Query query={CONTENT}>
+      {({
+        loading,
+        error,
+        data: {
+          content: { logo, youtubeLink, facebookLink }
+        }
+      }) => {
+        if (error) return <h2>Oops</h2>
+        if (loading) return <div>Loading</div>
+        return (
+          <header>
+            <div className='burger'>
+              <HamburgerButton
+                color={colors.light}
+                open={menuState}
+                action={() => menuToggle(!menuState)}
+                size={25}
+              />
+            </div>
+            <div className={menuState ? "links open" : "links"}>
+              <Link prefetch href='/'>
+                <div className='logo'>
+                  <AnyImage src={logo} size='40vh' />
+                </div>
+              </Link>
 
-							<div className="menu">
-								<Link prefetch href="/about">
-									<a className={pathname === '/about' ? 'is-active' : ''}>Sobre</a>
-								</Link>
-								<Link prefetch href="/about">
-									<a className={pathname === '/about' ? 'is-active' : ''}>Aldeias</a>
-								</Link>
-								<Link prefetch href="/about">
-									<a className={pathname === '/about' ? 'is-active' : ''}>Linhas de ação</a>
-								</Link>
-								<Link prefetch href="/about">
-									<a className={pathname === '/about' ? 'is-active' : ''}>Projetos</a>
-								</Link>
-								<Link prefetch href="/about">
-									<a className={pathname === '/about' ? 'is-active' : ''}>Notícias</a>
-								</Link>
-								<div className="social">
-									<a
-										className="icon"
-										target="_blank"
-										href={facebookLink ? facebookLink : 'https://facebook.com'}
-									>
-										<img src="/static/facebook_icon.png" style={{ width: 10 }} />
-									</a>
-									<a
-										className="icon"
-										target="_blank"
-										href={youtubeLink ? youtubeLink : 'https://youtube.com'}
-									>
-										<img src="/static/youtube_icon.png" />
-									</a>
-								</div>
-							</div>
-						</div>
-						<style jsx>{`
+              <div className='menu'>
+                <Link prefetch href='/about'>
+                  <a className={pathname === "/about" ? "is-active" : ""}>
+                    Sobre
+                  </a>
+                </Link>
+                <Link prefetch href='/about'>
+                  <a className={pathname === "/about" ? "is-active" : ""}>
+                    Aldeias
+                  </a>
+                </Link>
+                <Link prefetch href='/about'>
+                  <a className={pathname === "/about" ? "is-active" : ""}>
+                    Linhas de ação
+                  </a>
+                </Link>
+                <Link prefetch href='/about'>
+                  <a className={pathname === "/about" ? "is-active" : ""}>
+                    Projetos
+                  </a>
+                </Link>
+                <Link prefetch href='/about'>
+                  <a className={pathname === "/about" ? "is-active" : ""}>
+                    Notícias
+                  </a>
+                </Link>
+                <div className='social'>
+                  <a
+                    className='icon'
+                    target='_blank'
+                    href={facebookLink ? facebookLink : "https://facebook.com"}
+                  >
+                    <img
+                      src='/static/facebook_icon.png'
+                      style={{ width: 10 }}
+                    />
+                  </a>
+                  <a
+                    className='icon'
+                    target='_blank'
+                    href={youtubeLink ? youtubeLink : "https://youtube.com"}
+                  >
+                    <img src='/static/youtube_icon.png' />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <style jsx>{`
 							img {
 								width: 15px;
 								margin: 0 auto;
@@ -156,9 +175,9 @@ const Header = ({ router: { pathname } }) => {
 							}
 							@media screen and (min-width: 968px) {
 								.links {
-									width: 968px;
-									margin-left: -484px;
-									// font-size: 30px;
+									width: 90%;
+									margin-left: -43%;
+									/* // font-size: 30px; */
 									height: 60px;
 									position: absolute;
 									left: 50%;
@@ -186,12 +205,16 @@ const Header = ({ router: { pathname } }) => {
 									width: 70%;
 								}
 							}
+							@media screen and (min-width: 1280px) {
+								.links {
+									/* width: 968px; */
+							}
 						`}</style>
-					</header>
-				);
-			}}
-		</Query>
-	);
-};
+          </header>
+        )
+      }}
+    </Query>
+  )
+}
 
-export default withRouter(Header);
+export default withRouter(Header)
