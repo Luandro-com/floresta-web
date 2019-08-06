@@ -10,11 +10,16 @@ export default function ProjectItem({
   description
 }) {
   return (
-    <a href={`project?slug=${slug}`}>
-      <div className='media' />
+    <div>
+      <a href={`project?slug=${slug}`} className='media-l' />
+      <a href={`project?slug=${slug}`} className='media-link'>
+        <div className='media' />
+      </a>
       <div className='info'>
         <div className='info-container'>
-          <h4>{name}</h4>
+          <h4>
+            <a href={`project?slug=${slug}`}>{name}</a>
+          </h4>
           <div
             className='description color1'
             style={{ color: colors.color1 }}
@@ -25,46 +30,47 @@ export default function ProjectItem({
           <div className='tag-list'>
             {tags.map(tag => (
               <TagItem
-                key={tag.id}
+                key={tag.slug}
                 {...tag}
                 color={colors.light}
                 backgroundColor={colors.color1}
-                padding='2px 12px'
+                padding='2px 5px'
                 radius={5}
                 margin={"0 2px"}
+                fontSize={"0.6em"}
               />
             ))}
           </div>
         </div>
       </div>
       <style jsx>{`
-		/* margin: 10px auto; */
 		background: ${colors.light};
 		width: 100%;
+		margin: 15px auto;
 		border-radius: 35px;
-		display: flex;
-		flex-flow: row nowrap;
-		align-items: center;
+		a {
+			color: ${colors.dark};
+			font-size: 1em;
+			font-weight: 900;
+		}
 		p {
 			color: ${colors.color1};
 		}
 		h4 {
-			color: ${colors.dark};
-			font-size: 1.8em;
-			font-weight: 900;
 			margin: 0 auto 1vh;
 		}
 		.media {
-			border-radius: 35px 0 0 35px;
+			border-radius: 35px 35px 0 0;
 			background-image: url("${media}");
 			background-size: cover;
-			height: ${height}px;
-			width: 60%;
+			height: 350px;
+			width: 100%;
 		}
 		.info {
-			width: 40%;
+			width: 100%;
 		}
 		.info-container {
+      padding: 30px 0;
 			width: 90%;
 			margin: 0 auto;
 			display: flex;
@@ -77,7 +83,30 @@ export default function ProjectItem({
 			align-items: center;
 			justify-content: flex-start;
 		}
+    .media-l {
+      display: none;
+    }
+		@media screen and (min-width: 845px) {
+			margin: 0 auto;
+			display: flex;
+			flex-flow: row nowrap;
+			align-items: center;
+			.media, .media-link {
+				display: none;
+			}
+			.media-l {
+				display: inherit;
+				border-radius: 35px 0 0 35px;
+				background-image: url("${media}");
+				background-size: cover;
+				height: ${height}px;
+				width: 60%;
+			}
+			.info {
+				width: 40%;
+			}
+      	}
 	`}</style>
-    </a>
+    </div>
   )
 }

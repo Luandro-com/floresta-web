@@ -11,7 +11,8 @@ export default function TagItem({
   padding,
   radius,
   column,
-  margin
+  margin,
+  fontSize
 }) {
   return (
     <a href={`tag?slug=${slug}`}>
@@ -19,6 +20,7 @@ export default function TagItem({
       <style jsx>{`
         a {
           margin: ${margin ? margin : column ? "10px" : 0} auto;
+          font-size: ${fontSize || "inherit"};
         }
         div {
           cursor: pointer;
@@ -28,6 +30,7 @@ export default function TagItem({
           padding: ${padding || "10px 18px"};
           text-transform: uppercase;
           font-weight: 100;
+          text-align: center;
           color: ${color || colors.light};
         }
         div:hover {

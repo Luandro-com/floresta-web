@@ -34,8 +34,9 @@ export default function CategoryItem({ slug, name, icon, media }) {
           background: ${colors.light};
         }
         h3 {
-          font-size: 14px;
-          color: ${colors.color1};
+          font-size: 1.2em;
+          color: ${colors.dark};
+          font-weight: 600;
           text-transform: uppercase;
         }
         .images {
@@ -70,6 +71,21 @@ export default function CategoryItem({ slug, name, icon, media }) {
           display: flex;
           align-items: center;
           justify-content: center;
+        }
+        @media screen and (min-width: 480px) {
+          .container {
+            margin: 20px auto;
+          }
+          a {
+            width: ${boxWidthB + 100}px;
+            height: ${boxHeightB}px;
+          }
+          .images {
+            height: ${boxHeightB}px;
+          }
+          .icon {
+            left: -${boxWidthB / 8}px;
+          }
         }
         @media screen and (min-width: 968px) {
           .container {

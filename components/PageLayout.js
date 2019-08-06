@@ -9,7 +9,7 @@ import Project from "../components/Project"
 import colors from "../lib/colors"
 
 export const CATEGORY = gql`
-  query($slug: String!) {
+  query($slug: String) {
     projectCategories(slug: $slug) {
       slug
       description
@@ -27,86 +27,87 @@ export const CATEGORY = gql`
     }
   }
 `
-export default function PageLayout({ slug, main }) {
+
+function List({ slug }) {
   return (
     <Query query={CATEGORY} variables={{ slug }}>
       {({ loading, error, data: { projectCategories }, fetchMore }) => {
         if (error) return <ErrorMessage message='Error loading posts.' />
         if (loading) return <div>Loading</div>
-        // const areMorePosts = allPosts.length < _allPostsMeta.count
-        return (
-          <section>
-            <div className='back'>
-              <BackButton to={main === "projects" ? "/" : "/"} />
-            </div>
-            <div className='container'>
-              {main === "projects" ? (
-                <ProjectList projects={projectCategories[0].projects} />
-              ) : (
-                <Project />
-              )}
-              {/* {areMorePosts ? (
-							<button onClick={() => loadMorePosts(allPosts, fetchMore)}>
-								{' '}
-								{loading ? 'Loading...' : 'Show More'}{' '}
-							</button>
-						) : (
-							''
-						)} */}
-              <div className='tag-list'>
-                <TagList
-                  column
-                  titleColor={colors.dark}
-                  color={colors.color1}
-                  hoverColor={colors.light}
-                  hoverBackgroundColor={colors.color1}
-                  width={"50px"}
-                  weight={400}
-                  fontSize={"2em"}
-                  padding={"5px 25px"}
-                  radius={5}
-                />
-              </div>
-            </div>
-            <style jsx>{`
-              section {
-                margin: 0 auto;
-                padding-top: 5vh;
-              }
-              div {
-                align-items: center;
-                display: flex;
-              }
-              .back {
-                position: absolute;
-                right: 15%;
-                cursor: pointer;
-              }
-              .container {
-                display: flex;
-                flex-flow: row nowrap;
-                align-items: flex-start;
-                justify-content: space-between;
-              }
-              .tag-list {
-                width: 50px;
-                /* margin-top: -30%; */
-                margin-left: 5vw;
-              }
-              @media screen and (min-width: 968px) {
-                width: 720px;
-                display: flex;
-                flex-flow: row nowrap;
-                justify-content: space-between;
-              }
-              @media screen and (min-width: 1024px) {
-                width: 968px;
-              }
-            `}</style>
-          </section>
-        )
+        return <ProjectList projects={projectCategories[0].projects} />
       }}
     </Query>
+  )
+}
+
+export default function PageLayout({ slug, project }) {
+  return (
+    <section>
+      <div className='back'>
+        <BackButton to={slug ? "/" : "/"} />
+      </div>
+      <div className='container'>
+        {slug ? <List slug={slug} /> : <Project {...project} />}
+        <div className='tag-list'>
+          <TagList
+            column
+            titleColor={colors.dark}
+            color={colors.color1}
+            hoverColor={colors.light}
+            hoverBackgroundColor={colors.color1}
+            width={"250px"}
+            weight={600}
+            fontSize={"2em"}
+            padding={"5px 25px"}
+            radius={5}
+          />
+        </div>
+      </div>
+      <style jsx>{`
+        section {
+          margin: 0 auto;
+          padding-top: 5vh;
+          width: 95%;
+        }
+        div {
+          align-items: center;
+          display: flex;
+        }
+        .back {
+          position: relative;
+          right: 2vw;
+          cursor: pointer;
+          top: 9vh;
+        }
+        .container {
+          display: flex;
+          flex-flow: column;
+          margin: 0 auto;
+        }
+        .tag-list {
+          width: 100%;
+        }
+        @media screen and (min-width: 480px) {
+          width: 90%;
+        }
+        @media screen and (min-width: 1024px) {
+          /* width: 968px; */
+          margin: 0 auto;
+        }
+        @media screen and (min-width: 1200px) {
+          .container {
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: flex-start;
+            justify-content: space-between;
+          }
+          .tag-list {
+            width: 200px;
+            margin-left: 5vw;
+          }
+        }
+      `}</style>
+    </section>
   )
 }
 

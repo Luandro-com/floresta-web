@@ -24,7 +24,8 @@ export default function TagList({
   weight,
   fontSize,
   padding,
-  radius
+  radius,
+  fonSize
 }) {
   return (
     <Query query={PROJECT_TAGS}>
@@ -48,6 +49,7 @@ export default function TagList({
                   padding={padding}
                   radius={radius}
                   column={column}
+                  fontSize={fonSize || "0.8em"}
                 />
               ))}
             </div>
@@ -61,9 +63,8 @@ export default function TagList({
 						)} */}
             <style jsx>{`
               section {
-                width: ${width || "100%"};
-                text-align: ${column ? "left" : "center"};
-                // padding-top: 10vh;
+                width: 100%;
+                text-align: center;
               }
               h2 {
                 color: ${titleColor || "inherit"};
@@ -71,11 +72,23 @@ export default function TagList({
                 font-size: ${fontSize || "inherit"};
               }
               .list {
+                margin: 0 auto;
                 width: 80%;
                 display: flex;
-                flex-flow: ${column ? "column" : "row wrap"};
+                flex-flow: row wrap;
                 align-items: center;
                 justify-content: space-around;
+              }
+              @media screen and (min-width: 1280px) {
+                section {
+                  width: ${width || "100%"};
+                  text-align: ${column ? "left" : "center"};
+                  // padding-top: 10vh;
+                }
+                .list {
+                  flex-flow: ${column ? "column" : "row wrap"};
+                  width: 100%;
+                }
               }
             `}</style>
           </section>

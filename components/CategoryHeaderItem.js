@@ -15,7 +15,7 @@ export default function CategoryHeaderItem({ slug, name, icon, current }) {
           <AnyImage
             src={icon}
             // marginTop={14}
-            size='42px'
+            size='50px'
             color={current ? colors.light2 : color}
           />
         </div>
@@ -25,6 +25,8 @@ export default function CategoryHeaderItem({ slug, name, icon, current }) {
         position: relative;
         top: 1vh;
         color: ${colors.dark};
+        width: 45%;
+        margin: 5px auto;
         .container {
           padding: 0 5px;
           display: flex;
@@ -32,15 +34,17 @@ export default function CategoryHeaderItem({ slug, name, icon, current }) {
           align-items: center;
         }
         h3 {
-          font-size: 1em;
+          font-size: 1.4em;
+          line-height: 1em;
           text-align: center;
           font-weight: 600;
+          width: 100%;
         }
         .icon {
           background: ${current ? colors.dark : "none"};
           border: 2px solid ${colors.dark};
-          height: 70px;
-          width: 70px;
+          height: 10vh;
+          width: 10vh;
           border-radius: 50%;
           display: flex;
           flex-flow: column;
@@ -49,6 +53,14 @@ export default function CategoryHeaderItem({ slug, name, icon, current }) {
         }
         .container:hover .icon {
           background: ${colors.dark};
+        }
+        @media screen and (min-width: 720px) {
+          h3 {
+            width: 70%;
+          }
+          .container {
+            width: 80%;
+          }
         }
       `}</style>
     </a>

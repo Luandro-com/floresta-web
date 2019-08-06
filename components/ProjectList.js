@@ -1,6 +1,6 @@
 import ProjectItem from "./ProjectItem"
 
-const projectHeight = 280
+const projectHeight = 260
 
 export default ({ projects }) => (
   <div>
@@ -10,10 +10,13 @@ export default ({ projects }) => (
       ))}
     <style jsx>{`
       width: 100%;
-      height: ${projects.length * projectHeight + projects.length * 20}px;
-      display: flex;
-      flex-flow: column;
-      justify-content: space-around;
+      margin: 0 auto;
+      @media screen and (min-width: 845px) {
+        height: ${projects.length * projectHeight + projects.length * 40}px;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-around;
+      }
     `}</style>
   </div>
 )
