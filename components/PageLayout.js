@@ -28,13 +28,45 @@ export const CATEGORY = gql`
   }
 `
 
+export const CATEGORIES = gql`
+  query {
+    projectCategories {
+      slug
+      description
+      projects {
+        id
+        slug
+        name
+        media
+        description
+        tags {
+          slug
+          name
+        }
+      }
+    }
+  }
+`
+
 function List({ slug }) {
   return (
-    <Query query={CATEGORY} variables={{ slug }}>
+    <Query
+      query={slug ? CATEGORY : CATEGORIES}
+      variables={slug ? { slug: slug } : null}
+    >
       {({ loading, error, data: { projectCategories }, fetchMore }) => {
+        let allProjects = []
         if (error) return <ErrorMessage message='Error loading posts.' />
         if (loading) return <div>Loading</div>
-        return <ProjectList projects={projectCategories[0].projects} />
+        if (projectCategories) {
+          projectCategories.map(
+            p => (allProjects = allProjects.concat(p.projects))
+          )
+          console.log(allProjects)
+          return <ProjectList projects={allProjects} />
+        } else {
+          return <div>Loading</div>
+        }
       }}
     </Query>
   )
@@ -47,7 +79,7 @@ export default function PageLayout({ slug, project }) {
         <BackButton to={slug ? "/" : "/"} />
       </div>
       <div className='container'>
-        {slug ? <List slug={slug} /> : <Project {...project} />}
+        {!project ? <List slug={slug} /> : <Project {...project} />}
         <div className='tag-list'>
           <TagList
             column
@@ -66,7 +98,7 @@ export default function PageLayout({ slug, project }) {
       <style jsx>{`
         section {
           margin: 0 auto;
-          padding-top: 5vh;
+          /* padding-top: 5vh; */
           width: 95%;
         }
         div {
@@ -75,9 +107,9 @@ export default function PageLayout({ slug, project }) {
         }
         .back {
           position: relative;
-          right: 2vw;
+          right: -4vw;
           cursor: pointer;
-          top: 9vh;
+          top: 4vh;
         }
         .container {
           display: flex;

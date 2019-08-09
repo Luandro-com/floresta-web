@@ -83,7 +83,7 @@ export default function TagList({
                 section {
                   width: ${width || "100%"};
                   text-align: ${column ? "left" : "center"};
-                  // padding-top: 10vh;
+                  padding-top: 10vh;
                 }
                 .list {
                   flex-flow: ${column ? "column" : "row wrap"};

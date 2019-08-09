@@ -59,12 +59,14 @@ export default function CategoryList() {
                 .container {
                   flex-flow: row wrap;
                   align-content: flex-end;
+                  justify-content: space-around;
                 }
               }
               @media screen and (min-width: 1024px) {
                 .container {
                   flex-flow: row wrap;
-                  width: 968px;
+                  width: 80%;
+                  /* width: 968px; */
                 }
               }
             `}</style>

@@ -8,7 +8,12 @@ import colors from "../lib/colors"
 export const DESCRIPTION = gql`
   query {
     content {
-      description
+      villageText
+      villages {
+        photos
+        slug
+        name
+      }
     }
   }
 `
@@ -28,15 +33,20 @@ export default () => {
               />
               <div className='pattern'>
                 <div className='container'>
-                  <h1>Sobre</h1>
+                  <h1>Aldeias</h1>
                   <div
                     className='description color1'
                     dangerouslySetInnerHTML={{
                       __html:
-                        content && content.description
-                          ? content.description
+                        content && content.villageText
+                          ? content.villageText
                           : ""
                     }}
+                  />
+                  <iframe
+                    src='https://www.google.com/maps/d/embed?mid=1W28Oyr7k4muzJp270p83OX_rIfc'
+                    width='640'
+                    height='720'
                   />
                 </div>
               </div>
@@ -51,6 +61,10 @@ export default () => {
                 .container {
                   margin: 0 auto;
                   width: 90%;
+                }
+                iframe {
+                  width: 100%;
+                  margin: 30px auto;
                 }
                 @media screen and (min-width: 1024px) {
                   .container {

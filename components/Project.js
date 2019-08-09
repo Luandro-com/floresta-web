@@ -6,13 +6,15 @@ export default ({ name, description, media, tags }) => {
     <main>
       <div className='media' />
       <div className='info'>
-        <h2>{name}</h2>
-        <div className='description color1'>
-          <span
-            dangerouslySetInnerHTML={{
-              __html: description
-            }}
-          />
+        <div className='info-container'>
+          <h2>{name}</h2>
+          <div className='description color1'>
+            <span
+              dangerouslySetInnerHTML={{
+                __html: description
+              }}
+            />
+          </div>
           <div className='tag-list'>
             {tags.map(tag => (
               <TagItem
@@ -29,27 +31,33 @@ export default ({ name, description, media, tags }) => {
         </div>
       </div>
       <style jsx>{`
-		border-radius: 30px;
-		background: ${colors.light};
-		h2 {
-			color: ${colors.dark};
-			font-weight: 900;	
-		}
-		.info {
-			padding: 35px 10%;
-		}
-		.media {
-			 background: url("${media}");
-			 height: 500px;
-			 border-radius: 30px 30px 0 0;
-		}
-		.tag-list {
-			padding-top: 25px;
-			display: flex;
-			flex-flow: row;
-			align-items: center;
-			justify-content: flex-start;
-		}
+        border-radius: 30px;
+        background: ${colors.light};
+        margin: 0 auto;
+        h2 {
+          color: ${colors.dark};
+          font-weight: 900;	
+        }
+        .info {
+          padding: 35px 10%;
+        }
+        .media {
+          background: url("${media}");
+          height: 60vh;
+          border-radius: 30px 30px 0 0;
+        }
+        .tag-list {
+          padding-top: 25px;
+          display: flex;
+          flex-flow: row;
+          align-items: center;
+          justify-content: flex-start;
+        }
+        @media screen and (min-width: 1024px) {
+          .info-container {
+            max-width: 968px;
+          }
+        }
 	  `}</style>
     </main>
   )

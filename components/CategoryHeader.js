@@ -25,38 +25,46 @@ export default function CategoryList({ slug }) {
         return (
           <section>
             <div className='container'>
-              <div className='title'>
-                <img src='/static/grafismo_p.png' />
-                <h2>
-                  {projectCategories.filter(c => c.slug === slug)[0]
-                    ? projectCategories.filter(c => c.slug === slug)[0].name
-                    : "Inválido"}
-                </h2>
-              </div>
-              <div className='divider' />
+              {slug && (
+                <div className='title'>
+                  <img src='/static/grafismo_p.png' />
+                  <h2>
+                    {projectCategories.filter(c => c.slug === slug)[0]
+                      ? projectCategories.filter(c => c.slug === slug)[0].name
+                      : "Inválido"}
+                  </h2>
+                </div>
+              )}
+              {slug && <div className='divider' />}
               <div className='list'>
-                {projectCategories.map(category => (
-                  <CategoryHeaderItem
-                    {...category}
-                    key={category.id}
-                    current={
-                      category.slug ===
-                      projectCategories.filter(c => c.slug === slug)[0].slug
-                    }
-                  />
-                ))}
+                {projectCategories &&
+                  projectCategories.map(category => (
+                    <CategoryHeaderItem
+                      {...category}
+                      key={category.id}
+                      current={
+                        slug
+                          ? category.slug ===
+                            projectCategories.filter(c => c.slug === slug)[0]
+                              .slug
+                          : null
+                      }
+                    />
+                  ))}
               </div>
             </div>
-            <div
-              className='description dark medium'
-              dangerouslySetInnerHTML={{
-                __html: projectCategories.filter(c => c.slug === slug)[0]
-                  .description
-                  ? projectCategories.filter(c => c.slug === slug)[0]
-                      .description
-                  : ""
-              }}
-            />
+            {slug && (
+              <div
+                className='description dark medium'
+                dangerouslySetInnerHTML={{
+                  __html: projectCategories.filter(c => c.slug === slug)[0]
+                    .description
+                    ? projectCategories.filter(c => c.slug === slug)[0]
+                        .description
+                    : ""
+                }}
+              />
+            )}
             {/* {areMorePosts ? (
 							<button onClick={() => loadMorePosts(allPosts, fetchMore)}>
 								{' '}
@@ -113,13 +121,13 @@ export default function CategoryList({ slug }) {
               }
               @media screen and (min-width: 720px) {
                 .list {
-                    width: 90%;
+                    width: 60%;
                     flex-flow: row nowrap;
                   }
               }
               @media screen and (min-width: 1024px) {
                 h2 {
-                  font-size: 3em;
+                  font-size: 3.2em;
                 }
                 section {
                 }
@@ -140,7 +148,7 @@ export default function CategoryList({ slug }) {
                 .description,
                 .container {
                   /* width: 720px; */
-                  margin: 10vh auto 0;
+                  margin: 5vh auto 0;
                   width: 80%;
                 }
               }

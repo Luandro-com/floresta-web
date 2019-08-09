@@ -8,22 +8,14 @@ import PageLayout from "../components/PageLayout"
 import colors from "../lib/colors"
 
 export default () => {
-  let slug = null
-  if (Router.router) {
-    slug = Router.router.query.slug
-  }
   return (
     <App>
       <Welcome background={"/static/header_categories.png"} height='80vh' />
       <div className='pattern'>
-        {slug ? (
-          <div>
-            <CategoryHeader slug={slug} />
-            <PageLayout slug={slug} main='projects' />
-          </div>
-        ) : (
-          <span>Loading...</span>
-        )}
+        <div>
+          <CategoryHeader />
+          <PageLayout main='projects' />
+        </div>
       </div>
       <style jsx>{`
         .pattern {

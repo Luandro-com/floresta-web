@@ -1,6 +1,6 @@
 import colors from "../lib/colors"
 
-export default function NewsItem({ title, media, description, link }) {
+export default function NewsItem({ title, media, description, link, width }) {
   return (
     <a target='_blank' href={link || ""}>
       <div className='container'>
@@ -16,10 +16,13 @@ export default function NewsItem({ title, media, description, link }) {
         />
       </div>
       <style jsx>{`
+        width: ${width || "100%"};
+        margin: 15px auto;
 				h3 {
 					text-align: left;
 					padding-left: 3vw;
-					font-size: 1.2em;
+					font-size: 1.6em;
+					font-weight: 600;
 				}
 				.container {
 					background: ${colors.light};
@@ -29,22 +32,31 @@ export default function NewsItem({ title, media, description, link }) {
 
 				}
 				.media {
-					height: 200px;
+          margin-top: -15px;
+					height: 300px;
 					background-image: url("${media || ""}");
 					background-size: cover;
 					border-radius: 20px 20px 0 0;
 				}
 				.title {
+          margin-top: -15px;
 					width: 100%;
 					background: ${colors.dark};
 				}
 				.description {
 					color: ${colors.dark};
-					height: 130px;
+					height: 200px;
 					text-align: left;
 					width: 90%;
 					margin: 0 auto;
 				}
+        @media screen and (max-width: 1023px) {
+          margin: 40px auto;
+          .media, .title {
+            margin-top: -40px;
+          }
+
+        }
 			`}</style>
     </a>
   )

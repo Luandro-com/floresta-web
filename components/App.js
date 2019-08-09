@@ -23,6 +23,7 @@ export default ({ children }) => (
       }
       h1 {
         font-family: "Varela Round", sans-serif;
+        font-family: "Amatic SC", cursive;
       }
       h2,
       h3,
@@ -40,7 +41,7 @@ export default ({ children }) => (
       p {
         color: ${colors.light};
         font-size: 1em;
-        line-height: 18px;
+        line-height: 1.2em;
       }
       .color1 p {
         color: ${colors.color1};
@@ -76,6 +77,12 @@ export default ({ children }) => (
       .ql-video {
         width: 100%;
         height: 50vh;
+      }
+      .slider-control-bottomcenter {
+        bottom: -30px !important;
+      }
+      .paging-dot {
+        background: ${colors.light} !important;
       }
     `}</style>
   </main>

@@ -3,12 +3,18 @@ import { Query } from "react-apollo"
 import gql from "graphql-tag"
 import ErrorMessage from "../components/ErrorMessage"
 import Welcome from "../components/Welcome"
+import NewsItem from "../components/NewsItem"
+
 import colors from "../lib/colors"
 
-export const DESCRIPTION = gql`
+export const NEWS_ALL = gql`
   query {
-    content {
+    newsAll {
+      id
       description
+      link
+      title
+      media
     }
   }
 `
@@ -16,8 +22,8 @@ export const DESCRIPTION = gql`
 export default () => {
   return (
     <App>
-      <Query query={DESCRIPTION}>
-        {({ loading, error, data: { content } }) => {
+      <Query query={NEWS_ALL}>
+        {({ loading, error, data: { newsAll } }) => {
           if (error) return <ErrorMessage message='Error loading posts.' />
           if (loading) return <div>Loading</div>
           return (
@@ -28,16 +34,12 @@ export default () => {
               />
               <div className='pattern'>
                 <div className='container'>
-                  <h1>Sobre</h1>
-                  <div
-                    className='description color1'
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        content && content.description
-                          ? content.description
-                          : ""
-                    }}
-                  />
+                  <h1>Notícias</h1>
+                  <div className='list'>
+                    {newsAll.map(news => (
+                      <NewsItem {...news} key={news.id} width='400px' />
+                    ))}
+                  </div>
                 </div>
               </div>
               <style jsx>{`
@@ -53,6 +55,12 @@ export default () => {
                   width: 90%;
                 }
                 @media screen and (min-width: 1024px) {
+                  .list {
+                    display: flex;
+                    flex-flow: row wrap;
+                    align-items: center;
+                    justify-content: space-between;
+                  }
                   .container {
                     max-width: 968px;
                   }

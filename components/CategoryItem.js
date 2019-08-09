@@ -2,8 +2,8 @@ import colors from "../lib/colors"
 import AnyImage from "./AnyImage"
 const boxHeight = 120
 const boxWidth = 250
-const boxWidthB = 350
-const boxHeightB = 135
+const boxWidthB = 480
+const boxHeightB = 180
 
 export default function CategoryItem({ slug, name, icon, media }) {
   return (
@@ -34,7 +34,7 @@ export default function CategoryItem({ slug, name, icon, media }) {
           background: ${colors.light};
         }
         h3 {
-          font-size: 1.2em;
+          font-size: 1.4em;
           color: ${colors.dark};
           font-weight: 600;
           text-transform: uppercase;
@@ -71,6 +71,7 @@ export default function CategoryItem({ slug, name, icon, media }) {
           display: flex;
           align-items: center;
           justify-content: center;
+          text-align: left;
         }
         @media screen and (min-width: 480px) {
           .container {
@@ -89,7 +90,7 @@ export default function CategoryItem({ slug, name, icon, media }) {
         }
         @media screen and (min-width: 968px) {
           .container {
-            margin: 20px auto;
+            margin: 40px;
           }
           a {
             width: ${boxWidthB}px;
