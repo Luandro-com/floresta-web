@@ -7,7 +7,7 @@ export const CONTENT = gql`
   query {
     content {
       logo
-      banner
+      headerImage
       title
       subTitle
     }
@@ -23,7 +23,7 @@ const HomeWelcome = ({ router: { pathname } }) => (
         <Welcome
           text={content.subTitle}
           logo={content.logo}
-          background={"/static/header_home.png"}
+          background={content.headerImage}
           arrow
           height='100vh'
         />

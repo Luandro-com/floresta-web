@@ -5,7 +5,7 @@ import CategoryItem from "./CategoryItem"
 
 export const PROJECT_CATEGORIES = gql`
   query {
-    projectCategories {
+    categories {
       id
       slug
       name
@@ -17,7 +17,7 @@ export const PROJECT_CATEGORIES = gql`
 export default function CategoryList() {
   return (
     <Query query={PROJECT_CATEGORIES}>
-      {({ loading, error, data: { projectCategories }, fetchMore }) => {
+      {({ loading, error, data: { categories }, fetchMore }) => {
         if (error) return <ErrorMessage message='Error loading posts.' />
         if (loading) return <div>Loading</div>
         // const areMorePosts = allPosts.length < _allPostsMeta.count
@@ -26,7 +26,7 @@ export default function CategoryList() {
             <section>
               <h2>Linhas de ação</h2>
               <div className='container'>
-                {projectCategories.map(category => (
+                {categories.map(category => (
                   <CategoryItem {...category} key={category.id} />
                 ))}
               </div>
