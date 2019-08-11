@@ -2,6 +2,7 @@ import Link from "next/link"
 import { withRouter } from "next/router"
 import { Query } from "react-apollo"
 import gql from "graphql-tag"
+import useWindowScrollPosition from "@rehooks/window-scroll-position"
 import colors from "../lib/colors"
 import AnyImage from "./AnyImage"
 import HamburgerButton from "./HamburgerButton"
@@ -18,6 +19,13 @@ export const CONTENT = gql`
 
 const Header = ({ router: { pathname } }) => {
   const [menuState, menuToggle] = React.useState(false)
+  let position = {
+    y: 0
+  }
+  if (process.browser && position.y < 100) {
+    position = useWindowScrollPosition({ throttle: 100 })
+  }
+  const scrolled = position.y > 100
   return (
     <Query query={CONTENT}>
       {({ loading, error, data }) => {
@@ -26,7 +34,16 @@ const Header = ({ router: { pathname } }) => {
         if (data && data.content) {
           const { logo, youtubeLink, facebookLink } = data.content
           return (
-            <header>
+            <header className={scrolled ? "header-fade" : ""}>
+              <div
+                className={
+                  scrolled
+                    ? "color-header color-header-scrolled"
+                    : "color-header"
+                }
+              >
+                <div className='triangle-left' />
+              </div>
               <div className='burger'>
                 <HamburgerButton
                   color={colors.light}
@@ -35,10 +52,18 @@ const Header = ({ router: { pathname } }) => {
                   size={25}
                 />
               </div>
-              <div className={menuState ? "links open" : "links"}>
+              <div
+                className={
+                  menuState
+                    ? "links open"
+                    : scrolled
+                    ? "links links-scrolled"
+                    : "links"
+                }
+              >
                 <Link prefetch href='/'>
-                  <div className='logo'>
-                    <AnyImage src={logo} size='40vh' />
+                  <div className={scrolled ? "logo disappear" : "logo"}>
+                    <AnyImage src={logo} size='25vh' />
                   </div>
                 </Link>
 
@@ -94,6 +119,46 @@ const Header = ({ router: { pathname } }) => {
                 </div>
               </div>
               <style jsx>{`
+                header {
+                  width: 100%;
+                  z-index: 9999;
+                  top: 0;
+                  position: fixed;
+                  height: 11vh;
+                }
+                .header-fade {
+                  background: none;
+                  border: none;
+                  box-shadow: none;
+                  height: 7vh;
+                }
+                .color-header {
+                  background: ${colors.dark};
+                  width: 100%;
+                  height: 7vh;
+                  position: fixed;
+                  right: -110%;
+                  transition: right 0.8s ease;
+                }
+                .triangle-left {
+                  width: 3.5vh;
+                  height: 0;
+                  padding-top: 3.5vh;
+                  padding-bottom: 3.5vh;
+                  overflow: hidden;
+                  position: relative;
+                  right: 3.5vh;
+                }
+                .triangle-left:after {
+                  content: "";
+                  display: block;
+                  width: 0;
+                  height: 0;
+                  margin-top: -500px;
+                  border-top: 500px solid transparent;
+                  border-bottom: 500px solid transparent;
+                  border-right: 500px solid ${colors.dark};
+                }
                 img {
                   width: 15px;
                   margin: 0 auto;
@@ -109,18 +174,23 @@ const Header = ({ router: { pathname } }) => {
                 }
                 .logo {
                   cursor: pointer;
+                  opacity: 1;
+                  transition: height 0.2s ease;
+                  transition: opacity 0.6s ease;
+                }
+                .disappear {
+                  opacity: 0;
                 }
                 .burger {
-                  left: 5%;
+                  width: 100%;
                   position: fixed;
-                  top: 2.5%;
+                  top: 0;
                   background: ${colors.dark};
-                  border-radius: 15px;
                   padding: 12px;
                   z-index: 999;
                   display: flex;
                   align-items: center;
-                  justify-content: center;
+                  justify-content: flex-start;
                 }
                 .links {
                   width: 100%;
@@ -174,17 +244,30 @@ const Header = ({ router: { pathname } }) => {
                   }
                 }
                 @media screen and (min-width: 968px) {
+                  header {
+                    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.4);
+                    background: rgba(0, 0, 0, 0.4);
+                    border-radius: 4px;
+                    transition: height 0.5s ease;
+                  }
                   .links {
                     width: 90%;
                     margin-left: -43%;
-                    /* // font-size: 30px; */
-                    height: 60px;
+                    /* font-size: 30px; */
+                    height: 11vh;
                     position: absolute;
                     left: 50%;
-                    top: 5%;
+                    /* top: 5%; */
                     background: none;
                     justify-content: flex-start;
                     flex-flow: row nowrap;
+                    transition: all 0.4s ease;
+                  }
+                  .color-header-scrolled {
+                    right: 0;
+                  }
+                  .links-scrolled {
+                    height: 7vh;
                   }
                   .menu {
                     padding: 25px 0;

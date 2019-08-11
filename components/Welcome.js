@@ -18,9 +18,9 @@ export default ({ text, background, arrow, height, logo }) => {
         backgroundSize: "cover"
       }}
     >
-      <div className='logo'>
+      {/* <div className='logo'>
         <AnyImage src={logo} />
-      </div>
+      </div> */}
       <div className='info'>
         <h2>{text && text}</h2>
         {arrow && (
@@ -42,6 +42,9 @@ export default ({ text, background, arrow, height, logo }) => {
 				text-transform: uppercase;
 				font-size: 1em;
 				cursor: pointer;
+				border-radius: 10px;
+				box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.4);
+        background: rgba(0, 0, 0, 0.4);
 			}
 			.logo {
 				width: 80%;

@@ -827,6 +827,13 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@rehooks/window-scroll-position@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@rehooks/window-scroll-position/-/window-scroll-position-1.0.1.tgz#3cb80f22cbf9cdbd2041b5236ae1fce8245b2f1c"
+  integrity sha512-+7uUcU2DBzXW4ygKTCqjCrtT4Nq0f+hNxQvAw69pXSBc7DbqmzfpxrYu27dT4tXrUKSQPFPpo5AdMv2oUJVM7g==
+  dependencies:
+    lodash.throttle "^4.1.1"
+
 "@tanem/svg-injector@^8.0.25":
   version "8.0.25"
   resolved "https://registry.yarnpkg.com/@tanem/svg-injector/-/svg-injector-8.0.25.tgz#9ed7e6dc064f03bcd3680d80276677692d31ae2c"

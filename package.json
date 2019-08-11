@@ -7,6 +7,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@rehooks/window-scroll-position": "^1.0.1",
     "apollo-boost": "^0.4.4",
     "graphql": "^14.0.2",
     "isomorphic-unfetch": "^3.0.0",
