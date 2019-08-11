@@ -25,20 +25,21 @@ export default function CategoryHeaderItem({ slug, name, icon, current }) {
         position: relative;
         top: 1vh;
         color: ${colors.dark};
-        width: 45%;
         margin: 5px auto;
+        width: 100%;
         .container {
           padding: 0 5px;
           display: flex;
-          flex-flow: column;
           align-items: center;
+          flex-flow: row;
+          justify-content: flex-start;
         }
         h3 {
           font-size: 1.4em;
           line-height: 1em;
           text-align: center;
           font-weight: 600;
-          width: 100%;
+          width: 50%;
         }
         .icon {
           background: ${current ? colors.dark : "none"};
@@ -53,6 +54,15 @@ export default function CategoryHeaderItem({ slug, name, icon, current }) {
         }
         .container:hover .icon {
           background: ${colors.dark};
+        }
+        @media screen and (min-width: 640px) {
+          width: 45%;
+          .container {
+            flex-flow: column;
+          }
+          h3 {
+            width: 100%;
+          }
         }
         @media screen and (min-width: 720px) {
           h3 {

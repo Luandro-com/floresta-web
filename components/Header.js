@@ -70,7 +70,7 @@ const Header = ({ router: { pathname } }) => {
                 <div className='menu'>
                   <Link prefetch href='/about'>
                     <a className={pathname === "/about" ? "is-active" : ""}>
-                      Sobre
+                      Quem somos
                     </a>
                   </Link>
                   <Link prefetch href='/villages'>
@@ -138,7 +138,7 @@ const Header = ({ router: { pathname } }) => {
                   height: 7vh;
                   position: fixed;
                   right: -110%;
-                  transition: right 0.8s ease;
+                  transition: right 1.2s ease;
                 }
                 .triangle-left {
                   width: 3.5vh;

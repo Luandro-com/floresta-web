@@ -6,7 +6,7 @@ import colors from "../lib/colors"
 
 export const PROJECT_CATEGORIES = gql`
   query {
-    projectCategories {
+    categories {
       id
       slug
       name
@@ -18,7 +18,7 @@ export const PROJECT_CATEGORIES = gql`
 export default function CategoryList({ slug }) {
   return (
     <Query query={PROJECT_CATEGORIES}>
-      {({ loading, error, data: { projectCategories }, fetchMore }) => {
+      {({ loading, error, data: { categories }, fetchMore }) => {
         if (error) return <ErrorMessage message='Error loading posts.' />
         if (loading) return <div>Loading</div>
         // const areMorePosts = allPosts.length < _allPostsMeta.count
@@ -29,24 +29,23 @@ export default function CategoryList({ slug }) {
                 <div className='title'>
                   <img src='/static/grafismo_p.png' />
                   <h2>
-                    {projectCategories.filter(c => c.slug === slug)[0]
-                      ? projectCategories.filter(c => c.slug === slug)[0].name
+                    {categories.filter(c => c.slug === slug)[0]
+                      ? categories.filter(c => c.slug === slug)[0].name
                       : "Inválido"}
                   </h2>
                 </div>
               )}
               {slug && <div className='divider' />}
               <div className='list'>
-                {projectCategories &&
-                  projectCategories.map(category => (
+                {categories &&
+                  categories.map(category => (
                     <CategoryHeaderItem
                       {...category}
                       key={category.id}
                       current={
                         slug
                           ? category.slug ===
-                            projectCategories.filter(c => c.slug === slug)[0]
-                              .slug
+                            categories.filter(c => c.slug === slug)[0].slug
                           : null
                       }
                     />
@@ -57,10 +56,8 @@ export default function CategoryList({ slug }) {
               <div
                 className='description dark medium'
                 dangerouslySetInnerHTML={{
-                  __html: projectCategories.filter(c => c.slug === slug)[0]
-                    .description
-                    ? projectCategories.filter(c => c.slug === slug)[0]
-                        .description
+                  __html: categories.filter(c => c.slug === slug)[0].description
+                    ? categories.filter(c => c.slug === slug)[0].description
                     : ""
                 }}
               />
@@ -121,7 +118,7 @@ export default function CategoryList({ slug }) {
               }
               @media screen and (min-width: 720px) {
                 .list {
-                    width: 60%;
+                    width: 90%;
                     flex-flow: row nowrap;
                   }
               }
@@ -139,6 +136,10 @@ export default function CategoryList({ slug }) {
                   flex-flow: row;
                   /* width: 720px; */
                 }
+                .list {
+                    width: 60%;
+                    flex-flow: row nowrap;
+                  }
                 .title {
                   width: 20%;
                 }

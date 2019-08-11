@@ -10,7 +10,7 @@ import colors from "../lib/colors"
 
 export const CATEGORY = gql`
   query($slug: String) {
-    projectCategories(slug: $slug) {
+    categories(slug: $slug) {
       slug
       description
       projects {
@@ -30,7 +30,7 @@ export const CATEGORY = gql`
 
 export const CATEGORIES = gql`
   query {
-    projectCategories {
+    categories {
       slug
       description
       projects {
@@ -54,14 +54,12 @@ function List({ slug }) {
       query={slug ? CATEGORY : CATEGORIES}
       variables={slug ? { slug: slug } : null}
     >
-      {({ loading, error, data: { projectCategories }, fetchMore }) => {
+      {({ loading, error, data: { categories }, fetchMore }) => {
         let allProjects = []
         if (error) return <ErrorMessage message='Error loading posts.' />
         if (loading) return <div>Loading</div>
-        if (projectCategories) {
-          projectCategories.map(
-            p => (allProjects = allProjects.concat(p.projects))
-          )
+        if (categories) {
+          categories.map(p => (allProjects = allProjects.concat(p.projects)))
           console.log(allProjects)
           return <ProjectList projects={allProjects} />
         } else {
@@ -107,9 +105,9 @@ export default function PageLayout({ slug, project }) {
         }
         .back {
           position: relative;
-          right: -4vw;
+          right: 1vw;
           cursor: pointer;
-          top: 4vh;
+          top: 5vh;
         }
         .container {
           display: flex;

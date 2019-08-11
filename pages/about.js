@@ -28,7 +28,7 @@ export default () => {
               />
               <div className='pattern'>
                 <div className='container'>
-                  <h1>Sobre</h1>
+                  <h1>Quem somos</h1>
                   <div
                     className='description color1'
                     dangerouslySetInnerHTML={{

@@ -47,7 +47,7 @@ export default function CategoryItem({ slug, name, icon, media }) {
           border-radius: 30px 0 0 30px;
           background-size: cover;
           background-repeat: no-repeat;
-          display: flex;
+          display: none;
           flex-flow: row nowrap;
           justify-content: space-between;
           align-items: center;
@@ -66,26 +66,31 @@ export default function CategoryItem({ slug, name, icon, media }) {
         .info {
           position: relative;
           left: -8px;
-          width: 40%;
+          width: 90%;
           height: ${boxHeight}px;
           display: flex;
           align-items: center;
           justify-content: center;
-          text-align: left;
+          text-align: center;
         }
         @media screen and (min-width: 480px) {
           .container {
             margin: 20px auto;
           }
           a {
-            width: ${boxWidthB + 100}px;
+            width: ${boxWidthB}px;
             height: ${boxHeightB}px;
           }
           .images {
             height: ${boxHeightB}px;
+            display: flex;
           }
           .icon {
-            left: -${boxWidthB / 8}px;
+            left: 30px;
+          }
+          .info {
+            width: 40%;
+            text-align: left;
           }
         }
         @media screen and (min-width: 968px) {
