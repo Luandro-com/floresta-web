@@ -68,6 +68,13 @@ const Header = ({ router: { pathname } }) => {
                 </Link>
 
                 <div className='menu'>
+                  <span className={scrolled ? "home" : "home disappear"}>
+                    <Link prefetch href='/'>
+                      <a className={pathname === "/" ? "is-active" : ""}>
+                        Início
+                      </a>
+                    </Link>
+                  </span>
                   <Link prefetch href='/about'>
                     <a className={pathname === "/about" ? "is-active" : ""}>
                       Quem somos
@@ -178,9 +185,6 @@ const Header = ({ router: { pathname } }) => {
                   transition: height 0.2s ease;
                   transition: opacity 0.6s ease;
                 }
-                .disappear {
-                  opacity: 0;
-                }
                 .burger {
                   width: 100%;
                   position: fixed;
@@ -202,8 +206,12 @@ const Header = ({ router: { pathname } }) => {
                   display: flex;
                   flex-flow: column;
                   align-items: center;
-                  justify-content: flex-start;
+                  justify-content: space-around;
                   z-index: 99;
+                }
+                .home {
+                  opacity: 1;
+                  transition: all 0.8s ease;
                 }
                 .social {
                   padding-top: 3vh;
@@ -241,9 +249,13 @@ const Header = ({ router: { pathname } }) => {
                     flex-flow: column;
                     align-items: center;
                     justify-content: space-between;
+                    height: 50vh;
                   }
                 }
                 @media screen and (min-width: 968px) {
+                  .disappear {
+                    opacity: 0;
+                  }
                   header {
                     box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.4);
                     background: rgba(0, 0, 0, 0.4);
