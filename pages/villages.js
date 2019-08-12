@@ -4,6 +4,8 @@ import gql from "graphql-tag"
 import ErrorMessage from "../components/ErrorMessage"
 import Loading from "../components/Loading"
 import Welcome from "../components/Welcome"
+import VillageList from "../components/VillageList"
+
 import colors from "../lib/colors"
 
 export const DESCRIPTION = gql`
@@ -14,6 +16,9 @@ export const DESCRIPTION = gql`
         photos
         slug
         name
+        mapLink
+        description
+        intro
       }
     }
   }
@@ -28,33 +33,20 @@ export default () => {
           if (loading) return <Loading />
           return (
             <div className='wrapper'>
-              <Welcome
+              {/* <Welcome
                 background={"/static/header_categories.png"}
                 height='80vh'
-              />
+              /> */}
               <div className='pattern'>
                 <div className='container'>
-                  <h1>Aldeias</h1>
-                  <div
-                    className='description color1'
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        content && content.villageText
-                          ? content.villageText
-                          : ""
-                    }}
+                  <VillageList
+                    villages={content.villages}
+                    text={content.villageText}
                   />
-                  <iframe
-                    src='https://www.google.com/maps/d/embed?mid=1W28Oyr7k4muzJp270p83OX_rIfc'
-                    width='640'
-                    height='720'
-                  />
-                  {content.villages.map(village => (
-                    <h1>{village.name}</h1>
-                  ))}
                 </div>
               </div>
               <style jsx>{`
+                padding-top: 10vh;
                 .pattern {
                   background: ${colors.light2};
                   // background-image: url("/static/grafismo.png");

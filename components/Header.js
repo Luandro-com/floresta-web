@@ -129,7 +129,7 @@ const Header = ({ router: { pathname } }) => {
               <style jsx>{`
                 header {
                   width: 100%;
-                  z-index: 9999;
+                  z-index: 100;
                   top: 0;
                   position: fixed;
                   height: 11vh;
@@ -192,7 +192,7 @@ const Header = ({ router: { pathname } }) => {
                   top: 0;
                   background: ${colors.dark};
                   padding: 12px;
-                  z-index: 999;
+                  z-index: 100;
                   display: flex;
                   align-items: center;
                   justify-content: flex-start;
