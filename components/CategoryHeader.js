@@ -1,8 +1,10 @@
+import { useState } from "react"
 import { Query } from "react-apollo"
 import gql from "graphql-tag"
 import ErrorMessage from "./ErrorMessage"
 import CategoryHeaderItem from "./CategoryHeaderItem"
 import Loading from "./Loading"
+import ShowMore from "./ShowMore"
 
 import colors from "../lib/colors"
 
@@ -12,18 +14,24 @@ export const PROJECT_CATEGORIES = gql`
       id
       slug
       name
+      intro
       description
       icon
     }
   }
 `
 export default function CategoryList({ slug }) {
+  const [showMore, setShowMore] = useState(false)
   return (
     <Query query={PROJECT_CATEGORIES}>
       {({ loading, error, data: { categories }, fetchMore }) => {
         if (error) return <ErrorMessage message='Error loading posts.' />
         if (loading) return <Loading />
         // const areMorePosts = allPosts.length < _allPostsMeta.count
+        const thisCategory = slug
+          ? categories.filter(c => c.slug === slug)[0]
+          : null
+
         return (
           <section>
             <div className='container'>
@@ -44,25 +52,25 @@ export default function CategoryList({ slug }) {
                     <CategoryHeaderItem
                       {...category}
                       key={category.id}
-                      current={
-                        slug
-                          ? category.slug ===
-                            categories.filter(c => c.slug === slug)[0].slug
-                          : null
-                      }
+                      current={thisCategory.slug}
                     />
                   ))}
               </div>
             </div>
             {slug && (
-              <div
-                className='description dark medium'
-                dangerouslySetInnerHTML={{
-                  __html: categories.filter(c => c.slug === slug)[0].description
-                    ? categories.filter(c => c.slug === slug)[0].description
-                    : ""
-                }}
-              />
+              <div className='info'>
+                <div
+                  className='description dark medium'
+                  dangerouslySetInnerHTML={{
+                    __html: thisCategory.intro
+                  }}
+                />
+                <ShowMore
+                  open={showMore}
+                  set={setShowMore}
+                  html={thisCategory.description}
+                />
+              </div>
             )}
             {/* {areMorePosts ? (
 							<button onClick={() => loadMorePosts(allPosts, fetchMore)}>
@@ -112,10 +120,15 @@ export default function CategoryList({ slug }) {
                 flex-flow: row wrap;
                 align-items: baseline;
               }
+              .info {
+                display: flex;
+                flex-flow: column;
+                width: 90%;
+                margin: 5vh auto 0;
+              }
               .description {
                 color: ${colors.dark};
                 margin: 5vh auto 0;
-                width: 90%;
                 display: block;
               }
               @media screen and (min-width: 720px) {
