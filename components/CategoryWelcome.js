@@ -17,7 +17,7 @@ const CategoryWelcome = ({ router: { pathname } }) => (
 	<Query query={CONTENT}>
 		{({ loading, error, data: { content } }) => {
 			if (error) return <h2>Oops</h2>;
-			if (loading) return <div>Loading</div>;
+			if (loading) return <Loading />;
 			return <Welcome text={content.subTitle} />;
 		}}
 	</Query>

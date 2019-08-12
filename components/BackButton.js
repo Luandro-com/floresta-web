@@ -4,7 +4,7 @@ import colors from "../lib/colors"
 
 export default function BackButton({ to }) {
   return (
-    <button onClick={() => Router.push(to)}>
+    <button onClick={() => (to ? Router.push(to) : Router.back())}>
       <Arrows size='10px' left top={"64%"} left={"17px"} />
       Voltar
       <style jsx>{`

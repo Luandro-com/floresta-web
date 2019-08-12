@@ -1,20 +1,24 @@
-import App from '../components/App';
-import { withRouter } from 'next/router';
-import Link from 'next/link';
-import Welcome from '../components/Welcome';
+import App from "../components/App"
+import { withRouter } from "next/router"
+import Welcome from "../components/Welcome"
+import Loading from "../components/Loading"
 
-const Page = ({ router: { query: { slug } } }) => {
-	return (
-		<App>
-			<Welcome />
-			{slug ? (
-				<div>
-					<div>{slug}</div>
-				</div>
-			) : (
-				<span>Loading...</span>
-			)}
-		</App>
-	);
-};
-export default withRouter(Page);
+const Page = ({
+  router: {
+    query: { slug }
+  }
+}) => {
+  return (
+    <App>
+      <Welcome />
+      {slug ? (
+        <div>
+          <div>{slug}</div>
+        </div>
+      ) : (
+        <Loading />
+      )}
+    </App>
+  )
+}
+export default withRouter(Page)

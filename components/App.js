@@ -43,7 +43,7 @@ export default ({ children }) => (
         font-size: 1em;
         line-height: 1.2em;
       }
-      .color1 p {
+      .color1 * {
         color: ${colors.color1};
       }
       .dark p {

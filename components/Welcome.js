@@ -21,14 +21,16 @@ export default ({ text, background, arrow, height, logo }) => {
       {/* <div className='logo'>
         <AnyImage src={logo} />
       </div> */}
-      <div className='info'>
-        <h2>{text && text}</h2>
-        {arrow && (
-          <a onClick={() => scroll.scrollTo(viewSize)}>
-            <Arrows animate />
-          </a>
-        )}
-      </div>
+      {text && (
+        <div className='info'>
+          <h2>{text}</h2>
+          {arrow && (
+            <a onClick={() => scroll.scrollTo(viewSize)}>
+              <Arrows animate />
+            </a>
+          )}
+        </div>
+      )}
       <style jsx>{`
 			a {
 				margin-top: -50vh;

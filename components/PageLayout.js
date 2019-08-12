@@ -5,6 +5,7 @@ import BackButton from "./BackButton"
 import TagList from "./TagList"
 import ProjectList from "../components/ProjectList"
 import Project from "../components/Project"
+import Loading from "../components/Loading"
 
 import colors from "../lib/colors"
 
@@ -19,7 +20,9 @@ export const CATEGORY = gql`
         name
         media
         description
+        intro
         tags {
+          id
           slug
           name
         }
@@ -39,7 +42,9 @@ export const CATEGORIES = gql`
         name
         media
         description
+        intro
         tags {
+          id
           slug
           name
         }
@@ -47,6 +52,12 @@ export const CATEGORIES = gql`
     }
   }
 `
+
+const mergeById = (a1, a2) =>
+  a1.map(itm => ({
+    ...a2.find(item => item.id === itm.id && item),
+    ...itm
+  }))
 
 function List({ slug }) {
   return (
@@ -57,13 +68,18 @@ function List({ slug }) {
       {({ loading, error, data: { categories }, fetchMore }) => {
         let allProjects = []
         if (error) return <ErrorMessage message='Error loading posts.' />
-        if (loading) return <div>Loading</div>
+        if (loading) return <Loading />
         if (categories) {
-          categories.map(p => (allProjects = allProjects.concat(p.projects)))
-          console.log(allProjects)
+          categories.map(p => {
+            if (allProjects.length === 0) {
+              allProjects = p.projects
+            } else {
+              mergeById(allProjects, p.projects)
+            }
+          })
           return <ProjectList projects={allProjects} />
         } else {
-          return <div>Loading</div>
+          return <Loading />
         }
       }}
     </Query>
@@ -74,7 +90,7 @@ export default function PageLayout({ slug, project }) {
   return (
     <section>
       <div className='back'>
-        <BackButton to={slug ? "/" : "/"} />
+        <BackButton />
       </div>
       <div className='container'>
         {!project ? <List slug={slug} /> : <Project {...project} />}
@@ -96,7 +112,7 @@ export default function PageLayout({ slug, project }) {
       <style jsx>{`
         section {
           margin: 0 auto;
-          /* padding-top: 5vh; */
+          padding-top: 5vh;
           width: 95%;
         }
         div {

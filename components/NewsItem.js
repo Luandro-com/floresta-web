@@ -1,6 +1,13 @@
 import colors from "../lib/colors"
 
-export default function NewsItem({ title, media, description, link, width }) {
+export default function NewsItem({
+  title,
+  media,
+  intro,
+  description,
+  link,
+  width
+}) {
   return (
     <a target='_blank' href={link || ""}>
       <div className='container'>
@@ -11,7 +18,11 @@ export default function NewsItem({ title, media, description, link, width }) {
         <div
           className='description dark'
           dangerouslySetInnerHTML={{
-            __html: description ? description.substring(0, 150) + "..." : ""
+            __html: intro
+              ? intro
+              : description
+              ? description.substring(0, 150) + "..."
+              : ""
           }}
         />
       </div>

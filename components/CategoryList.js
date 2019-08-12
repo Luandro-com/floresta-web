@@ -2,6 +2,7 @@ import { Query } from "react-apollo"
 import gql from "graphql-tag"
 import ErrorMessage from "./ErrorMessage"
 import CategoryItem from "./CategoryItem"
+import Loading from "./Loading"
 
 export const PROJECT_CATEGORIES = gql`
   query {
@@ -19,7 +20,7 @@ export default function CategoryList() {
     <Query query={PROJECT_CATEGORIES}>
       {({ loading, error, data: { categories }, fetchMore }) => {
         if (error) return <ErrorMessage message='Error loading posts.' />
-        if (loading) return <div>Loading</div>
+        if (loading) return <Loading />
         // const areMorePosts = allPosts.length < _allPostsMeta.count
         return (
           <div id='category-list'>

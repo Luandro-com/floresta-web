@@ -10,7 +10,7 @@ import colors from "../lib/colors"
 export default () => {
   return (
     <App>
-      <Welcome background={"/static/header_categories.png"} height='80vh' />
+      {/* <Welcome background={"/static/header_categories.png"} height='80vh' /> */}
       <div className='pattern'>
         <div>
           <CategoryHeader />
@@ -23,7 +23,7 @@ export default () => {
           // background-image: url("/static/grafismo.png");
           background-repeat: round;
           margin-top: -5vh;
-          padding-bottom: 20vh;
+          padding: 15vh 0;
         }
       `}</style>
     </App>

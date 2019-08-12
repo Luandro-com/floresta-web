@@ -2,6 +2,7 @@ import { Query } from "react-apollo"
 import gql from "graphql-tag"
 import ErrorMessage from "./ErrorMessage"
 import TagItem from "./TagItem"
+import Loading from "./Loading"
 
 export const PROJECT_TAGS = gql`
   query {
@@ -31,7 +32,7 @@ export default function TagList({
     <Query query={PROJECT_TAGS}>
       {({ loading, error, data: { projectTags }, fetchMore }) => {
         if (error) return <ErrorMessage message='Error loading posts.' />
-        if (loading) return <div>Loading</div>
+        if (loading) return <Loading />
         // const areMorePosts = allPosts.length < _allPostsMeta.count
         return (
           <section>

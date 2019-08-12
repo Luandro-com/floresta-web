@@ -6,6 +6,7 @@ import useWindowScrollPosition from "@rehooks/window-scroll-position"
 import colors from "../lib/colors"
 import AnyImage from "./AnyImage"
 import HamburgerButton from "./HamburgerButton"
+import Loading from "./Loading"
 
 export const CONTENT = gql`
   query {
@@ -30,7 +31,7 @@ const Header = ({ router: { pathname } }) => {
     <Query query={CONTENT}>
       {({ loading, error, data }) => {
         if (error) return <h2>Oops</h2>
-        if (loading) return <div>Loading</div>
+        if (loading) return <Loading />
         if (data && data.content) {
           const { logo, youtubeLink, facebookLink } = data.content
           return (

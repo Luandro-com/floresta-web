@@ -3,12 +3,13 @@ import { Query } from "react-apollo"
 import gql from "graphql-tag"
 import ErrorMessage from "../components/ErrorMessage"
 import Welcome from "../components/Welcome"
+import Loading from "../components/Loading"
 import colors from "../lib/colors"
 
 export const DESCRIPTION = gql`
   query {
     content {
-      description
+      aboutHtml
     }
   }
 `
@@ -19,7 +20,7 @@ export default () => {
       <Query query={DESCRIPTION}>
         {({ loading, error, data: { content } }) => {
           if (error) return <ErrorMessage message='Error loading posts.' />
-          if (loading) return <div>Loading</div>
+          if (loading) return <Loading />
           return (
             <div className='wrapper'>
               <Welcome

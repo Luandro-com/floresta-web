@@ -2,8 +2,10 @@ import App from "../components/App"
 import { Query } from "react-apollo"
 import gql from "graphql-tag"
 import ErrorMessage from "../components/ErrorMessage"
+import Loading from "../components/Loading"
 import Welcome from "../components/Welcome"
 import NewsItem from "../components/NewsItem"
+import Pagination from "../components/Pagination"
 
 import colors from "../lib/colors"
 
@@ -11,6 +13,7 @@ export const NEWS_ALL = gql`
   query {
     newsAll {
       id
+      intro
       description
       link
       title
@@ -25,7 +28,7 @@ export default () => {
       <Query query={NEWS_ALL}>
         {({ loading, error, data: { newsAll } }) => {
           if (error) return <ErrorMessage message='Error loading posts.' />
-          if (loading) return <div>Loading</div>
+          if (loading) return <Loading />
           return (
             <div className='wrapper'>
               <Welcome
@@ -40,6 +43,7 @@ export default () => {
                       <NewsItem {...news} key={news.id} width='400px' />
                     ))}
                   </div>
+                  <Pagination />
                 </div>
               </div>
               <style jsx>{`

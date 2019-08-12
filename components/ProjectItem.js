@@ -1,5 +1,30 @@
+import { useState } from "react"
 import TagItem from "./TagItem"
 import colors from "../lib/colors"
+import Dialog from "./Dialog"
+
+const TagList = ({ tags, limit }) => (
+  <div>
+    {tags
+      .filter((t, key) => (limit ? key < limit : key))
+      .map(tag => (
+        <TagItem
+          key={tag.id}
+          {...tag}
+          color={colors.light}
+          backgroundColor={colors.color1}
+          padding='3px 10px'
+          radius={5}
+          margin={"0 2px"}
+          fontSize={"1em"}
+        />
+      ))}
+    <style jsx>{`
+      display: flex;
+      flex-flow: row wrap;
+    `}</style>
+  </div>
+)
 
 export default function ProjectItem({
   height,
@@ -9,6 +34,7 @@ export default function ProjectItem({
   tags,
   description
 }) {
+  const [modalOpen, setModal] = useState(false)
   return (
     <div>
       <a href={`project?slug=${slug}`} className='media-l' />
@@ -28,18 +54,15 @@ export default function ProjectItem({
             }}
           />
           <div className='tag-list'>
-            {tags.map(tag => (
-              <TagItem
-                key={tag.slug}
-                {...tag}
-                color={colors.light}
-                backgroundColor={colors.color1}
-                padding='2px 5px'
-                radius={5}
-                margin={"0 2px"}
-                fontSize={"0.6em"}
-              />
-            ))}
+            <TagList tags={tags} limit={3} />
+            {tags.length > 3 && (
+              <div className='tag-more' onClick={() => setModal(true)}>
+                Mostrar todas
+                <Dialog open={modalOpen} close={() => setModal(false)}>
+                  <TagList tags={tags} />
+                </Dialog>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -86,6 +109,20 @@ export default function ProjectItem({
     .media-l {
       display: none;
     }
+		.tag-more {
+			width: 100px;
+			border: 1px solid ${colors.color1};
+			border-radius: 5px;
+			color: ${colors.color1};
+			text-align: center;
+			padding: 3px 10px;
+			margin: 0 auto;
+			cursor: pointer;
+		}
+		.tag-more:hover {
+			background: ${colors.color1};
+			color: ${colors.light};
+		}
 		@media screen and (min-width: 845px) {
 			margin: 0 auto;
 			display: flex;

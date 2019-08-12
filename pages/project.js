@@ -2,6 +2,7 @@ import Router from "next/router"
 import { Query } from "react-apollo"
 import gql from "graphql-tag"
 import ErrorMessage from "../components/ErrorMessage"
+import Loading from "../components/Loading"
 
 import App from "../components/App"
 import Welcome from "../components/Welcome"
@@ -16,13 +17,14 @@ export const PROJECT = gql`
       name
       photos
       media
+      intro
       description
       tags {
         id
         slug
         name
       }
-      category {
+      categories {
         slug
       }
     }
@@ -39,21 +41,21 @@ export default () => {
       <Query query={PROJECT} variables={{ slug }}>
         {({ loading, error, data: { project } }) => {
           if (error) return <ErrorMessage message='Error loading posts.' />
-          if (loading) return <div>Loading</div>
+          if (loading) return <Loading />
           return (
             <div>
-              <Welcome
+              {/* <Welcome
                 background={project ? project.media : ""}
                 height='80vh'
-              />
+              /> */}
               <div className='pattern'>
                 {slug ? (
                   <div>
-                    <CategoryHeader slug={project.category.slug} />
+                    <CategoryHeader slug={project.categories.slug} />
                     <PageLayout project={project} />
                   </div>
                 ) : (
-                  <span>Loading...</span>
+                  <Loading />
                 )}
               </div>
             </div>
@@ -61,6 +63,7 @@ export default () => {
         }}
       </Query>
       <style jsx>{`
+        padding-top: 8vh;
         .pattern {
           background: ${colors.light2};
           // background-image: url("/static/grafismo.png");

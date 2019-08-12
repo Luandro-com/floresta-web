@@ -5,6 +5,8 @@ import Link from "next/link"
 import Welcome from "../components/Welcome"
 import CategoryHeader from "../components/CategoryHeader"
 import PageLayout from "../components/PageLayout"
+import Loading from "../components/Loading"
+
 import colors from "../lib/colors"
 
 export default () => {
@@ -22,7 +24,7 @@ export default () => {
             <PageLayout slug={slug} main='projects' />
           </div>
         ) : (
-          <span>Loading...</span>
+          <Loading />
         )}
       </div>
       <style jsx>{`
