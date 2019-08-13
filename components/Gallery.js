@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react"
-import Carousel, { Modal, ModalGateway } from "react-images"
+import Carousel, { Modal, ModalGateway } from "react-images-close"
 
 const customStyles = {
   container: (base, state) => ({

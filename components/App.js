@@ -29,9 +29,9 @@ export default ({ children }) => (
       h3,
       h4 {
         font-family: "Amatic SC", cursive;
-        font-size: 1.8em;
+        font-size: 2em;
         color: ${colors.light};
-        font-weight: 100;
+        // font-weight: 100;
       }
       a {
         color: white;

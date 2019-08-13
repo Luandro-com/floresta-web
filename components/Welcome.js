@@ -35,6 +35,9 @@ export default ({ text, background, arrow, height, logo }) => {
 			a {
 				margin-top: -50vh;
 			}
+			h2 {
+				font-weight: 100;
+			}
 			.info {
 				margin: 0 auto;
 				position: relative;

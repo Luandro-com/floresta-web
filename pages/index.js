@@ -19,12 +19,13 @@ export default () => (
         hoverBackgroundColor={colors.light}
         borderColor={colors.light}
         radius={5}
+        weight={900}
       />
     </div>
     <style jsx>{`
       .pattern {
         background: ${colors.dark2};
-        background-image: url("/static/grafismo.png");
+        background-image: url("/static/pattern_2.png");
         background-repeat: round;
         margin-top: -5vh;
         padding-bottom: 20vh;

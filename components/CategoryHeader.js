@@ -30,7 +30,7 @@ export default function CategoryList({ slug }) {
         // const areMorePosts = allPosts.length < _allPostsMeta.count
         const thisCategory = slug
           ? categories.filter(c => c.slug === slug)[0]
-          : null
+          : categories[0]
 
         return (
           <section>

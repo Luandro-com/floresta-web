@@ -63,6 +63,8 @@ export default function TagList({
 							''
 						)} */}
             <style jsx>{`
+              max-width: 75%;
+              margin: 0 auto;
               section {
                 width: 100%;
                 text-align: center;
@@ -71,6 +73,7 @@ export default function TagList({
                 color: ${titleColor || "inherit"};
                 font-weight: ${weight || "inherit"};
                 font-size: ${fontSize || "inherit"};
+                padding-bottom: 5vh;
               }
               .list {
                 margin: 0 auto;

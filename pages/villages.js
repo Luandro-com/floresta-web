@@ -13,12 +13,11 @@ export const DESCRIPTION = gql`
     content {
       villageHtml
       villages {
+        id
         photos
         slug
         name
-        mapLink
-        description
-        intro
+        media
       }
     }
   }
@@ -31,6 +30,7 @@ export default () => {
         {({ loading, error, data: { content } }) => {
           if (error) return <ErrorMessage message='Error loading posts.' />
           if (loading) return <Loading />
+          console.log(content)
           return (
             <div className='wrapper'>
               {/* <Welcome
@@ -41,7 +41,7 @@ export default () => {
                 <div className='container'>
                   <VillageList
                     villages={content.villages}
-                    text={content.villageText}
+                    text={content.villageHtml}
                   />
                 </div>
               </div>

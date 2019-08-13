@@ -34,6 +34,7 @@ export const CATEGORY = gql`
 export const CATEGORIES = gql`
   query {
     categories {
+      id
       slug
       description
       projects {

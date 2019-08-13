@@ -58,14 +58,14 @@ export default function ProjectItem({
             {tags.length > 3 && (
               <div className='tag-more' onClick={() => setModal(true)}>
                 Mostrar todas
-                <Dialog open={modalOpen} close={() => setModal(false)}>
-                  <TagList tags={tags} />
-                </Dialog>
               </div>
             )}
           </div>
         </div>
       </div>
+      <Dialog open={modalOpen} close={() => setModal(false)}>
+        <TagList tags={tags} />
+      </Dialog>
       <style jsx>{`
 		background: ${colors.light};
 		width: 100%;

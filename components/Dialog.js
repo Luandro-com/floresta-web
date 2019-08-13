@@ -1,30 +1,47 @@
 import { useRef, useEffect } from "react"
+import { Modal, ModalGateway } from "react-images-close"
 import colors from "../lib/colors"
 
 function useOutsideAlerter(ref, close) {
-  /**
-   * Alert if clicked on outside of element
-   */
   function handleClickOutside(event) {
     if (ref.current && !ref.current.contains(event.target)) {
       close()
     }
   }
-
   useEffect(() => {
-    // Bind the event listener
     document.addEventListener("mousedown", handleClickOutside)
     return () => {
-      // Unbind the event listener on clean up
       document.removeEventListener("mousedown", handleClickOutside)
     }
   })
 }
 
+const Child = ({ close, children }) => {
+  const wrapperRef = useRef(null)
+  useOutsideAlerter(wrapperRef, close)
+  return <div ref={wrapperRef}>{children}</div>
+}
+
+export default ({ open, close, children }) => {
+  console.log("open", open)
+  return (
+    <div>
+      <ModalGateway>
+        {open ? (
+          <Modal onClose={close}>
+            {children}
+            {/* <Child close={close}>{children}</Child> */}
+          </Modal>
+        ) : null}
+      </ModalGateway>
+    </div>
+  )
+}
+
 /**
  * Component that alerts if you click outside of it
  */
-export default function OutsideAlerter({ open, close, children }) {
+function OutsideAlerter({ open, close, children }) {
   const wrapperRef = useRef(null)
   useOutsideAlerter(wrapperRef, close)
   return (
