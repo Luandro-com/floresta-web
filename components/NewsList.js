@@ -27,7 +27,7 @@ export default function NewsList() {
     data: { newsAll },
     fetchMore
   } = useQuery(NEWS_ALL, {
-    variables: { page }
+    // variables: { page }
   })
   let slidesToShow = 1
   if (process.browser) {

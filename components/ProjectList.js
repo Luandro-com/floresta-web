@@ -9,7 +9,7 @@ export default ({ projects }) => (
       projects.map(project => (
         <ProjectItem height={projectHeight} {...project} key={project.id} />
       ))}
-    <Pagination />
+    {/* <Pagination /> */}
 
     <style jsx>{`
       width: 100%;

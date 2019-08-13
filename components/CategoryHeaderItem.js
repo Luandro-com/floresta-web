@@ -2,13 +2,19 @@ import React from "react"
 import AnyImage from "./AnyImage"
 import colors from "../lib/colors"
 
-export default function CategoryHeaderItem({ slug, name, icon, current }) {
-  const [color, setColor] = React.useState(colors.dark)
+export default function CategoryHeaderItem({
+  slug,
+  name,
+  icon,
+  current,
+  color
+}) {
+  const [currentColor, setColor] = React.useState(color || colors.dark)
   return (
     <a
       href={`category?slug=${slug}`}
-      onMouseOver={() => setColor(colors.light2)}
-      onMouseLeave={() => setColor(colors.dark)}
+      onMouseOver={() => setColor(color ? colors.dark : colors.light2)}
+      onMouseLeave={() => setColor(color || colors.dark)}
     >
       <div className='container'>
         <div className='icon'>
@@ -16,7 +22,9 @@ export default function CategoryHeaderItem({ slug, name, icon, current }) {
             src={icon}
             // marginTop={14}
             size='50px'
-            color={current ? colors.light2 : color}
+            color={
+              current ? (color ? colors.dark : colors.light2) : currentColor
+            }
           />
         </div>
         <h3>{name}</h3>
@@ -24,7 +32,7 @@ export default function CategoryHeaderItem({ slug, name, icon, current }) {
       <style jsx>{`
         position: relative;
         top: 1vh;
-        color: ${colors.dark};
+        color: ${color || colors.dark};
         margin: 5px auto;
         width: 100%;
         .container {
@@ -42,8 +50,8 @@ export default function CategoryHeaderItem({ slug, name, icon, current }) {
           width: 50%;
         }
         .icon {
-          background: ${current ? colors.dark : "none"};
-          border: 2px solid ${colors.dark};
+          background: ${current ? color || colors.dark : "none"};
+          border: 2px solid ${color || colors.dark};
           height: 10vh;
           width: 10vh;
           border-radius: 50%;
@@ -53,7 +61,7 @@ export default function CategoryHeaderItem({ slug, name, icon, current }) {
           justify-content: center;
         }
         .container:hover .icon {
-          background: ${colors.dark};
+          background: ${color || colors.dark};
         }
         @media screen and (min-width: 640px) {
           width: 45%;

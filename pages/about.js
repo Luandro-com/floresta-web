@@ -2,7 +2,7 @@ import App from "../components/App"
 import { Query } from "react-apollo"
 import gql from "graphql-tag"
 import ErrorMessage from "../components/ErrorMessage"
-import Welcome from "../components/Welcome"
+import Pattern from "../components/Pattern"
 import Loading from "../components/Loading"
 import colors from "../lib/colors"
 
@@ -23,41 +23,17 @@ export default () => {
           if (loading) return <Loading />
           return (
             <div className='wrapper'>
-              <Welcome
-                background={"/static/header_categories.png"}
-                height='80vh'
-              />
-              <div className='pattern'>
-                <div className='container'>
-                  <h1>Quem somos</h1>
-                  <div
-                    className='description color1'
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        content && content.description
-                          ? content.description
-                          : ""
-                    }}
-                  />
-                </div>
-              </div>
+              <Pattern pattern={"/static/pattern_2.png"}>
+                <div
+                  className='description color1'
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      content && content.aboutHtml ? content.aboutHtml : ""
+                  }}
+                />
+              </Pattern>
               <style jsx>{`
-                .pattern {
-                  background: ${colors.light2};
-                  // background-image: url("/static/grafismo.png");
-                  background-repeat: round;
-                  margin-top: -5vh;
-                  padding-bottom: 20vh;
-                }
-                .container {
-                  margin: 0 auto;
-                  width: 90%;
-                }
-                @media screen and (min-width: 1024px) {
-                  .container {
-                    max-width: 968px;
-                  }
-                }
+                margin-top: 12vh;
               `}</style>
             </div>
           )

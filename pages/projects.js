@@ -13,14 +13,14 @@ export default () => {
       {/* <Welcome background={"/static/header_categories.png"} height='80vh' /> */}
       <div className='pattern'>
         <div>
-          <CategoryHeader />
+          <CategoryHeader color={colors.light2} />
           <PageLayout main='projects' />
         </div>
       </div>
       <style jsx>{`
         .pattern {
-          background: ${colors.light2};
-          // background-image: url("/static/grafismo.png");
+          background: ${colors.dark2};
+          background-image: url("/static/pattern_2.png");
           background-repeat: round;
           margin-top: -5vh;
           padding: 15vh 0;

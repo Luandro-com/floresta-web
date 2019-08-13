@@ -3,7 +3,7 @@ import { Query } from "react-apollo"
 import gql from "graphql-tag"
 import ErrorMessage from "../components/ErrorMessage"
 import Loading from "../components/Loading"
-import Welcome from "../components/Welcome"
+import Pattern from "../components/Pattern"
 import NewsItem from "../components/NewsItem"
 import Pagination from "../components/Pagination"
 
@@ -31,21 +31,14 @@ export default () => {
           if (loading) return <Loading />
           return (
             <div className='wrapper'>
-              <Welcome
-                background={"/static/header_categories.png"}
-                height='80vh'
-              />
-              <div className='pattern'>
-                <div className='container'>
-                  <h1>Notícias</h1>
-                  <div className='list'>
-                    {newsAll.map(news => (
-                      <NewsItem {...news} key={news.id} width='400px' />
-                    ))}
-                  </div>
-                  <Pagination />
+              <Pattern pattern='/static/pattern_2.png'>
+                <div className='list'>
+                  {newsAll.map(news => (
+                    <NewsItem {...news} key={news.id} width='400px' />
+                  ))}
                 </div>
-              </div>
+                {/* <Pagination /> */}
+              </Pattern>
               <style jsx>{`
                 .pattern {
                   background: ${colors.light2};

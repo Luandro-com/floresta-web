@@ -15,7 +15,7 @@ export const PROJECT_CATEGORIES = gql`
     }
   }
 `
-export default function CategoryList() {
+export default function CategoryList({ noTitle }) {
   return (
     <Query query={PROJECT_CATEGORIES}>
       {({ loading, error, data: { categories }, fetchMore }) => {
@@ -25,7 +25,7 @@ export default function CategoryList() {
         return (
           <div id='category-list'>
             <section>
-              <h2>Linhas de ação</h2>
+              {!noTitle && <h2>Linhas de ação</h2>}
               <div className='container'>
                 {categories.map(category => (
                   <CategoryItem {...category} key={category.id} />

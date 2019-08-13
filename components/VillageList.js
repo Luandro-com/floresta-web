@@ -26,7 +26,7 @@ export default ({ villages, text }) => {
         width: 100%;
         margin: 0 auto;
         .description {
-          paddin: 5vh 0;
+          padding: 5vh 0;
         }
         .list {
           padding-top: 5vh;

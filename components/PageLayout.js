@@ -2,12 +2,35 @@ import { Query } from "react-apollo"
 import gql from "graphql-tag"
 import ErrorMessage from "./ErrorMessage"
 import BackButton from "./BackButton"
-import TagList from "./TagList"
+import TagList, { PROJECT_TAGS } from "./TagList"
 import ProjectList from "../components/ProjectList"
 import Project from "../components/Project"
 import Loading from "../components/Loading"
 
 import colors from "../lib/colors"
+
+export const TAG_PROJECTS = gql`
+  query($slug: String) {
+    projectTags(slug: $slug) {
+      slug
+      id
+      name
+      projects {
+        id
+        slug
+        name
+        media
+        description
+        intro
+        tags {
+          id
+          slug
+          name
+        }
+      }
+    }
+  }
+`
 
 export const CATEGORY = gql`
   query($slug: String) {
@@ -60,18 +83,18 @@ const mergeById = (a1, a2) =>
     ...itm
   }))
 
-function List({ slug }) {
+function List({ slug, tags }) {
+  const query = tags && slug ? TAG_PROJECTS : slug ? CATEGORY : CATEGORIES
   return (
-    <Query
-      query={slug ? CATEGORY : CATEGORIES}
-      variables={slug ? { slug: slug } : null}
-    >
-      {({ loading, error, data: { categories }, fetchMore }) => {
+    <Query query={query} variables={slug ? { slug } : null}>
+      {({ loading, error, data, fetchMore }) => {
         let allProjects = []
         if (error) return <ErrorMessage message='Error loading posts.' />
         if (loading) return <Loading />
-        if (categories) {
-          categories.map(p => {
+
+        const list = data[tags ? "projectTags" : "categories"]
+        if (list) {
+          list.map(p => {
             if (allProjects.length === 0) {
               allProjects = p.projects
             } else {
@@ -87,14 +110,14 @@ function List({ slug }) {
   )
 }
 
-export default function PageLayout({ slug, project }) {
+export default function PageLayout({ slug, project, tags }) {
   return (
     <section>
       <div className='back'>
         <BackButton />
       </div>
       <div className='container'>
-        {!project ? <List slug={slug} /> : <Project {...project} />}
+        {!project ? <List slug={slug} tags={tags} /> : <Project {...project} />}
         <div className='tag-list'>
           <TagList
             column

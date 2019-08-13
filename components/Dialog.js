@@ -23,7 +23,6 @@ const Child = ({ close, children }) => {
 }
 
 export default ({ open, close, children }) => {
-  console.log("open", open)
   return (
     <div>
       <ModalGateway>

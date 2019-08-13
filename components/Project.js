@@ -34,12 +34,15 @@ export default ({ name, description, media, tags }) => {
         border-radius: 30px;
         background: ${colors.light};
         margin: 0 auto;
+        max-width: 100%;
         h2 {
           color: ${colors.dark};
           font-weight: 900;	
         }
         .info {
+          margin: 0 auto;
           padding: 35px 10%;
+          max-width: 70%;
         }
         .media {
           background: url("${media}");
@@ -55,8 +58,12 @@ export default ({ name, description, media, tags }) => {
           justify-content: flex-start;
         }
         @media screen and (min-width: 1024px) {
+          width: 100%;
           .info-container {
             max-width: 968px;
+          }
+          .info {
+            max-width: 600px;
           }
         }
 	  `}</style>

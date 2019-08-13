@@ -20,8 +20,9 @@ export const PROJECT_CATEGORIES = gql`
     }
   }
 `
-export default function CategoryList({ slug }) {
+export default function CategoryHeader({ slug, color }) {
   const [showMore, setShowMore] = useState(false)
+  console.log(color)
   return (
     <Query query={PROJECT_CATEGORIES}>
       {({ loading, error, data: { categories }, fetchMore }) => {
@@ -50,6 +51,7 @@ export default function CategoryList({ slug }) {
                 {categories &&
                   categories.map(category => (
                     <CategoryHeaderItem
+                      color={color}
                       {...category}
                       key={category.id}
                       current={thisCategory.slug}
@@ -83,14 +85,14 @@ export default function CategoryList({ slug }) {
             <style jsx>{`
               section {
                 padding: 5vh 0 0;
-                background: ${colors.light2};
+                background: none;
               }
               h2 {
                 font-size: 2em;
                 font-weight: 600;
                 line-height: 1em;
                 text-align: left;
-                color: ${colors.dark};
+                color: ${color || colors.dark};
               }
               img {
                 display: none;
@@ -105,7 +107,7 @@ export default function CategoryList({ slug }) {
               .divider {
                 display: none;
                 height: 100px;
-                background: ${colors.dark};
+                background: ${color || colors.dark};
                 width: 2px;
                 margin: 0 5vw;
               }
@@ -127,7 +129,7 @@ export default function CategoryList({ slug }) {
                 margin: 5vh auto 0;
               }
               .description {
-                color: ${colors.dark};
+                color: ${color || colors.dark};
                 margin: 5vh auto 0;
                 display: block;
               }
