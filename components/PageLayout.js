@@ -121,7 +121,7 @@ export default function PageLayout({ slug, project, tags }) {
         <div className='tag-list'>
           <TagList
             column
-            titleColor={colors.dark}
+            titleColor={colors.light}
             color={colors.color1}
             hoverColor={colors.light}
             hoverBackgroundColor={colors.color1}

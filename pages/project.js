@@ -51,7 +51,7 @@ export default () => {
               <div className='pattern'>
                 {slug ? (
                   <div>
-                    <CategoryHeader slug={project.categories.slug} />
+                    {/* <CategoryHeader slug={project.categories.slug} /> */}
                     <PageLayout project={project} />
                   </div>
                 ) : (
@@ -65,8 +65,9 @@ export default () => {
       <style jsx>{`
         padding-top: 8vh;
         .pattern {
-          background: ${colors.light2};
-          // background-image: url("/static/grafismo.png");
+          background: ${colors.dark2};
+          background-image: url("/static/pattern_2.png");
+          margin: 0 auto;
           background-repeat: round;
           margin-top: -5vh;
           padding-bottom: 20vh;
