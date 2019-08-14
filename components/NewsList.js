@@ -16,7 +16,7 @@ export const NEWS_ALL = gql`
       title
       media
       post {
-        slug
+        id
       }
     }
   }
@@ -59,9 +59,9 @@ export default function NewsList() {
     })
     setFetching(false)
   }
-  if (newsAll && newsAll.length > 0 && !fetching && page) {
-    more()
-  }
+  // if (newsAll && newsAll.length > 0 && !fetching && page) {
+  //   more()
+  // }
   if (error) return <ErrorMessage message='Error loading posts.' />
   if (loading || !newsAll) return <Loading />
   console.log(newsAll)

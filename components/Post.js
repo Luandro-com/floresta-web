@@ -1,30 +1,17 @@
-import TagItem from "./TagItem"
+import NewsList from "./NewsList"
 import colors from "../lib/colors"
 
-export default ({ name, description, media, tags }) => {
+export default ({ id, slug, title, body, media }) => {
   return (
     <main>
       <div className='media' />
       <div className='info'>
         <div className='info-container'>
-          <h1>{name}</h1>
-          <div className='tag-list'>
-            {tags.map(tag => (
-              <TagItem
-                key={tag.id}
-                {...tag}
-                color={colors.light}
-                backgroundColor={colors.color1}
-                padding='2px 12px'
-                radius={5}
-                margin={"5px 2px"}
-              />
-            ))}
-          </div>
+          <h1>{title}</h1>
           <div className='description color1'>
             <span
               dangerouslySetInnerHTML={{
-                __html: description
+                __html: body
               }}
             />
           </div>
@@ -35,8 +22,9 @@ export default ({ name, description, media, tags }) => {
         background: ${colors.light};
         margin: 0 auto;
         max-width: 100%;
-        h2 {
+        h1 {
           color: ${colors.dark};
+          font-size: 2em;
           font-weight: 900;	
         }
         .info {
@@ -50,12 +38,8 @@ export default ({ name, description, media, tags }) => {
           height: 60vh;
           border-radius: 30px 30px 0 0;
         }
-        .tag-list {
-          padding-top: 25px;
-          display: flex;
-          flex-flow: row wrap;
-          align-items: flex-start;
-          justify-content: flex-start;
+        .description {
+          min-height: 80vh;
         }
         @media screen and (min-width: 1024px) {
           width: 100%;

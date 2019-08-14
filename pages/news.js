@@ -20,7 +20,6 @@ export const NEWS_ALL = gql`
       media
       post {
         id
-        slug
       }
     }
   }

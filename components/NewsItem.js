@@ -1,7 +1,9 @@
 import colors from "../lib/colors"
 
 export default function NewsItem({
+  id,
   title,
+  slug,
   media,
   intro,
   description,
@@ -9,16 +11,12 @@ export default function NewsItem({
   width,
   post
 }) {
-  console.log("TCL: postUrl", post)
-  const postUrl = post && post.id ? post.slug || post.id : null
+  console.log("TCL: isPost", post)
+  const isPost = post && post.id ? true : false
   return (
     <a
-      target={postUrl ? "" : "_blank"}
-      href={
-        postUrl
-          ? `/blog?${post.slug ? `slug=${post.slug}` : `id=${post.id}`}`
-          : link || ""
-      }
+      target={isPost ? "" : "_blank"}
+      href={isPost ? `/blog?${slug ? `slug=${slug}` : `id=${id}`}` : link || ""}
     >
       <div className='container'>
         <div className='media' />
