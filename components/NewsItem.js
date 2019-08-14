@@ -6,10 +6,20 @@ export default function NewsItem({
   intro,
   description,
   link,
-  width
+  width,
+  post
 }) {
+  console.log("TCL: postUrl", post)
+  const postUrl = post && post.id ? post.slug || post.id : null
   return (
-    <a target='_blank' href={link || ""}>
+    <a
+      target={postUrl ? "" : "_blank"}
+      href={
+        postUrl
+          ? `/blog?${post.slug ? `slug=${post.slug}` : `id=${post.id}`}`
+          : link || ""
+      }
+    >
       <div className='container'>
         <div className='media' />
         <div className='title'>

@@ -15,6 +15,9 @@ export const NEWS_ALL = gql`
       link
       title
       media
+      post {
+        slug
+      }
     }
   }
 `
