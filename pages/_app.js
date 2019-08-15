@@ -3,6 +3,9 @@ import React from "react"
 import withApolloClient from "../lib/with-apollo-client"
 import { ApolloProvider } from "react-apollo"
 import { PageTransition } from "next-page-transitions"
+import { DefaultSeo } from "next-seo"
+
+import SEO from "../next-seo.config"
 
 class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
@@ -19,6 +22,19 @@ class MyApp extends App {
     const { Component, pageProps, route, apolloClient } = this.props
     return (
       <Container>
+        <DefaultSeo
+          openGraph={{
+            type: "website",
+            locale: "en_IE",
+            url: "https://www.url.ie/",
+            site_name: "SiteName"
+          }}
+          twitter={{
+            handle: "@handle",
+            site: "@site",
+            cardType: "summary_large_image"
+          }}
+        />
         <ApolloProvider client={apolloClient}>
           <PageTransition timeout={300} classNames='page-transition'>
             <Component {...pageProps} key={route} />
