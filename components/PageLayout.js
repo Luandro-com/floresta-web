@@ -164,7 +164,7 @@ export default function PageLayout({
           position: relative;
           right: 1vw;
           cursor: pointer;
-          top: ${tags ? "15vh" : "5vh"};
+          top: ${tags ? "22vh" : "5vh"};
         }
         .container {
           display: flex;
