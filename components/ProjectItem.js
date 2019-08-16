@@ -28,11 +28,11 @@ const TagList = ({ tags, limit }) => (
 
 export default function ProjectItem({
   height,
-  slug,
-  name,
-  media,
-  tags,
-  description
+  slug = "",
+  name = "Projeto",
+  media = "",
+  tags = [],
+  description = ""
 }) {
   const [modalOpen, setModal] = useState(false)
   return (

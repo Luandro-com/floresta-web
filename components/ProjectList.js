@@ -1,7 +1,7 @@
 import ProjectItem from "./ProjectItem"
 import Pagination from "./Pagination"
 
-const projectHeight = 260
+const projectHeight = 270
 
 export default ({ projects }) => (
   <div>
@@ -9,6 +9,7 @@ export default ({ projects }) => (
       projects.map(project => (
         <ProjectItem height={projectHeight} {...project} key={project.id} />
       ))}
+    {!projects && <ProjectItem height={projectHeight} />}
     {/* <Pagination /> */}
 
     <style jsx>{`

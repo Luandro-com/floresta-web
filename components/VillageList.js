@@ -1,4 +1,5 @@
 import VillageItem from "./VillageItem"
+import colors from "../lib/colors"
 
 const villageHeight = 150
 
@@ -27,6 +28,7 @@ export default ({ villages, text }) => {
         margin: 0 auto;
         .description {
           padding: 5vh 0;
+          color: ${colors.dark};
         }
         .list {
           padding-top: 5vh;

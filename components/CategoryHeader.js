@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Query } from "react-apollo"
+import { Query, useQuery } from "react-apollo"
 import gql from "graphql-tag"
 import ErrorMessage from "./ErrorMessage"
 import CategoryHeaderItem from "./CategoryHeaderItem"
@@ -20,8 +20,27 @@ export const PROJECT_CATEGORIES = gql`
     }
   }
 `
+
+export const HTML = gql`
+  query {
+    content {
+      projectsHtml
+    }
+  }
+`
+
 export default function CategoryHeader({ slug, color }) {
   const [showMore, setShowMore] = useState(false)
+  let projectsHtml = null
+  if (!slug) {
+    const contentQuery = useQuery(HTML)
+    const loadingContent = contentQuery.loading
+    const errorContent = contentQuery.error
+    projectsHtml =
+      contentQuery.data && contentQuery.data.content
+        ? contentQuery.data.content.projectsHtml
+        : ""
+  }
   return (
     <Query query={PROJECT_CATEGORIES}>
       {({ loading, error, data: { categories }, fetchMore }) => {
@@ -58,21 +77,21 @@ export default function CategoryHeader({ slug, color }) {
                   ))}
               </div>
             </div>
-            {slug && (
-              <div className='info'>
-                <div
-                  className='description dark medium'
-                  dangerouslySetInnerHTML={{
-                    __html: thisCategory.intro
-                  }}
-                />
+            <div className='info'>
+              <div
+                className={color ? `description ${color}` : "description dark"}
+                dangerouslySetInnerHTML={{
+                  __html: projectsHtml || thisCategory.intro
+                }}
+              />
+              {slug && (
                 <ShowMore
                   open={showMore}
                   set={setShowMore}
                   html={thisCategory.description}
                 />
-              </div>
-            )}
+              )}
+            </div>
             {/* {areMorePosts ? (
 							<button onClick={() => loadMorePosts(allPosts, fetchMore)}>
 								{' '}
@@ -83,7 +102,7 @@ export default function CategoryHeader({ slug, color }) {
 						)} */}
             <style jsx>{`
               section {
-                padding: 5vh 0 0;
+                /* padding: 5vh 0 0; */
                 background: none;
               }
               h2 {
@@ -165,7 +184,7 @@ export default function CategoryHeader({ slug, color }) {
                 .description,
                 .container {
                   /* width: 720px; */
-                  margin: 5vh auto 0;
+                  /* margin: 5vh auto 0; */
                   width: 80%;
                 }
               }

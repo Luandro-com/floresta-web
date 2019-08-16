@@ -10,20 +10,25 @@ import colors from "../lib/colors"
 export default () => {
   return (
     <App>
-      {/* <Welcome background={"/static/header_categories.png"} height='80vh' /> */}
+      <Welcome background={"/static/default.png"} height='80vh' />
       <div className='pattern'>
         <div>
-          <CategoryHeader color={colors.light2} />
-          <PageLayout main='projects' />
+          <div className='header'>
+            <CategoryHeader color={colors.light} />
+          </div>
+          <PageLayout main='projects' tagTitleColor={colors.light} />
         </div>
       </div>
       <style jsx>{`
         .pattern {
-          background: ${colors.dark2};
-          background-image: url("/static/pattern_2.png");
+          background: ${colors.color4};
+          background-image: url("/static/pattern_3.png");
           background-repeat: round;
-          margin-top: -5vh;
-          padding: 15vh 0;
+          padding-bottom: 100px;
+        }
+        .header {
+          background: ${colors.color4};
+          padding: 30px 0;
         }
       `}</style>
     </App>

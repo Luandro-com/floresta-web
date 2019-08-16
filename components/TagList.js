@@ -3,6 +3,7 @@ import gql from "graphql-tag"
 import ErrorMessage from "./ErrorMessage"
 import TagItem from "./TagItem"
 import Loading from "./Loading"
+import colors from "../lib/colors"
 
 export const PROJECT_TAGS = gql`
   query {
@@ -70,10 +71,11 @@ export default function TagList({
                 text-align: center;
               }
               h2 {
-                color: ${titleColor || "inherit"};
+                color: ${titleColor || colors.dark};
                 font-weight: ${weight || "inherit"};
                 font-size: ${fontSize || "inherit"};
                 padding-bottom: 5vh;
+                text-decoration: none;
               }
               .list {
                 margin: 0 auto;

@@ -34,6 +34,9 @@ export default () => {
               </Pattern>
               <style jsx>{`
                 margin-top: 12vh;
+                .description {
+                  color: ${colors.dark};
+                }
               `}</style>
             </div>
           )

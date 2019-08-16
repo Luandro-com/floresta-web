@@ -110,7 +110,7 @@ function List({ slug, tags }) {
   )
 }
 
-export default function PageLayout({ slug, project, tags }) {
+export default function PageLayout({ slug, project, tags, tagTitleColor }) {
   return (
     <section>
       <div className='back'>
@@ -121,13 +121,13 @@ export default function PageLayout({ slug, project, tags }) {
         <div className='tag-list'>
           <TagList
             column
-            titleColor={colors.light}
+            titleColor={tagTitleColor || colors.dark}
             color={colors.color1}
             hoverColor={colors.light}
             hoverBackgroundColor={colors.color1}
             width={"250px"}
             weight={600}
-            fontSize={"2em"}
+            fontSize={"2.5em"}
             padding={"5px 25px"}
             radius={5}
           />
