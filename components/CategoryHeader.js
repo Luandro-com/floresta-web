@@ -29,7 +29,7 @@ export const HTML = gql`
   }
 `
 
-export default function CategoryHeader({ slug, color }) {
+export default function CategoryHeader({ slug, color, artFilter }) {
   const [showMore, setShowMore] = useState(false)
   let projectsHtml = null
   if (!slug) {
@@ -116,6 +116,7 @@ export default function CategoryHeader({ slug, color }) {
                 display: none;
                 position: absolute;
                 left: -3.5%;
+                filter: ${artFilter};
               }
               div {
                 align-items: center;

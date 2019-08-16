@@ -30,7 +30,7 @@ export default ({ open, set, html }) => {
           opacity: 0;
           pointer-events: ${open ? "inherit" : "none"};
           padding: 30px 0;
-          background: ${colors.light2};
+          /* background: ${colors.light2}; */
         }
         .open {
           max-height: 3000px;

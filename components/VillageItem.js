@@ -1,32 +1,18 @@
-import { useState, useCallback } from "react"
 import colors from "../lib/colors"
 import AnyImage from "./AnyImage"
-import Gallery from "./Gallery"
 
-export default function VillageItem({ height, slug, name, media, photos }) {
-  const [modalOpen, setModal] = useState(false)
-  const [viewerIsOpen, setViewerIsOpen] = useState(false)
-  const [currentImage, setCurrentImage] = useState(0)
-
-  const openModal = () => {
-    setModal(true)
-  }
-  const closeModal = () => {
-    setModal(false)
-  }
-  const openLightbox = () => {
-    // setCurrentImage(index)
-    setViewerIsOpen(true)
-  }
-
-  const closeLightbox = () => {
-    setCurrentImage(0)
-    setViewerIsOpen(false)
-  }
+export default function VillageItem({
+  height,
+  slug,
+  name,
+  media,
+  photos,
+  openLightbox
+}) {
   return (
-    <div onClick={openLightbox}>
+    <div onClick={() => openLightbox(photos)}>
       <div className='media'>
-        <div className='photo-count' onClick={openLightbox}>
+        <div className='photo-count' onClick={() => openLightbox(photos)}>
           {photos.length}{" "}
           <AnyImage
             src='/static/image.png'
@@ -101,12 +87,6 @@ export default function VillageItem({ height, slug, name, media, photos }) {
       width: 40%;
     }
 	`}</style>
-      <Gallery
-        photos={photos}
-        closeLightbox={closeLightbox}
-        viewerIsOpen={viewerIsOpen}
-        currentImage={currentImage}
-      />
     </div>
   )
 }

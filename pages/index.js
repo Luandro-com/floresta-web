@@ -20,6 +20,7 @@ export default () => (
         borderColor={colors.light}
         radius={5}
         weight={900}
+        titleColor={colors.light}
       />
     </div>
     <style jsx>{`

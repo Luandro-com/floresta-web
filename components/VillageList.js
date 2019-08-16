@@ -1,9 +1,25 @@
+import { useState } from "react"
 import VillageItem from "./VillageItem"
+import Gallery from "./Gallery"
 import colors from "../lib/colors"
 
 const villageHeight = 150
 
 export default ({ villages, text }) => {
+  const [viewerIsOpen, setViewerIsOpen] = useState(false)
+  const [currentImage, setCurrentImage] = useState(0)
+
+  const openLightbox = photos => {
+    if (photos.length > 0) {
+      setViewerIsOpen(photos)
+    }
+  }
+
+  const closeLightbox = () => {
+    console.log("closgin")
+    setCurrentImage(0)
+    setViewerIsOpen(false)
+  }
   return (
     <div>
       <div
@@ -20,9 +36,20 @@ export default ({ villages, text }) => {
       <div className='list'>
         {villages &&
           villages.map(village => (
-            <VillageItem height={villageHeight} {...village} key={village.id} />
+            <VillageItem
+              height={villageHeight}
+              {...village}
+              key={village.id}
+              openLightbox={openLightbox}
+            />
           ))}
       </div>
+      <Gallery
+        photos={viewerIsOpen || []}
+        closeLightbox={closeLightbox}
+        viewerIsOpen={viewerIsOpen && viewerIsOpen.length > 0}
+        currentImage={currentImage}
+      />
       <style jsx>{`
         width: 100%;
         margin: 0 auto;

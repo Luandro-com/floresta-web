@@ -24,7 +24,13 @@ const customStyles = {
   }
 }
 
-export default ({ photos, closeLightbox, viewerIsOpen, currentImage }) => {
+export default ({
+  photos,
+  closeLightbox,
+  viewerIsOpen,
+  currentImage,
+  backdropClosesModal
+}) => {
   const formatedPhotos = photos.map(p => {
     return {
       src: p
@@ -39,7 +45,7 @@ export default ({ photos, closeLightbox, viewerIsOpen, currentImage }) => {
               styles={customStyles}
               currentIndex={currentImage}
               views={formatedPhotos}
-              backdropClosesModal={true}
+              backdropClosesModal={backdropClosesModal || true}
             />
           </Modal>
         ) : null}
