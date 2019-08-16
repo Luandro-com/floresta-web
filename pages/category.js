@@ -68,7 +68,6 @@ export default () => {
     }
   }, [slug])
 
-  console.log(theme)
   return (
     <App>
       {theme.backgroundImage && (

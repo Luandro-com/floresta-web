@@ -52,7 +52,10 @@ export default () => {
                 {slug ? (
                   <div>
                     {/* <CategoryHeader slug={project.categories.slug} /> */}
-                    <PageLayout project={project} />
+                    <PageLayout
+                      project={project}
+                      tagTitleColor={colors.light}
+                    />
                   </div>
                 ) : (
                   <Loading />
