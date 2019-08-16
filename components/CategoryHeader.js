@@ -22,7 +22,6 @@ export const PROJECT_CATEGORIES = gql`
 `
 export default function CategoryHeader({ slug, color }) {
   const [showMore, setShowMore] = useState(false)
-  console.log(color)
   return (
     <Query query={PROJECT_CATEGORIES}>
       {({ loading, error, data: { categories }, fetchMore }) => {

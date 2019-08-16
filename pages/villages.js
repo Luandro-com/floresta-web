@@ -30,7 +30,6 @@ export default () => {
         {({ loading, error, data: { content } }) => {
           if (error) return <ErrorMessage message='Error loading posts.' />
           if (loading) return <Loading />
-          console.log(content)
           return (
             <div className='wrapper'>
               <Pattern pattern='/static/pattern_2.png'>

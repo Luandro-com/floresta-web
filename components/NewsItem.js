@@ -11,7 +11,6 @@ export default function NewsItem({
   width,
   post
 }) {
-  console.log("TCL: isPost", post)
   const isPost = post && post.id ? true : false
   return (
     <a

@@ -38,7 +38,6 @@ export default function NewsList() {
     if (window.innerWidth > 968) slidesToShow = 3
   }
   async function more() {
-    console.log(page)
     setFetching(true)
     const newPage = page + 1
     await fetchMore({
@@ -50,7 +49,6 @@ export default function NewsList() {
           setPage(null)
           return prev
         }
-        console.log("Returning")
         setPage(newPage)
         return Object.assign({}, prev, {
           newsAll: [...prev.newsAll, ...fetchMoreResult.newsAll]
@@ -64,7 +62,6 @@ export default function NewsList() {
   // }
   if (error) return <ErrorMessage message='Error loading posts.' />
   if (loading || !newsAll) return <Loading />
-  console.log(newsAll)
   return (
     <section>
       <h2>Notícias</h2>

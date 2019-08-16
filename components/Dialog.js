@@ -48,7 +48,6 @@ function OutsideAlerter({ open, close, children }) {
       <button
         className='close-button'
         onClick={() => {
-          console.log("Clicked")
           close()
         }}
       >
