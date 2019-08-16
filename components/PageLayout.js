@@ -10,8 +10,8 @@ import Loading from "../components/Loading"
 import colors from "../lib/colors"
 
 export const TAG_PROJECTS = gql`
-  query($slug: String) {
-    projectTags(slug: $slug) {
+  query($slug: String, $id: ID) {
+    projectTags(slug: $slug, id: $id) {
       slug
       id
       name
@@ -33,8 +33,8 @@ export const TAG_PROJECTS = gql`
 `
 
 export const CATEGORY = gql`
-  query($slug: String) {
-    categories(slug: $slug) {
+  query($slug: String, $id: ID) {
+    categories(slug: $slug, id: $id) {
       slug
       description
       projects {
@@ -83,10 +83,11 @@ const mergeById = (a1, a2) =>
     ...itm
   }))
 
-function List({ slug, tags }) {
-  const query = tags && slug ? TAG_PROJECTS : slug ? CATEGORY : CATEGORIES
+function List({ slug, tags, id }) {
+  const query =
+    tags && (slug || id) ? TAG_PROJECTS : slug || id ? CATEGORY : CATEGORIES
   return (
-    <Query query={query} variables={slug ? { slug } : null}>
+    <Query query={query} variables={slug ? { slug } : { id }}>
       {({ loading, error, data, fetchMore }) => {
         let allProjects = []
         if (error) return <ErrorMessage message='Error loading posts.' />
@@ -101,7 +102,12 @@ function List({ slug, tags }) {
               mergeById(allProjects, p.projects)
             }
           })
-          return <ProjectList projects={allProjects} />
+          return (
+            <ProjectList
+              projects={allProjects}
+              title={tags && list[0] && list[0].name}
+            />
+          )
         } else {
           return <Loading />
         }
@@ -110,14 +116,25 @@ function List({ slug, tags }) {
   )
 }
 
-export default function PageLayout({ slug, project, tags, tagTitleColor }) {
+export default function PageLayout({
+  slug,
+  project,
+  tags,
+  tagTitleColor,
+  id,
+  name
+}) {
   return (
     <section>
       <div className='back'>
         <BackButton />
       </div>
       <div className='container'>
-        {!project ? <List slug={slug} tags={tags} /> : <Project {...project} />}
+        {!project ? (
+          <List slug={slug} id={id} tags={tags} />
+        ) : (
+          <Project {...project} />
+        )}
         <div className='tag-list'>
           <TagList
             column
@@ -147,7 +164,7 @@ export default function PageLayout({ slug, project, tags, tagTitleColor }) {
           position: relative;
           right: 1vw;
           cursor: pointer;
-          top: 5vh;
+          top: ${tags ? "15vh" : "5vh"};
         }
         .container {
           display: flex;

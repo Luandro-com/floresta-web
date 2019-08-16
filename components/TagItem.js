@@ -1,6 +1,7 @@
 import colors from "../lib/colors"
 
 export default function TagItem({
+  id,
   slug,
   name,
   color,
@@ -15,7 +16,7 @@ export default function TagItem({
   fontSize
 }) {
   return (
-    <a href={`tag?slug=${slug}`}>
+    <a href={slug ? `tag?slug=${slug}` : `tag?id=${id}`}>
       <div>{name}</div>
       <style jsx>{`
         a {

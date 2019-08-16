@@ -43,13 +43,13 @@ export default ({ villages, text }) => {
               openLightbox={openLightbox}
             />
           ))}
+        <Gallery
+          photos={viewerIsOpen || []}
+          closeLightbox={closeLightbox}
+          viewerIsOpen={viewerIsOpen && viewerIsOpen.length > 0}
+          currentImage={currentImage}
+        />
       </div>
-      <Gallery
-        photos={viewerIsOpen || []}
-        closeLightbox={closeLightbox}
-        viewerIsOpen={viewerIsOpen && viewerIsOpen.length > 0}
-        currentImage={currentImage}
-      />
       <style jsx>{`
         width: 100%;
         margin: 0 auto;
