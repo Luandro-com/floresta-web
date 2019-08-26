@@ -1,7 +1,7 @@
-import colors from "../lib/colors"
-import { animateScroll as scroll } from "react-scroll"
-import Arrows from "./Arrows"
-import AnyImage from "./AnyImage"
+import colors from '../lib/colors'
+import { animateScroll as scroll } from 'react-scroll'
+import Arrows from './Arrows'
+import AnyImage from './AnyImage'
 
 export default ({ text, background, arrow, height, logo }) => {
   let viewSize = 800
@@ -11,11 +11,11 @@ export default ({ text, background, arrow, height, logo }) => {
   return (
     <section
       style={{
-        backgroundColor: colors.dark,
+        backgroundColor: colors.color4,
         backgroundImage: `url(${background})`,
-        height: height || "30vh",
-        backgroundPosition: "bottom",
-        backgroundSize: "cover"
+        height: height || '30vh',
+        backgroundPosition: 'bottom',
+        backgroundSize: 'cover'
       }}
     >
       {/* <div className='logo'>
