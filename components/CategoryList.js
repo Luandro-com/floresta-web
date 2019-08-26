@@ -1,8 +1,8 @@
-import { Query } from "react-apollo"
-import gql from "graphql-tag"
-import ErrorMessage from "./ErrorMessage"
-import CategoryItem from "./CategoryItem"
-import Loading from "./Loading"
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+import ErrorMessage from './ErrorMessage'
+import CategoryItem from './CategoryItem'
+import Loading from './Loading'
 
 export const PROJECT_CATEGORIES = gql`
   query {
@@ -15,7 +15,7 @@ export const PROJECT_CATEGORIES = gql`
     }
   }
 `
-export default function CategoryList({ noTitle }) {
+export default function CategoryList ({ noTitle }) {
   return (
     <Query query={PROJECT_CATEGORIES}>
       {({ loading, error, data: { categories }, fetchMore }) => {
@@ -63,10 +63,9 @@ export default function CategoryList({ noTitle }) {
                   justify-content: space-around;
                 }
               }
-              @media screen and (min-width: 1024px) {
+              @media screen and (min-width: 720px) {
                 .container {
-                  flex-flow: row wrap;
-                  width: 80%;
+                  width: 90%;
                   /* width: 968px; */
                 }
               }

@@ -1,7 +1,7 @@
-import { useState } from "react"
-import TagItem from "./TagItem"
-import colors from "../lib/colors"
-import Dialog from "./Dialog"
+import { useState } from 'react'
+import TagItem from './TagItem'
+import colors from '../lib/colors'
+import Dialog from './Dialog'
 
 const TagList = ({ tags, limit }) => (
   <div>
@@ -15,8 +15,8 @@ const TagList = ({ tags, limit }) => (
           backgroundColor={colors.color1}
           padding='3px 10px'
           radius={5}
-          margin={"0 2px"}
-          fontSize={"1em"}
+          margin={'10px 2px'}
+          fontSize={'1em'}
         />
       ))}
     <style jsx>{`
@@ -26,13 +26,13 @@ const TagList = ({ tags, limit }) => (
   </div>
 )
 
-export default function ProjectItem({
+export default function ProjectItem ({
   height,
-  slug = "",
-  name = "Projeto",
-  media = "",
+  slug = '',
+  name = 'Projeto',
+  media = '',
   tags = [],
-  description = ""
+  description = ''
 }) {
   const [modalOpen, setModal] = useState(false)
   return (
@@ -50,7 +50,7 @@ export default function ProjectItem({
             className='description color1'
             style={{ color: colors.color1 }}
             dangerouslySetInnerHTML={{
-              __html: description ? description.substring(0, 150) : ""
+              __html: description ? description.substring(0, 50) : ''
             }}
           />
           <div className='tag-list'>
@@ -100,6 +100,10 @@ export default function ProjectItem({
 			flex-flow: column;
 			align-items: flex-start;
 		}
+		.description {
+			display: block;
+			max-height: 250px;
+		}
 		.tag-list {
 			display: flex;
 			flex-flow: row;
@@ -124,7 +128,7 @@ export default function ProjectItem({
 			color: ${colors.light};
 		}
 		@media screen and (min-width: 845px) {
-			margin: 0 auto;
+			margin: 10px auto;
 			display: flex;
 			flex-flow: row nowrap;
 			align-items: center;
@@ -136,7 +140,8 @@ export default function ProjectItem({
 				border-radius: 35px 0 0 35px;
 				background-image: url("${media}");
 				background-size: cover;
-				height: ${height}px;
+				height: 100%;
+				/* height: ${height}px; */
 				width: 60%;
 			}
 			.info {

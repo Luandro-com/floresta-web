@@ -1,5 +1,5 @@
-import ProjectItem from "./ProjectItem"
-import Pagination from "./Pagination"
+import ProjectItem from './ProjectItem'
+import Pagination from './Pagination'
 
 const projectHeight = 270
 
@@ -27,7 +27,8 @@ export default ({ projects, title }) => (
       }
       @media screen and (min-width: 845px) {
         .container {
-          height: ${projects.length * projectHeight + projects.length * 40}px;
+          /* height: ${projects.length * projectHeight +
+            projects.length * 40}px; */
           display: flex;
           flex-flow: column;
           justify-content: space-around;

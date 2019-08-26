@@ -1,9 +1,9 @@
-import { Query } from "react-apollo"
-import gql from "graphql-tag"
-import ErrorMessage from "./ErrorMessage"
-import TagItem from "./TagItem"
-import Loading from "./Loading"
-import colors from "../lib/colors"
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+import ErrorMessage from './ErrorMessage'
+import TagItem from './TagItem'
+import Loading from './Loading'
+import colors from '../lib/colors'
 
 export const PROJECT_TAGS = gql`
   query {
@@ -14,7 +14,7 @@ export const PROJECT_TAGS = gql`
     }
   }
 `
-export default function TagList({
+export default function TagList ({
   width,
   column,
   titleColor,
@@ -51,7 +51,7 @@ export default function TagList({
                   padding={padding}
                   radius={radius}
                   column={column}
-                  fontSize={fonSize || "0.8em"}
+                  fontSize={fonSize || '0.8em'}
                 />
               ))}
             </div>
@@ -72,8 +72,8 @@ export default function TagList({
               }
               h2 {
                 color: ${titleColor || colors.dark};
-                font-weight: ${weight || "inherit"};
-                font-size: ${fontSize || "inherit"};
+                font-weight: ${weight || 'inherit'};
+                font-size: ${fontSize || 'inherit'};
                 padding-bottom: 5vh;
                 text-decoration: none;
               }
@@ -87,12 +87,12 @@ export default function TagList({
               }
               @media screen and (min-width: 1280px) {
                 section {
-                  width: ${width || "100%"};
-                  text-align: ${column ? "left" : "center"};
+                  width: ${width || '100%'};
+                  text-align: ${column ? 'left' : 'center'};
                   padding-top: 10vh;
                 }
                 .list {
-                  flex-flow: ${column ? "column" : "row wrap"};
+                  flex-flow: ${column ? 'column' : 'row nowrap'};
                   width: 100%;
                 }
               }

@@ -1,6 +1,6 @@
-import colors from "../lib/colors"
+import colors from '../lib/colors'
 
-export default function TagItem({
+export default function TagItem ({
   id,
   slug,
   name,
@@ -20,15 +20,15 @@ export default function TagItem({
       <div>{name}</div>
       <style jsx>{`
         a {
-          margin: ${margin ? margin : column ? "10px" : 0} auto;
-          font-size: ${fontSize || "inherit"};
+          margin: ${margin || '10px'} auto;
+          font-size: ${fontSize || 'inherit'};
         }
         div {
           cursor: pointer;
           border: 1px solid ${borderColor || backgroundColor || colors.light};
           background: ${backgroundColor || colors.light};
-          border-radius: ${radius || "35"}px;
-          padding: ${padding || "10px 18px"};
+          border-radius: ${radius || '35'}px;
+          padding: ${padding || '10px 18px'};
           text-transform: uppercase;
           font-weight: 100;
           text-align: center;

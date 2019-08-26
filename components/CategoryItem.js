@@ -1,11 +1,12 @@
-import colors from "../lib/colors"
-import AnyImage from "./AnyImage"
+import colors from '../lib/colors'
+import AnyImage from './AnyImage'
 const boxHeight = 120
 const boxWidth = 250
-const boxWidthB = 480
+const boxWidthB = 360
+const boxWidthX = 480
 const boxHeightB = 180
 
-export default function CategoryItem({ slug, name, icon, media }) {
+export default function CategoryItem ({ slug, name, icon, media }) {
   return (
     <div className='container'>
       <a href={`category?slug=${slug}`}>
@@ -78,7 +79,7 @@ export default function CategoryItem({ slug, name, icon, media }) {
             margin: 20px auto;
           }
           a {
-            width: ${boxWidthB}px;
+            width: ${boxWidthX}px;
             height: ${boxHeightB}px;
           }
           .images {
@@ -99,13 +100,17 @@ export default function CategoryItem({ slug, name, icon, media }) {
           }
           a {
             width: ${boxWidthB}px;
-            height: ${boxHeightB}px;
           }
           .images {
             height: ${boxHeightB}px;
           }
           .icon {
             left: -${boxWidthB / 8}px;
+          }
+        }
+        @media screen and (min-width: 1280px) {
+          a {
+            width: ${boxWidthX}px;
           }
         }
       `}</style>
