@@ -99,7 +99,8 @@ export default function CategoryItem ({ slug, name, icon, media }) {
             margin: 40px;
           }
           a {
-            width: ${boxWidthB}px;
+            width: ${boxHeightB}px;
+            min-width: 35vw;
           }
           .images {
             height: ${boxHeightB}px;
@@ -108,11 +109,14 @@ export default function CategoryItem ({ slug, name, icon, media }) {
             left: -${boxWidthB / 8}px;
           }
         }
-        @media screen and (min-width: 1280px) {
-          a {
-            width: ${boxWidthX}px;
+        /* @media screen and (min-width: 1080px) {
+          .container {
+            width: 90%;
           }
-        }
+          a {
+            width: 25vw;
+          }
+        } */
       `}</style>
     </div>
   )

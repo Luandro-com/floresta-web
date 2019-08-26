@@ -1,10 +1,11 @@
-import App from "../components/App"
-import { Query } from "react-apollo"
-import gql from "graphql-tag"
-import ErrorMessage from "../components/ErrorMessage"
-import Pattern from "../components/Pattern"
-import Loading from "../components/Loading"
-import colors from "../lib/colors"
+import App from '../components/App'
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+import ErrorMessage from '../components/ErrorMessage'
+import Pattern from '../components/Pattern'
+import Loading from '../components/Loading'
+import Welcome from '../components/Welcome'
+import colors from '../lib/colors'
 
 export const DESCRIPTION = gql`
   query {
@@ -23,12 +24,13 @@ export default () => {
           if (loading) return <Loading />
           return (
             <div className='wrapper'>
-              <Pattern pattern={"/static/pattern_2.png"}>
+              <Welcome background={'/static/default.png'} height='80vh' />
+              <Pattern pattern={'/static/pattern_3.png'}>
                 <div
                   className='description color1'
                   dangerouslySetInnerHTML={{
                     __html:
-                      content && content.aboutHtml ? content.aboutHtml : ""
+                      content && content.aboutHtml ? content.aboutHtml : ''
                   }}
                 />
               </Pattern>

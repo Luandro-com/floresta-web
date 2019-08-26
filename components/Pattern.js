@@ -1,19 +1,19 @@
-import colors from "../lib/colors"
+import colors from '../lib/colors'
 
-export default ({ children, pattern, width }) => {
+export default ({ children, pattern, width, backgrundColor }) => {
   return (
     <div className='pattern'>
       <div className='container'>{children}</div>
       <style jsx>{`
-        margin-top: 12vh;
+        /* margin-top: 12vh; */
         .pattern {
-          background: ${colors.color1};
+          background: ${backgrundColor || colors.color4};
           background-image: url("${pattern}");
           background-repeat: round;
         }
         .container {
           margin: 0 auto;
-          width: ${width || "90%"};
+          width: ${width || '90%'};
           background: ${colors.light2};
           min-height: 100vh;
           padding: 2vh;
@@ -24,20 +24,20 @@ export default ({ children, pattern, width }) => {
         }
         @media screen and (min-width: 480px) {
           .container {
-            width: ${width || "85%"};
+            width: ${width || '85%'};
             padding: 5vh;
           }
         }
         @media screen and (min-width: 640px) {
           .container {
-            width: ${width || "80%"};
+            width: ${width || '80%'};
           }
         }
         @media screen and (min-width: 1024px) {
           margin-top: 0;
           .container {
             max-width: 968px;
-            padding: 30vh;
+            padding: 5vh 30vh;
           }
           .description {
             font-size: 1.2em;
