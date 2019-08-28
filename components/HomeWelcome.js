@@ -1,9 +1,9 @@
-import Link from "next/link"
-import { withRouter } from "next/router"
-import { Query } from "react-apollo"
-import gql from "graphql-tag"
-import Welcome from "./Welcome"
-import Loading from "./Loading"
+import Link from 'next/link'
+import { withRouter } from 'next/router'
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+import Welcome from './Welcome'
+import Loading from './Loading'
 
 export const CONTENT = gql`
   query {
@@ -20,12 +20,11 @@ const HomeWelcome = ({ router: { pathname } }) => (
   <Query query={CONTENT}>
     {({ loading, error, data: { content } }) => {
       if (error) return <h2>Oops</h2>
-      if (loading) return <Loading />
       return (
         <Welcome
-          text={content.subTitle}
-          logo={content.logo}
-          background={content.headerImage}
+          text={loading ? '' : content.subTitle}
+          logo={loading ? '' : content.logo}
+          background={loading ? '' : content.headerImage}
           arrow
           height='100vh'
         />

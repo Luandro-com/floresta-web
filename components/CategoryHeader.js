@@ -1,12 +1,12 @@
-import { useState } from "react"
-import { Query, useQuery } from "react-apollo"
-import gql from "graphql-tag"
-import ErrorMessage from "./ErrorMessage"
-import CategoryHeaderItem from "./CategoryHeaderItem"
-import Loading from "./Loading"
-import ShowMore from "./ShowMore"
+import { useState } from 'react'
+import { Query, useQuery } from 'react-apollo'
+import gql from 'graphql-tag'
+import ErrorMessage from './ErrorMessage'
+import CategoryHeaderItem from './CategoryHeaderItem'
+import Loading from './Loading'
+import ShowMore from './ShowMore'
 
-import colors from "../lib/colors"
+import colors from '../lib/colors'
 
 export const PROJECT_CATEGORIES = gql`
   query {
@@ -29,7 +29,7 @@ export const HTML = gql`
   }
 `
 
-export default function CategoryHeader({ slug, color, artFilter }) {
+export default function CategoryHeader ({ slug, color, artFilter }) {
   const [showMore, setShowMore] = useState(false)
   let projectsHtml = null
   if (!slug) {
@@ -39,7 +39,7 @@ export default function CategoryHeader({ slug, color, artFilter }) {
     projectsHtml =
       contentQuery.data && contentQuery.data.content
         ? contentQuery.data.content.projectsHtml
-        : ""
+        : ''
   }
   return (
     <Query query={PROJECT_CATEGORIES}>
@@ -60,7 +60,7 @@ export default function CategoryHeader({ slug, color, artFilter }) {
                   <h2>
                     {categories.filter(c => c.slug === slug)[0]
                       ? categories.filter(c => c.slug === slug)[0].name
-                      : "Inválido"}
+                      : 'Inválido'}
                   </h2>
                 </div>
               )}
@@ -79,7 +79,7 @@ export default function CategoryHeader({ slug, color, artFilter }) {
             </div>
             <div className='info'>
               <div
-                className={color ? `description ${color}` : "description dark"}
+                className={color ? `description ${color}` : 'description dark'}
                 dangerouslySetInnerHTML={{
                   __html: projectsHtml || thisCategory.intro
                 }}
