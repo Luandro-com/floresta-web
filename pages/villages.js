@@ -33,7 +33,7 @@ export default () => {
           if (loading) return <Loading />
           return (
             <div className='wrapper'>
-              <Welcome background={'/static/default.png'} height='80vh' />
+              <Welcome background={'/static/default.png'} height='95vh' />
               <Pattern pattern='/static/pattern_3.png'>
                 <VillageList
                   villages={content.villages}

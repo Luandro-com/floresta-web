@@ -13,7 +13,7 @@ export default ({ text, background, arrow, height, logo }) => {
       style={{
         backgroundColor: colors.color4,
         backgroundImage: `url(${background})`,
-        height: height || '30vh',
+        height: height || '40vh',
         backgroundPosition: 'bottom',
         backgroundSize: 'cover'
       }}

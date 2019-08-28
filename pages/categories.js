@@ -23,7 +23,7 @@ export default () => {
   } = useQuery(HTML)
   return (
     <App>
-      <Welcome background={"/static/default.png"} height='80vh' />
+      <Welcome background={"/static/default.png"} height='95vh' />
       {!loading && !error && content && (
         <div className='info'>
           <div

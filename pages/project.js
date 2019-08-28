@@ -46,7 +46,7 @@ export default () => {
             <div>
               {/* <Welcome
                 background={project ? project.media : ""}
-                height='80vh'
+                height='95vh'
               /> */}
               <div className='pattern'>
                 {slug ? (

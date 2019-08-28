@@ -17,7 +17,7 @@ export default () => {
   }
   return (
     <App>
-      {/* <Welcome background={"/static/header_categories.png"} height='80vh' /> */}
+      {/* <Welcome background={"/static/header_categories.png"} height='95vh' /> */}
       <div className='pattern'>
         <div>
           <PageLayout

@@ -1,13 +1,14 @@
-import App from "../components/App"
-import { Query } from "react-apollo"
-import gql from "graphql-tag"
-import ErrorMessage from "../components/ErrorMessage"
-import Loading from "../components/Loading"
-import Pattern from "../components/Pattern"
-import NewsItem from "../components/NewsItem"
-import Pagination from "../components/Pagination"
+import App from '../components/App'
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+import ErrorMessage from '../components/ErrorMessage'
+import Loading from '../components/Loading'
+import Pattern from '../components/Pattern'
+import NewsItem from '../components/NewsItem'
+import Welcome from '../components/Welcome'
+import Pagination from '../components/Pagination'
 
-import colors from "../lib/colors"
+import colors from '../lib/colors'
 
 export const NEWS_ALL = gql`
   query {
@@ -34,6 +35,7 @@ export default () => {
           if (loading) return <Loading />
           return (
             <div className='wrapper'>
+              <Welcome background={'/static/default.png'} height='95vh' />
               <Pattern pattern='/static/pattern_2.png'>
                 <div className='list'>
                   {newsAll.map(news => (

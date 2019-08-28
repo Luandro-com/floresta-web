@@ -73,10 +73,10 @@ export default () => {
       {theme.backgroundImage && (
         <Welcome
           background={`/static/${theme.backgroundImage}.png`}
-          height='80vh'
+          height='95vh'
         />
       )}
-      {!theme.backgroundImage && <Welcome height='80vh' />}
+      {!theme.backgroundImage && <Welcome height='95vh' />}
       <div className='pattern'>
         {slug ? (
           <div>
