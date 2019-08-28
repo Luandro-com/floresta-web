@@ -14,7 +14,7 @@ export default () => {
       <div className='pattern'>
         <div>
           <div className='header'>
-            <CategoryHeader color={colors.light} />
+            <CategoryHeader color={colors.light2} />
           </div>
           <PageLayout main='projects' tagTitleColor={colors.light} />
         </div>
