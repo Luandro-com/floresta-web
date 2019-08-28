@@ -1,6 +1,6 @@
-import colors from "../lib/colors"
+import colors from '../lib/colors'
 
-export default function NewsItem({
+export default function NewsItem ({
   id,
   title,
   slug,
@@ -11,30 +11,28 @@ export default function NewsItem({
   width,
   post
 }) {
-  const isPost = post && post.id ? true : false
+  const isPost = !!(post && post.id)
   return (
     <a
-      target={isPost ? "" : "_blank"}
-      href={isPost ? `/blog?${slug ? `slug=${slug}` : `id=${id}`}` : link || ""}
+      target={isPost ? '' : '_blank'}
+      href={isPost ? `/blog?${slug ? `slug=${slug}` : `id=${id}`}` : link || ''}
     >
       <div className='container'>
         <div className='media' />
         <div className='title'>
-          <h3>{title || ""}</h3>
+          <h3>{title || ''}</h3>
         </div>
         <div
           className='description dark'
           dangerouslySetInnerHTML={{
-            __html: intro
-              ? intro
-              : description
-              ? description.substring(0, 150) + "..."
-              : ""
+            __html: intro || (description
+              ? description.substring(0, 50) + '...'
+              : '')
           }}
         />
       </div>
       <style jsx>{`
-        width: ${width || "100%"};
+        width: ${width || '100%'};
         margin: 15px auto;
 				h3 {
 					text-align: left;
@@ -52,7 +50,7 @@ export default function NewsItem({
 				.media {
           margin-top: -15px;
 					height: 300px;
-					background-image: url("${media || ""}");
+					background-image: url("${media || ''}");
 					background-size: cover;
 					border-radius: 20px 20px 0 0;
 				}

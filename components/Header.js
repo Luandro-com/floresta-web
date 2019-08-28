@@ -1,12 +1,12 @@
-import Link from "next/link"
-import { withRouter } from "next/router"
-import { Query } from "react-apollo"
-import gql from "graphql-tag"
-import useWindowScrollPosition from "@rehooks/window-scroll-position"
-import colors from "../lib/colors"
-import AnyImage from "./AnyImage"
-import HamburgerButton from "./HamburgerButton"
-import Loading from "./Loading"
+import Link from 'next/link'
+import { withRouter } from 'next/router'
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+import useWindowScrollPosition from '@rehooks/window-scroll-position'
+import colors from '../lib/colors'
+import AnyImage from './AnyImage'
+import HamburgerButton from './HamburgerButton'
+import Loading from './Loading'
 
 export const CONTENT = gql`
   query {
@@ -35,12 +35,12 @@ const Header = ({ router: { pathname } }) => {
         if (data && data.content) {
           const { logo, youtubeLink, facebookLink } = data.content
           return (
-            <header className={scrolled ? "header-fade" : ""}>
+            <header className={scrolled ? 'header-fade' : ''}>
               <div
                 className={
                   scrolled
-                    ? "color-header color-header-scrolled"
-                    : "color-header"
+                    ? 'color-header color-header-scrolled'
+                    : 'color-header'
                 }
               >
                 <div className='triangle-left' />
@@ -56,50 +56,50 @@ const Header = ({ router: { pathname } }) => {
               <div
                 className={
                   menuState
-                    ? "links open"
+                    ? 'links open'
                     : scrolled
-                    ? "links links-scrolled"
-                    : "links"
+                      ? 'links links-scrolled'
+                      : 'links'
                 }
               >
                 <Link prefetch href='/'>
-                  <div className={scrolled ? "logo disappear" : "logo"}>
-                    <AnyImage src={logo} size='25vh' />
+                  <div className={scrolled ? 'logo disappear' : 'logo'}>
+                    <AnyImage src={logo} size='25vh' color={'white'} />
                   </div>
                 </Link>
 
                 <div className='menu'>
-                  <span className={scrolled ? "home" : "home disappear"}>
+                  <span className={scrolled ? 'home' : 'home disappear'}>
                     <Link prefetch href='/'>
-                      <a className={pathname === "/" ? "is-active" : ""}>
+                      <a className={pathname === '/' ? 'is-active' : ''}>
                         Início
                       </a>
                     </Link>
                   </span>
                   <Link prefetch href='/about'>
-                    <a className={pathname === "/about" ? "is-active" : ""}>
+                    <a className={pathname === '/about' ? 'is-active' : ''}>
                       Quem somos
                     </a>
                   </Link>
                   <Link prefetch href='/villages'>
-                    <a className={pathname === "/villages" ? "is-active" : ""}>
+                    <a className={pathname === '/villages' ? 'is-active' : ''}>
                       Aldeias
                     </a>
                   </Link>
                   <Link prefetch href='/categories'>
                     <a
-                      className={pathname === "/categories" ? "is-active" : ""}
+                      className={pathname === '/categories' ? 'is-active' : ''}
                     >
                       Linhas de ação
                     </a>
                   </Link>
                   <Link prefetch href='/projects'>
-                    <a className={pathname === "/projects" ? "is-active" : ""}>
+                    <a className={pathname === '/projects' ? 'is-active' : ''}>
                       Projetos
                     </a>
                   </Link>
                   <Link prefetch href='/news'>
-                    <a className={pathname === "/news" ? "is-active" : ""}>
+                    <a className={pathname === '/news' ? 'is-active' : ''}>
                       Notícias
                     </a>
                   </Link>
@@ -107,9 +107,7 @@ const Header = ({ router: { pathname } }) => {
                     <a
                       className='icon'
                       target='_blank'
-                      href={
-                        facebookLink ? facebookLink : "https://facebook.com"
-                      }
+                      href={facebookLink || 'https://facebook.com'}
                     >
                       <img
                         src='/static/facebook_icon.png'
@@ -119,7 +117,7 @@ const Header = ({ router: { pathname } }) => {
                     <a
                       className='icon'
                       target='_blank'
-                      href={youtubeLink ? youtubeLink : "https://youtube.com"}
+                      href={youtubeLink || 'https://youtube.com'}
                     >
                       <img src='/static/youtube_icon.png' />
                     </a>
@@ -158,7 +156,7 @@ const Header = ({ router: { pathname } }) => {
                   right: 3.5vh;
                 }
                 .triangle-left:after {
-                  content: "";
+                  content: '';
                   display: block;
                   width: 0;
                   height: 0;
