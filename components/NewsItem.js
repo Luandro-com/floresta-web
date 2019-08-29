@@ -25,9 +25,9 @@ export default function NewsItem ({
         <div
           className='description dark'
           dangerouslySetInnerHTML={{
-            __html: intro || (description
-              ? description.substring(0, 50) + '...'
-              : '')
+            __html:
+              intro ||
+              (description ? description.substring(0, 100) + '...' : '')
           }}
         />
       </div>

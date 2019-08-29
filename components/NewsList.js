@@ -1,17 +1,18 @@
-import { useState, useEffect } from "react"
-import { useQuery } from "react-apollo"
-import gql from "graphql-tag"
-import ErrorMessage from "./ErrorMessage"
-import Carousel from "nuka-carousel"
-import NewsItem from "./NewsItem"
-import Arrows from "./Arrows"
-import Loading from "./Loading"
+import { useState, useEffect } from 'react'
+import { useQuery } from 'react-apollo'
+import gql from 'graphql-tag'
+import ErrorMessage from './ErrorMessage'
+import Carousel from 'nuka-carousel'
+import NewsItem from './NewsItem'
+import Arrows from './Arrows'
+import Loading from './Loading'
 
 export const NEWS_ALL = gql`
   query($page: Int) {
     newsAll(page: $page) {
       id
       description
+      intro
       link
       title
       media
@@ -21,7 +22,7 @@ export const NEWS_ALL = gql`
     }
   }
 `
-export default function NewsList() {
+export default function NewsList () {
   const [page, setPage] = useState(1)
   const [fetching, setFetching] = useState(false)
   const {
@@ -37,7 +38,7 @@ export default function NewsList() {
     if (window.innerWidth > 640) slidesToShow = 2
     if (window.innerWidth > 968) slidesToShow = 3
   }
-  async function more() {
+  async function more () {
     setFetching(true)
     const newPage = page + 1
     await fetchMore({
@@ -76,19 +77,19 @@ export default function NewsList() {
           renderCenterLeftControls={
             slidesToShow > 1
               ? ({ previousSlide }) => (
-                  <button className='slide-button' onClick={previousSlide}>
-                    <Arrows left />
-                  </button>
-                )
+                <button className='slide-button' onClick={previousSlide}>
+                  <Arrows left />
+                </button>
+              )
               : null
           }
           renderCenterRightControls={
             slidesToShow > 1
               ? ({ nextSlide }) => (
-                  <button className='slide-button right' onClick={nextSlide}>
-                    <Arrows right />
-                  </button>
-                )
+                <button className='slide-button right' onClick={nextSlide}>
+                  <Arrows right />
+                </button>
+              )
               : null
           }
         >
