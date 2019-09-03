@@ -43,6 +43,9 @@ export default ({ children }) => (
         font-size: 1em;
         line-height: 1.2em;
       }
+      img {
+        max-width: 100%;
+      }
       .color1 * {
         color: ${colors.color1};
       }
