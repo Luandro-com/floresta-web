@@ -20,7 +20,7 @@ export default function TagItem ({
       <div>{name}</div>
       <style jsx>{`
         a {
-          margin: ${margin || '10px'} auto;
+          margin: ${margin || '10px'} 2.5px;
           font-size: ${fontSize || 'inherit'};
         }
         div {

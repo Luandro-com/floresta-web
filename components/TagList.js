@@ -92,7 +92,7 @@ export default function TagList ({
                   padding-top: 10vh;
                 }
                 .list {
-                  flex-flow: ${column ? 'column' : 'row nowrap'};
+                  flex-flow: ${column ? 'column' : 'row wrap'};
                   width: 100%;
                 }
               }

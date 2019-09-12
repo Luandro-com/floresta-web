@@ -14,6 +14,8 @@ export const CONTENT = gql`
       logo
       youtubeLink
       facebookLink
+      instagramLink
+      flickrLink
     }
   }
 `
@@ -33,7 +35,13 @@ const Header = ({ router: { pathname } }) => {
         if (error) return <h2>Oops</h2>
         if (loading) return <Loading />
         if (data && data.content) {
-          const { logo, youtubeLink, facebookLink } = data.content
+          const {
+            logo,
+            youtubeLink,
+            facebookLink,
+            instagramLink,
+            flickrLink
+          } = data.content
           return (
             <header className={scrolled ? 'header-fade' : ''}>
               <div
@@ -124,14 +132,14 @@ const Header = ({ router: { pathname } }) => {
                     <a
                       className='icon'
                       target='_blank'
-                      href={youtubeLink || 'https://youtube.com'}
+                      href={flickrLink || 'https://flickr.com'}
                     >
                       <img src='/static/flickr_icon.png' />
                     </a>
                     <a
                       className='icon'
                       target='_blank'
-                      href={youtubeLink || 'https://youtube.com'}
+                      href={instagramLink || 'https://instagram.com'}
                     >
                       <img src='/static/instagram_icon.png' />
                     </a>
