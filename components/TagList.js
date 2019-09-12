@@ -72,8 +72,8 @@ export default function TagList ({
               }
               h2 {
                 color: ${titleColor || colors.dark};
-                font-weight: ${weight || 'inherit'};
-                font-size: ${fontSize || 'inherit'};
+                font-weight: ${column ? weight || '' : ''};
+                font-size: ${column ? fontSize || '' : ''};
                 padding-bottom: 5vh;
                 text-decoration: none;
               }

@@ -1,3 +1,4 @@
+import FitText from './FitText'
 import colors from '../lib/colors'
 
 export default function NewsItem ({
@@ -20,7 +21,9 @@ export default function NewsItem ({
       <div className='container'>
         <div className='media' />
         <div className='title'>
-          <h3>{title || ''}</h3>
+          <FitText maxFontSize={28}>
+            <h3>{title || ''}</h3>
+          </FitText>
         </div>
         <div
           className='description dark'
@@ -35,10 +38,10 @@ export default function NewsItem ({
         width: ${width || '100%'};
         margin: 15px auto;
 				h3 {
-					text-align: left;
-					padding-left: 3vw;
-					font-size: 1.6em;
-					font-weight: 600;
+					/* text-align: left; */
+					/* padding-left: 3vw; */
+					font-size: 1em;
+					/* font-weight: 600; */
 				}
 				.container {
 					background: ${colors.light};
@@ -49,7 +52,7 @@ export default function NewsItem ({
 				}
 				.media {
           margin-top: -15px;
-					height: 300px;
+					height: 250px;
 					background-image: url("${media || ''}");
 					background-size: cover;
 					border-radius: 20px 20px 0 0;
@@ -61,7 +64,7 @@ export default function NewsItem ({
 				}
 				.description {
 					color: ${colors.dark};
-					height: 200px;
+					height: 300px;
 					text-align: left;
 					width: 90%;
 					margin: 0 auto;

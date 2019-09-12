@@ -2,8 +2,9 @@ import colors from '../lib/colors'
 import { animateScroll as scroll } from 'react-scroll'
 import Arrows from './Arrows'
 import AnyImage from './AnyImage'
+import Carousel from 'nuka-carousel'
 
-export default ({ text, background, arrow, height, logo }) => {
+export default ({ text, background, arrow, height }) => {
   let viewSize = 800
   if (process.browser) {
     viewSize = window.innerHeight - 50
@@ -18,9 +19,6 @@ export default ({ text, background, arrow, height, logo }) => {
         backgroundSize: 'cover'
       }}
     >
-      {/* <div className='logo'>
-        <AnyImage src={logo} />
-      </div> */}
       {text && (
         <div className='info'>
           <h2>{text}</h2>
@@ -37,6 +35,7 @@ export default ({ text, background, arrow, height, logo }) => {
 			}
 			h2 {
 				font-weight: 100;
+				font-size: 2em;
 			}
 			.info {
 				margin: 0 auto;

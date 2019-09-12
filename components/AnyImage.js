@@ -1,24 +1,26 @@
-import ReactSVG from "react-svg"
-import colors from "../lib/colors"
+import ReactSVG from 'react-svg'
+import colors from '../lib/colors'
 
 export default ({ src, size, width, height, color, marginTop }) => {
-  if (src && src.split(".")[src.split(".").length - 1] === "svg") {
+  console.log('color', color)
+  if (src && src.split('.')[src.split('.').length - 1] === 'svg') {
     return (
       <ReactSVG
         src={src}
         style={{
+          color: color || colors.light,
           marginTop: marginTop || 0,
           width: size || width,
           height,
           fill: color || colors.light,
-          " svg": {
+          ' svg': {
             height: size || width,
             width: size || width
           },
-          " rect": {
-            fill: "aqua",
+          ' rect': {
+            fill: color || colors.light,
             height: size || width,
-            stroke: "red",
+            stroke: color || colors.light,
             width: size || width
           }
         }}

@@ -121,6 +121,20 @@ const Header = ({ router: { pathname } }) => {
                     >
                       <img src='/static/youtube_icon.png' />
                     </a>
+                    <a
+                      className='icon'
+                      target='_blank'
+                      href={youtubeLink || 'https://youtube.com'}
+                    >
+                      <img src='/static/flickr_icon.png' />
+                    </a>
+                    <a
+                      className='icon'
+                      target='_blank'
+                      href={youtubeLink || 'https://youtube.com'}
+                    >
+                      <img src='/static/instagram_icon.png' />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -130,13 +144,18 @@ const Header = ({ router: { pathname } }) => {
                   z-index: 100;
                   top: 0;
                   position: fixed;
-                  height: 11vh;
+                  height: 15vh;
+                  padding-top: 5vh;
+                  transition: top 0.4s ease;
+                  left: 0;
                 }
                 .header-fade {
                   background: none;
                   border: none;
                   box-shadow: none;
-                  height: 7vh;
+                  /* height: 7vh; */
+                  /* height: 11vh; */
+                  top: -5vh;
                 }
                 .color-header {
                   background: ${colors.dark};
@@ -173,12 +192,13 @@ const Header = ({ router: { pathname } }) => {
                   text-decoration: none;
                   color: white;
                   text-transform: uppercase;
-                  font-size: 22px;
+                  font-size: 1.4em;
                   padding: 4px 15px;
                   border-radius: 7px;
                   margin-right: 15px;
                 }
                 .logo {
+                  position: fixed;
                   cursor: pointer;
                   opacity: 1;
                   transition: height 0.2s ease;

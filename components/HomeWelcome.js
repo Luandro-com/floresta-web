@@ -19,12 +19,11 @@ export const CONTENT = gql`
 const HomeWelcome = ({ router: { pathname } }) => (
   <Query query={CONTENT}>
     {({ loading, error, data: { content } }) => {
-      if (error) return <h2>Oops</h2>
       return (
         <Welcome
-          text={loading ? '' : content.subTitle}
-          logo={loading ? '' : content.logo}
-          background={loading ? '' : content.headerImage}
+          text={loading || error ? '' : content.subTitle}
+          logo={loading || error ? '' : content.logo}
+          background={loading || error ? '' : content.headerImage}
           arrow
           height='100vh'
         />

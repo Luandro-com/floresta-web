@@ -1,6 +1,6 @@
-import Header from "../components/Header"
+import Header from '../components/Header'
 
-import colors from "../lib/colors"
+import colors from '../lib/colors'
 
 export default ({ children }) => (
   <main>
@@ -8,7 +8,7 @@ export default ({ children }) => (
     {children}
     <style jsx global>{`
       * {
-        font-family: "Titillium Web", sans-serif;
+        font-family: 'Titillium Web', sans-serif;
       }
       body,
       html {
@@ -22,20 +22,24 @@ export default ({ children }) => (
         margin-top: -6.66vh;
       }
       h1 {
-        font-family: "Varela Round", sans-serif;
-        font-family: "Amatic SC", cursive;
+        // font-family: 'Varela Round', sans-serif;
+        font-family: 'Amatic SC', cursive;
+        font-size: 2.2em;
+        color: ${colors.light};
+        font-weight: 100;
       }
+      strong,
       h2,
       h3,
       h4 {
-        font-family: "Amatic SC", cursive;
+        font-family: 'Amatic SC', cursive;
         font-size: 2em;
         color: ${colors.light};
-        // font-weight: 100;
+        font-weight: 100;
       }
       a {
         color: white;
-        font-family: "Amatic SC", cursive;
+        font-family: 'Amatic SC', cursive;
         text-decoration: none;
       }
       p {
