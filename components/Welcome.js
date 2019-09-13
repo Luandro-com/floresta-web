@@ -32,7 +32,7 @@ export default ({ text, background, arrow, height }) => {
     <section>
       {Array.isArray(background) ? (
         <Carousel
-          wrapAround
+          // wrapAround
           autoplay={background.length > 1}
           autoplayInterval={800}
           renderBottomCenterControls={({
