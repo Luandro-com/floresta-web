@@ -1,8 +1,26 @@
-import colors from '../lib/colors'
-import { animateScroll as scroll } from 'react-scroll'
-import Arrows from './Arrows'
-import AnyImage from './AnyImage'
+import WelcomeItem from './WelcomeItem'
 import Carousel from 'nuka-carousel'
+import colors from '../lib/colors'
+
+const Controls = ({ count, current, goToSlide }) => {
+  let elements = []
+  for (let index = 0; index < count; index++) {
+    elements.push(
+      <div
+        onClick={() => goToSlide(index)}
+        style={{
+          background: current === index ? colors.color1 : colors.light,
+          width: 15,
+          height: 15,
+          borderRadius: 15,
+          margin: '0 5px',
+          cursor: 'pointer'
+        }}
+      />
+    )
+  }
+  return elements
+}
 
 export default ({ text, background, arrow, height }) => {
   let viewSize = 800
@@ -10,75 +28,53 @@ export default ({ text, background, arrow, height }) => {
     viewSize = window.innerHeight - 50
   }
   return (
-    <section
-      style={{
-        backgroundColor: colors.color4,
-        backgroundImage: `url(${background})`,
-        height: height || '40vh',
-        backgroundPosition: 'bottom',
-        backgroundSize: 'cover'
-      }}
-    >
-      {text && (
-        <div className='info'>
-          <h2>{text}</h2>
-          {arrow && (
-            <a onClick={() => scroll.scrollTo(viewSize)}>
-              <Arrows animate />
-            </a>
+    <section>
+      {Array.isArray(background) ? (
+        <Carousel
+          wrapAround
+          autoplay
+          autoplayInterval={500}
+          renderBottomCenterControls={({
+            currentSlide,
+            goToSlide,
+            slideCount
+          }) => (
+            <div className='bottom-controls'>
+              <Controls
+                count={slideCount}
+                current={currentSlide}
+                goToSlide={goToSlide}
+              />
+            </div>
           )}
-        </div>
+          renderCenterLeftControls={({ previousSlide }) => null}
+          renderCenterRightControls={({ nextSlide }) => null}
+        >
+          {background.map(image => (
+            <div style={{ background: 'red' }}>
+              <WelcomeItem background={image} text={text} arrow={arrow} />
+            </div>
+          ))}
+        </Carousel>
+      ) : (
+        <WelcomeItem background={background} text={text} arrow={arrow} />
       )}
       <style jsx>{`
-			a {
-				margin-top: -50vh;
-			}
-			h2 {
-				font-weight: 100;
-				font-size: 2em;
-			}
-			.info {
-				margin: 0 auto;
-				position: relative;
-				bottom: -65vh;
-				width: 80%;
-				text-align: center;
-				text-transform: uppercase;
-				font-size: 1em;
-				cursor: pointer;
-				border-radius: 10px;
-				box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.4);
-        background: rgba(0, 0, 0, 0.4);
-			}
-			.logo {
-				width: 80%;
-				position: absolute;
-				top: 30vh;
-				left: 50%;
-				transform: translateX(-50%);
-			}
-			@media screen and (min-width: 480px) {
-				.logo {
-					width: 350px;
-				}
-				.info {
-					width: 50%;
-					font-size: 18px;
-				}
-			@media screen and (min-width: 968px) {
-				.logo {
-					display: none;
-				}
-				.info {
-					font-size: 24px;
-				}
-			}
-			@media screen and (min-width: 1024px) {
-				.info {
-					font-size: 30px;
-				}
-			}
-		`}</style>
+        height: ${height || '40vh'};
+        .bottom-controls {
+          height: 50px;
+          width: 200px;
+          margin: 0 auto;
+          text-align: center;
+          position: absolute;
+          top: -10vh;
+          right: -100px;
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          justify-content: center;
+        }
+      `}</style>
     </section>
   )
 }

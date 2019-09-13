@@ -2,7 +2,6 @@ import ReactSVG from 'react-svg'
 import colors from '../lib/colors'
 
 export default ({ src, size, width, height, color, marginTop }) => {
-  console.log('color', color)
   if (src && src.split('.')[src.split('.').length - 1] === 'svg') {
     return (
       <ReactSVG

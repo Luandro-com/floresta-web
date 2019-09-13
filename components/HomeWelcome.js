@@ -9,7 +9,7 @@ export const CONTENT = gql`
   query {
     content {
       logo
-      headerImage
+      headerImages
       title
       subTitle
     }
@@ -23,7 +23,7 @@ const HomeWelcome = ({ router: { pathname } }) => (
         <Welcome
           text={loading || error ? '' : content.subTitle}
           logo={loading || error ? '' : content.logo}
-          background={loading || error ? '' : content.headerImage}
+          background={loading || error ? '' : content.headerImages}
           arrow
           height='100vh'
         />
