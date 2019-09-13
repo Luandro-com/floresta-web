@@ -5,6 +5,7 @@ const projectHeight = 270
 
 export default ({ projects, title }) => (
   <div>
+    {console.log('projects', projects)}
     {title && <h1>{title}</h1>}
     <div className='container'>
       {projects &&

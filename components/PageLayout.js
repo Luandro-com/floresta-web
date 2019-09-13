@@ -1,13 +1,13 @@
-import { Query } from "react-apollo"
-import gql from "graphql-tag"
-import ErrorMessage from "./ErrorMessage"
-import BackButton from "./BackButton"
-import TagList, { PROJECT_TAGS } from "./TagList"
-import ProjectList from "../components/ProjectList"
-import Project from "../components/Project"
-import Loading from "../components/Loading"
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+import ErrorMessage from './ErrorMessage'
+import BackButton from './BackButton'
+import TagList, { PROJECT_TAGS } from './TagList'
+import ProjectList from '../components/ProjectList'
+import Project from '../components/Project'
+import Loading from '../components/Loading'
 
-import colors from "../lib/colors"
+import colors from '../lib/colors'
 
 export const TAG_PROJECTS = gql`
   query($slug: String, $id: ID) {
@@ -77,13 +77,20 @@ export const CATEGORIES = gql`
   }
 `
 
-const mergeById = (a1, a2) =>
-  a1.map(itm => ({
-    ...a2.find(item => item.id === itm.id && item),
-    ...itm
-  }))
+const mergeById = (prev, curr) => {
+  const ObjectId = id => id // mock of ObjectId
+  return [
+    ...prev
+      .concat(curr)
+      .reduce(
+        (m, o) => m.set(o.id, Object.assign(m.get(o.id) || {}, o)),
+        new Map()
+      )
+      .values()
+  ]
+}
 
-function List({ slug, tags, id }) {
+function List ({ slug, tags, id }) {
   const query =
     tags && (slug || id) ? TAG_PROJECTS : slug || id ? CATEGORY : CATEGORIES
   return (
@@ -92,14 +99,13 @@ function List({ slug, tags, id }) {
         let allProjects = []
         if (error) return <ErrorMessage message='Error loading posts.' />
         if (loading) return <Loading />
-
-        const list = data[tags ? "projectTags" : "categories"]
+        const list = data[tags ? 'projectTags' : 'categories']
         if (list) {
           list.map(p => {
             if (allProjects.length === 0) {
               allProjects = p.projects
             } else {
-              mergeById(allProjects, p.projects)
+              allProjects = mergeById(allProjects, p.projects)
             }
           })
           return (
@@ -116,7 +122,7 @@ function List({ slug, tags, id }) {
   )
 }
 
-export default function PageLayout({
+export default function PageLayout ({
   slug,
   project,
   tags,
@@ -142,10 +148,10 @@ export default function PageLayout({
             color={colors.color1}
             hoverColor={colors.light}
             hoverBackgroundColor={colors.color1}
-            width={"250px"}
+            width={'250px'}
             weight={600}
-            fontSize={"2.5em"}
-            padding={"5px 25px"}
+            fontSize={'2.5em'}
+            padding={'5px 25px'}
             radius={5}
           />
         </div>
@@ -164,7 +170,7 @@ export default function PageLayout({
           position: relative;
           right: 1vw;
           cursor: pointer;
-          top: ${tags ? "22vh" : "5vh"};
+          top: ${tags ? '22vh' : '5vh'};
         }
         .container {
           display: flex;
