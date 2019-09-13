@@ -7,12 +7,13 @@ const Controls = ({ count, current, goToSlide }) => {
   for (let index = 0; index < count; index++) {
     elements.push(
       <div
+        key={index}
         onClick={() => goToSlide(index)}
         style={{
           background: current === index ? colors.color1 : colors.light,
-          width: 15,
-          height: 15,
-          borderRadius: 15,
+          width: 10,
+          height: 10,
+          borderRadius: 10,
           margin: '0 5px',
           cursor: 'pointer'
         }}
@@ -51,7 +52,7 @@ export default ({ text, background, arrow, height }) => {
           renderCenterRightControls={({ nextSlide }) => null}
         >
           {background.map(image => (
-            <div style={{ background: 'red' }}>
+            <div key={image}>
               <WelcomeItem background={image} text={text} arrow={arrow} />
             </div>
           ))}
