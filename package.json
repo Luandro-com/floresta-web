@@ -27,15 +27,15 @@
     "next-page-transitions": "^1.0.0-beta.2",
     "next-plugin-graphql": "^0.0.2",
     "next-seo": "^2.1.0",
-    "nuka-carousel": "^4.5.9",
+    "nuka-carousel": "^4.5.11",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-apollo": "^3.0.1",
     "react-dom": "^16.7.0",
     "react-fittext": "^1.0.0",
     "react-images-close": "^1.0.1",
-    "react-scroll": "^1.7.13",
-    "react-svg": "^10.0.17"
+    "react-scroll": "^1.7.14",
+    "react-svg": "^10.0.20"
   },
   "author": "",
   "license": "ISC"

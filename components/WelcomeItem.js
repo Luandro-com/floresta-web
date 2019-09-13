@@ -3,6 +3,10 @@ import Arrows from './Arrows'
 import colors from '../lib/colors'
 
 export default ({ background, text, arrow }) => {
+  let viewSize = 800
+  if (process.browser) {
+    viewSize = window.innerHeight - 50
+  }
   return (
     <div className='wrapper'>
       {text && (
