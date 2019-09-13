@@ -33,8 +33,8 @@ export default ({ text, background, arrow, height }) => {
       {Array.isArray(background) ? (
         <Carousel
           wrapAround
-          autoplay
-          autoplayInterval={500}
+          autoplay={background.length > 1}
+          autoplayInterval={800}
           renderBottomCenterControls={({
             currentSlide,
             goToSlide,
