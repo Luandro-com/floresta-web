@@ -70,7 +70,7 @@ const Header = ({ router: { pathname } }) => {
                       : 'links'
                 }
               >
-                <Link prefetch href='/'>
+                <Link href='/'>
                   <div className={scrolled ? 'logo disappear' : 'logo'}>
                     <AnyImage src={logo} size='25vh' color={'white'} />
                   </div>
@@ -78,35 +78,35 @@ const Header = ({ router: { pathname } }) => {
 
                 <div className='menu'>
                   <span className={scrolled ? 'home' : 'home disappear'}>
-                    <Link prefetch href='/'>
+                    <Link href='/'>
                       <a className={pathname === '/' ? 'is-active' : ''}>
                         Início
                       </a>
                     </Link>
                   </span>
-                  <Link prefetch href='/about'>
+                  <Link href='/about'>
                     <a className={pathname === '/about' ? 'is-active' : ''}>
                       Quem somos
                     </a>
                   </Link>
-                  <Link prefetch href='/villages'>
+                  <Link href='/villages'>
                     <a className={pathname === '/villages' ? 'is-active' : ''}>
                       Aldeias
                     </a>
                   </Link>
-                  <Link prefetch href='/categories'>
+                  <Link href='/categories'>
                     <a
                       className={pathname === '/categories' ? 'is-active' : ''}
                     >
                       Linhas de ação
                     </a>
                   </Link>
-                  <Link prefetch href='/projects'>
+                  <Link href='/projects'>
                     <a className={pathname === '/projects' ? 'is-active' : ''}>
                       Projetos
                     </a>
                   </Link>
-                  <Link prefetch href='/news'>
+                  <Link href='/news'>
                     <a className={pathname === '/news' ? 'is-active' : ''}>
                       Notícias
                     </a>

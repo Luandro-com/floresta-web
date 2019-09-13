@@ -1,14 +1,14 @@
-import App, { Container } from "next/app"
-import React from "react"
-import withApolloClient from "../lib/with-apollo-client"
-import { ApolloProvider } from "react-apollo"
-import { PageTransition } from "next-page-transitions"
-import { DefaultSeo } from "next-seo"
+import App, { Container } from 'next/app'
+import React from 'react'
+import withApolloClient from '../lib/with-apollo-client'
+import { ApolloProvider } from 'react-apollo'
+import { PageTransition } from 'next-page-transitions'
+import { DefaultSeo } from 'next-seo'
 
-import SEO from "../next-seo.config"
+import SEO from '../next-seo.config'
 
 class MyApp extends App {
-  static async getInitialProps({ Component, router, ctx }) {
+  static async getInitialProps ({ Component, router, ctx }) {
     let pageProps = {}
 
     if (Component.getInitialProps) {
@@ -18,28 +18,26 @@ class MyApp extends App {
     return { pageProps, route: router.route }
   }
 
-  render() {
+  render () {
     const { Component, pageProps, route, apolloClient } = this.props
     return (
-      <Container>
+      <ApolloProvider client={apolloClient}>
         <DefaultSeo
           openGraph={{
-            type: "website",
-            locale: "en_IE",
-            url: "https://www.url.ie/",
-            site_name: "SiteName"
+            type: 'website',
+            locale: 'en_IE',
+            url: 'https://www.url.ie/',
+            site_name: 'SiteName'
           }}
           twitter={{
-            handle: "@handle",
-            site: "@site",
-            cardType: "summary_large_image"
+            handle: '@handle',
+            site: '@site',
+            cardType: 'summary_large_image'
           }}
         />
-        <ApolloProvider client={apolloClient}>
-          <PageTransition timeout={300} classNames='page-transition'>
-            <Component {...pageProps} key={route} />
-          </PageTransition>
-        </ApolloProvider>
+        <PageTransition timeout={300} classNames='page-transition'>
+          <Component {...pageProps} key={route} />
+        </PageTransition>
         <style jsx global>{`
           .page-transition-enter {
             opacity: 0;
@@ -56,7 +54,7 @@ class MyApp extends App {
             transition: opacity 300ms;
           }
         `}</style>
-      </Container>
+      </ApolloProvider>
     )
   }
 }
