@@ -8,6 +8,8 @@ import AnyImage from './AnyImage'
 import HamburgerButton from './HamburgerButton'
 import Loading from './Loading'
 
+const scrolledPos = 70
+
 export const CONTENT = gql`
   query {
     content {
@@ -25,10 +27,10 @@ const Header = ({ router: { pathname } }) => {
   let position = {
     y: 0
   }
-  if (process.browser && position.y < 100) {
-    position = useWindowScrollPosition({ throttle: 100 })
+  if (process.browser && position.y < scrolledPos) {
+    position = useWindowScrollPosition({ throttle: scrolledPos })
   }
-  const scrolled = position.y > 100
+  const scrolled = position.y > scrolledPos
   return (
     <Query query={CONTENT}>
       {({ loading, error, data }) => {
@@ -151,13 +153,14 @@ const Header = ({ router: { pathname } }) => {
                   width: 100%;
                   z-index: 100;
                   top: 0;
-                  position: fixed;
+                  position: absolute;
                   height: 15vh;
                   padding-top: 5vh;
                   transition: top 0.4s ease;
                   left: 0;
                 }
                 .header-fade {
+                  position: fixed;
                   background: none;
                   border: none;
                   box-shadow: none;
@@ -206,7 +209,7 @@ const Header = ({ router: { pathname } }) => {
                   margin-right: 15px;
                 }
                 .logo {
-                  position: fixed;
+                  position: absolute;
                   cursor: pointer;
                   opacity: 1;
                   transition: height 0.2s ease;
