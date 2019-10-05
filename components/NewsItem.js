@@ -21,7 +21,7 @@ export default function NewsItem ({
       <div className='container'>
         <div className='media' />
         <div className='title'>
-          <FitText maxFontSize={28}>
+          <FitText maxFontSize={24}>
             <h3>{title || ''}</h3>
           </FitText>
         </div>
