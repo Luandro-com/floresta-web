@@ -1,9 +1,37 @@
-import App from "../components/App"
-import Router from "next/router"
+import App from '../components/App'
+import Router from 'next/router'
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+import ErrorMessage from '../components/ErrorMessage'
+import Loading from '../components/Loading'
+import Welcome from '../components/Welcome'
+import TagPage from '../components/TagPage'
+import colors from '../lib/colors'
 
-import CategoryHeader from "../components/CategoryHeader"
-import PageLayout from "../components/PageLayout"
-import colors from "../lib/colors"
+export const TAG = gql`
+  query($slug: String, $id: ID) {
+    projectTags(slug: $slug, id: $id) {
+      slug
+      id
+      name
+      description
+      media
+      projects {
+        id
+        slug
+        name
+        media
+        description
+        intro
+        tags {
+          id
+          slug
+          name
+        }
+      }
+    }
+  }
+`
 
 export default () => {
   let id = null
@@ -17,22 +45,63 @@ export default () => {
   }
   return (
     <App>
-      {/* <Welcome background={"/static/header_categories.png"} height='95vh' /> */}
-      <div className='pattern'>
-        <div>
-          <PageLayout
-            main='projects'
-            tags
-            slug={slug}
-            id={id}
-            tagTitleColor={colors.light}
-          />
-        </div>
-      </div>
+      <Query query={TAG} variables={slug ? { slug } : { id }}>
+        {({ loading, error, data, fetchMore }) => {
+          if (error) return <ErrorMessage message='Error loading posts.' />
+          if (loading) return <Loading />
+          const list = data.projectTags[0].projects
+          return (
+            <div>
+              <Welcome
+                background={data.projectTags[0].media || '/static/default.png'}
+                height='95vh'
+              />
+              <h1>{data.projectTags[0].name}</h1>
+              {!loading && !error && (
+                <div className='info'>
+                  <div
+                    className={'description light medium'}
+                    dangerouslySetInnerHTML={{
+                      __html: data.projectTags[0].description
+                    }}
+                  />
+                </div>
+              )}
+              <div className='pattern'>
+                <div>
+                  <TagPage list={list} tagTitleColor={colors.light} />
+                </div>
+              </div>
+            </div>
+          )
+        }}
+      </Query>
       <style jsx>{`
+        h1 {
+          padding-left: 30px;
+        }
+        .info {
+          background: ${colors.color4};
+          padding-top: 50px;
+        }
+        .description {
+          width: 90%;
+          margin: 0 auto;
+          display: block;
+        }
+        @media screen and (min-width: 640px) {
+          .description {
+            width: 80%;
+          }
+        }
+        @media screen and (min-width: 1024px) {
+          .description {
+            max-width: 968px;
+          }
+        }
         .pattern {
           background: ${colors.dark2};
-          background-image: url("/static/pattern_2.png");
+          background-image: url('/static/pattern_2.png');
           background-repeat: round;
           margin-top: -5vh;
           padding: 15vh 0;

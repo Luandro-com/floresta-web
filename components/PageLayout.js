@@ -15,6 +15,8 @@ export const TAG_PROJECTS = gql`
       slug
       id
       name
+      description
+      media
       projects {
         id
         slug
@@ -101,6 +103,7 @@ function List ({ slug, tags, id }) {
         if (loading) return <Loading />
         const list = data[tags ? 'projectTags' : 'categories']
         if (list) {
+          console.log('data', data)
           list.map(p => {
             if (allProjects.length === 0) {
               allProjects = p.projects
@@ -132,6 +135,16 @@ export default function PageLayout ({
 }) {
   return (
     <section>
+      {/* {tags && !loading && !error && content && (
+        <div className='info'>
+          <div
+            className={"description light medium"}
+            dangerouslySetInnerHTML={{
+              __html: content.categoriesHtml
+            }}
+          />
+        </div>
+      )} */}
       <div className='back'>
         <BackButton />
       </div>
