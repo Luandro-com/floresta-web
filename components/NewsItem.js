@@ -21,9 +21,9 @@ export default function NewsItem ({
       <div className='container'>
         <div className='media' />
         <div className='title'>
-          <FitText maxFontSize={24}>
+          {/* <FitText maxFontSize={22} compressor={2}> */}
             <h3>{title || ''}</h3>
-          </FitText>
+          {/* </FitText> */}
         </div>
         <div
           className='description dark'
@@ -37,12 +37,6 @@ export default function NewsItem ({
       <style jsx>{`
         width: ${width || '100%'};
         margin: 15px auto;
-				h3 {
-					/* text-align: left; */
-					/* padding-left: 3vw; */
-					font-size: 1em;
-					/* font-weight: 600; */
-				}
 				.container {
 					background: ${colors.light};
 					display: flex;
@@ -58,10 +52,19 @@ export default function NewsItem ({
 					border-radius: 20px 20px 0 0;
 				}
 				.title {
+          height: 60px;
           margin-top: -15px;
-          padding: 15px 0;
+          padding: 5px 0 15px;
 					width: 100%;
 					background: ${colors.dark};
+				}
+        h3 {
+					/* text-align: left; */
+					/* padding-left: 3vw; */
+					font-size: 1.4em;
+          /* white-space: nowrap; */
+          width: 98%;
+					/* font-weight: 600; */
 				}
 				.description {
 					color: ${colors.dark};
