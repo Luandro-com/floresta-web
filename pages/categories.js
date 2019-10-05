@@ -43,6 +43,7 @@ export default () => {
           backgroundColor={"none"}
           hoverBackgroundColor={colors.light}
           borderColor={colors.light}
+          titleColor={colors.light}
           radius={5}
         />
       </div>
