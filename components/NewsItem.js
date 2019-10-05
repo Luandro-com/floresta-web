@@ -59,6 +59,7 @@ export default function NewsItem ({
 				}
 				.title {
           margin-top: -15px;
+          padding: 15px 0;
 					width: 100%;
 					background: ${colors.dark};
 				}
