@@ -270,7 +270,7 @@ const Header = ({ router: { pathname } }) => {
                   display: flex;
                   align-items: center;
                 }
-                @media screen and (max-width: 968px) {
+                @media screen and (max-width: 967px) {
                   .logo {
                     padding-top: 18vh;
                   }
@@ -283,6 +283,9 @@ const Header = ({ router: { pathname } }) => {
                   }
                 }
                 @media screen and (min-width: 968px) {
+                  .logo {
+                    display: none;
+                  }
                   .disappear {
                     opacity: 0;
                   }
@@ -293,8 +296,8 @@ const Header = ({ router: { pathname } }) => {
                     transition: height 0.5s ease;
                   }
                   .links {
-                    width: 90%;
-                    margin-left: -43%;
+                    /* width: 90%; */
+                    margin-left: -50%;
                     /* font-size: 30px; */
                     height: 11vh;
                     position: absolute;
@@ -312,6 +315,7 @@ const Header = ({ router: { pathname } }) => {
                     height: 7vh;
                   }
                   .menu {
+                    margin: 0 auto;
                     padding: 25px 0;
                     margin-bottom: 25px;
                     width: 90%;
@@ -325,12 +329,24 @@ const Header = ({ router: { pathname } }) => {
                     display: none;
                   }
                 }
+                
                 @media screen and (min-width: 1024px) {
                   .menu {
-                    width: 70%;
+                    width: 85%;
+                  }
+                }
+                @media screen and (min-width: 1125px) {
+                  .logo {
+                    display: block;
+                  }
+                  .links {
+                    margin-left: -43%;
                   }
                 }
                 @media screen and (min-width: 1280px) {
+                  .menu {
+                    width: 75%;
+                  }
                   .links {
                     /* width: 968px; */
                   }
