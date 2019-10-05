@@ -1,4 +1,3 @@
-import FitText from './FitText'
 import colors from '../lib/colors'
 
 export default function NewsItem ({
@@ -21,9 +20,7 @@ export default function NewsItem ({
       <div className='container'>
         <div className='media' />
         <div className='title'>
-          {/* <FitText maxFontSize={22} compressor={2}> */}
-            <h3>{title || ''}</h3>
-          {/* </FitText> */}
+          <h3>{title || ''}</h3>
         </div>
         <div
           className='description dark'
