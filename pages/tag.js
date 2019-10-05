@@ -78,11 +78,11 @@ export default () => {
       </Query>
       <style jsx>{`
         h1 {
-          padding-left: 30px;
+          text-align: center;
         }
         .info {
           background: ${colors.color4};
-          padding-top: 50px;
+          padding: 50px 0 70px;
         }
         .description {
           width: 90%;
@@ -104,7 +104,7 @@ export default () => {
           background-image: url('/static/pattern_2.png');
           background-repeat: round;
           margin-top: -5vh;
-          padding: 15vh 0;
+          padding: 5vh 0;
         }
       `}</style>
     </App>
