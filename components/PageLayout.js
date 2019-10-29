@@ -103,7 +103,6 @@ function List ({ slug, tags, id }) {
         if (loading) return <Loading />
         const list = data[tags ? 'projectTags' : 'categories']
         if (list) {
-          console.log('data', data)
           list.map(p => {
             if (allProjects.length === 0) {
               allProjects = p.projects
