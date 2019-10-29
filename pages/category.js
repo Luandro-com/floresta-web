@@ -1,14 +1,25 @@
-import { useState, useEffect } from "react"
-import App from "../components/App"
-import Router from "next/router"
-import Link from "next/link"
+import { useState, useEffect } from 'react'
+import { useQuery } from 'react-apollo'
+import gql from 'graphql-tag'
 
-import Welcome from "../components/Welcome"
-import CategoryHeader from "../components/CategoryHeader"
-import PageLayout from "../components/PageLayout"
-import Loading from "../components/Loading"
+import App from '../components/App'
+import Router from 'next/router'
+import Link from 'next/link'
 
-import colors from "../lib/colors"
+import Welcome from '../components/Welcome'
+import CategoryHeader from '../components/CategoryHeader'
+import PageLayout from '../components/PageLayout'
+import Loading from '../components/Loading'
+
+import colors from '../lib/colors'
+
+export const PROJECT_CATEGORIES = gql`
+  query {
+    categories {
+      slug
+    }
+  }
+`
 
 export default () => {
   const [theme, setTheme] = useState({
@@ -21,52 +32,59 @@ export default () => {
     slug = Router.router.query.slug
   }
 
-  useEffect(() => {
-    if (slug) {
-      switch (slug) {
-        case "cultura-e-conhecimento":
+  const {
+    data: { categories },
+    loading,
+    error
+  } = useQuery(PROJECT_CATEGORIES)
+
+  useEffect(
+    () => {
+      if (slug) {
+        // console.log('TCL: categories', categories[0].slug)
+        // console.log('TCL: categories', categories[1].slug)
+        // console.log('TCL: categories', categories[2].slug)
+        // console.log('TCL: categories', categories[3].slug)
+        if (slug === categories[0].slug) {
           return setTheme({
-            backgroundImage: "cultura-e-conhecimento",
+            backgroundImage: 'cultura-e-conhecimento',
             backgroundColor: colors.light3,
-            backgroundPattern: "pattern_4",
-            artFilter: " hue-rotate(255deg) brightness(80%) contrast(80%)"
+            backgroundPattern: 'pattern_4',
+            artFilter: ' hue-rotate(255deg) brightness(80%) contrast(80%)'
           })
-        case "fortalecimento-institucional-e-politico":
+        }
+        if (slug === categories[1].slug) {
           return setTheme({
-            backgroundImage: "fortalecimento-institucional-e-politico",
+            backgroundImage: 'fortalecimento-institucional-e-politico',
             backgroundColor: colors.light2,
-            backgroundPattern: "pattern_2",
-            artFilter: " hue-rotate(255deg) brightness(80%) contrast(80%)"
+            backgroundPattern: 'pattern_2',
+            artFilter: ' hue-rotate(255deg) brightness(80%) contrast(80%)'
           })
-        case "atividades-produtivas-e-geracao-de-rende":
+        }
+        if (slug === categories[2].slug) {
           return setTheme({
-            backgroundImage: "atividades-produtivas-e-geracao-de-rende",
+            backgroundImage: 'atividades-produtivas-e-geracao-de-renda',
             backgroundColor: colors.color3,
-            backgroundPattern: "pattern_2",
-            artFilter:
-              "invert(81%) sepia(10%) saturate(670%) hue-rotate(355deg) brightness(105%) contrast(95%)"
-          })
-        case "atividades-produtivas-e-geracao-de-renda":
-          return setTheme({
-            backgroundImage: "atividades-produtivas-e-geracao-de-renda",
-            backgroundColor: colors.color3,
-            backgroundPattern: "pattern_2",
+            backgroundPattern: 'pattern_2',
             color: colors.light2,
             artFilter:
-              "invert(81%) sepia(10%) saturate(670%) hue-rotate(355deg) brightness(105%) contrast(95%)"
+              'invert(81%) sepia(10%) saturate(670%) hue-rotate(355deg) brightness(105%) contrast(95%)'
           })
-        case "gestao-ambiental-e-territorial":
+        }
+        if (slug === categories[3].slug) {
           return setTheme({
-            backgroundImage: "gestao-ambiental-e-territorial",
+            backgroundImage: 'gestao-ambiental-e-territorial',
             backgroundColor: colors.color2,
-            backgroundPattern: "pattern_6",
+            backgroundPattern: 'pattern_6',
             color: colors.light2,
             artFilter:
-              "invert(81%) sepia(10%) saturate(670%) hue-rotate(355deg) brightness(105%) contrast(95%)"
+              'invert(81%) sepia(10%) saturate(670%) hue-rotate(355deg) brightness(105%) contrast(95%)'
           })
+        }
       }
-    }
-  }, [slug])
+    },
+    [slug]
+  )
 
   return (
     <App>
@@ -101,7 +119,7 @@ export default () => {
         .pattern {
           background: ${theme.backgroundColor || colors.light2};
           background-image: url("/static/${theme.backgroundPattern ||
-            "pattern_1"}.png");
+            'pattern_1'}.png");
           background-repeat: round;
           margin-top: -5vh;
           padding-bottom: 20vh;
