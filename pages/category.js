@@ -40,11 +40,7 @@ export default () => {
 
   useEffect(
     () => {
-      if (slug) {
-        // console.log('TCL: categories', categories[0].slug)
-        // console.log('TCL: categories', categories[1].slug)
-        // console.log('TCL: categories', categories[2].slug)
-        // console.log('TCL: categories', categories[3].slug)
+      if (slug && categories && !loading && !error) {
         if (slug === categories[0].slug) {
           return setTheme({
             backgroundImage: 'cultura-e-conhecimento',
@@ -83,7 +79,7 @@ export default () => {
         }
       }
     },
-    [slug]
+    [slug, categories]
   )
 
   return (
