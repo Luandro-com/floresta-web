@@ -1,18 +1,18 @@
-import colors from "../lib/colors"
+import colors from '../lib/colors'
 
-export default ({ open, set, html }) => {
+export default ({ open, set, html, color }) => {
   return (
     <div>
-      <div className={open ? "open container" : "container"}>
+      <div className={open ? 'open container' : 'container'}>
         <div
-          className='description dark medium'
+          className={color ? 'description light' : 'description dark'}
           dangerouslySetInnerHTML={{
             __html: html
           }}
         />
       </div>
       <button onClick={() => (open ? set(false) : set(true))}>
-        Mostrar {open ? "menos" : "mais"}
+        Mostrar {open ? 'menos' : 'mais'}
       </button>
       <style jsx>{`
         button {
@@ -28,7 +28,7 @@ export default ({ open, set, html }) => {
           transition: all 1s ease;
           max-height: 0;
           opacity: 0;
-          pointer-events: ${open ? "inherit" : "none"};
+          pointer-events: ${open ? 'inherit' : 'none'};
           padding: 30px 0;
           /* background: ${colors.light2}; */
         }

@@ -79,13 +79,18 @@ export default function CategoryHeader ({ slug, color, artFilter }) {
             </div>
             <div className='info'>
               <div
-                className={color ? `description ${color}` : 'description dark'}
+                className={
+                  color
+                    ? `description medium ${color}`
+                    : 'description medium dark'
+                }
                 dangerouslySetInnerHTML={{
                   __html: projectsHtml || thisCategory.intro
                 }}
               />
               {slug && (
                 <ShowMore
+                  color={color}
                   open={showMore}
                   set={setShowMore}
                   html={thisCategory.description}
@@ -187,6 +192,7 @@ export default function CategoryHeader ({ slug, color, artFilter }) {
                   /* width: 720px; */
                   /* margin: 5vh auto 0; */
                   width: 80%;
+                  max-width: 968px;
                 }
               }
               /* @media screen and (min-width: 1024px) {

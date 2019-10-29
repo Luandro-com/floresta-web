@@ -59,6 +59,12 @@ export default ({ children }) => (
       .dark a {
         color: ${colors.color1};
       }
+      .light p {
+        color: ${colors.light};
+      }
+      .light a {
+        color: ${colors.color2};
+      }
       .medium p {
         font-size: 1.2em;
       }
