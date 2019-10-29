@@ -35,7 +35,7 @@ export default () => {
           if (loading) return <Loading />
           return (
             <div className='wrapper'>
-              <Welcome background={'/static/default.png'} height='95vh' />
+              <Welcome background={'/static/news.jpeg'} height='95vh' />
               <Pattern pattern='/static/pattern_2.png'>
                 <div className='list'>
                   {newsAll.map(news => (

@@ -10,7 +10,7 @@ import colors from '../lib/colors'
 export default () => {
   return (
     <App>
-      <Welcome background={'/static/default.png'} height='95vh' />
+      <Welcome background={'/static/projetos.jpeg'} height='95vh' />
       <div className='pattern'>
         <div>
           <div className='header'>
