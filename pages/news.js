@@ -6,7 +6,7 @@ import Loading from '../components/Loading'
 import Pattern from '../components/Pattern'
 import NewsItem from '../components/NewsItem'
 import Welcome from '../components/Welcome'
-import Pagination from '../components/Pagination'
+import TagList from '../components/TagList'
 
 import colors from '../lib/colors'
 
@@ -41,15 +41,32 @@ export default () => {
           return (
             <div className='wrapper'>
               <Welcome background={'/static/news.jpeg'} height='95vh' />
-              <Pattern pattern='/static/pattern_2.png'>
-                <h1>Notícias</h1>
-                <div className='list'>
-                  {newsAll.map(news => (
-                    <NewsItem {...news} key={news.id} width='400px' />
-                  ))}
+              <div className='container'>
+                <div>
+                  <h1>Notícias</h1>
+                  <div className='list'>
+                    {newsAll.map(news => (
+                      <NewsItem {...news} key={news.id} width='400px' />
+                    ))}
+                  </div>
+                  {/* <Pagination /> */}
                 </div>
-                {/* <Pagination /> */}
-              </Pattern>
+                <div className='tag-list'>
+                  <TagList
+                    column
+                    titleColor={colors.dark}
+                    color={colors.color1}
+                    hoverColor={colors.light}
+                    hoverBackgroundColor={colors.color1}
+                    width={'250px'}
+                    weight={100}
+                    fontSize={'2.5em'}
+                    padding={'5px 25px'}
+                    radius={5}
+                  />
+                </div>
+              </div>
+
               <style jsx>{`
                 h1 {
                   text-align: center;
@@ -59,14 +76,17 @@ export default () => {
                 }
                 .pattern {
                   background: ${colors.light2};
-                  // background-image: url("/static/grafismo.png");
+                  background-image: url('/static/grafismo.png');
                   background-repeat: round;
                   margin-top: -5vh;
                   padding-bottom: 20vh;
                 }
                 .container {
                   margin: 0 auto;
-                  width: 90%;
+                  background: ${colors.light2};
+                }
+                .tag-list {
+                  padding-top: 15vh;
                 }
                 @media screen and (min-width: 1024px) {
                   .list {
@@ -76,7 +96,8 @@ export default () => {
                     justify-content: space-between;
                   }
                   .container {
-                    max-width: 968px;
+                    display: flex;
+                    flex-flow: row nowrap;
                   }
                 }
               `}</style>
