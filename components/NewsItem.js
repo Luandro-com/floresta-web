@@ -1,3 +1,4 @@
+import SmallTagList from './SmallTagList'
 import colors from '../lib/colors'
 
 export default function NewsItem ({
@@ -9,7 +10,8 @@ export default function NewsItem ({
   description,
   link,
   width,
-  post
+  post,
+  tags
 }) {
   const isPost = !!(post && post.id)
   return (
@@ -30,6 +32,11 @@ export default function NewsItem ({
               (description ? description.substring(0, 100) + '...' : '')
           }}
         />
+        <div className='tag-wrapper'>
+          <div className='tag-container'>
+            <SmallTagList tags={tags} />
+          </div>
+        </div>
       </div>
       <style jsx>{`
         width: ${width || '100%'};
@@ -49,6 +56,7 @@ export default function NewsItem ({
 					border-radius: 20px 20px 0 0;
 				}
 				.title {
+          text-align: center;
           height: 60px;
           margin-top: -15px;
           padding: 5px 0 15px;
@@ -70,6 +78,14 @@ export default function NewsItem ({
 					width: 90%;
 					margin: 0 auto;
 				}
+        .tag-wrapper {
+          height: 80px;
+          width: 100%;
+        }
+        .tag-container {
+          width: 90%;
+          margin: 0 auto;
+        }
         @media screen and (max-width: 1023px) {
           margin: 40px auto;
           .media, .title {

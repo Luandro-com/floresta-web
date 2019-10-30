@@ -1,20 +1,25 @@
-import Router from "next/router"
-import { Query } from "react-apollo"
-import gql from "graphql-tag"
-import App from "../components/App"
-import ErrorMessage from "../components/ErrorMessage"
-import Post from "../components/Post"
-import Loading from "../components/Loading"
-import BackButton from "../components/BackButton"
-import NewsList from "../components/NewsList"
+import Router from 'next/router'
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+import App from '../components/App'
+import ErrorMessage from '../components/ErrorMessage'
+import Post from '../components/Post'
+import Loading from '../components/Loading'
+import BackButton from '../components/BackButton'
+import NewsList from '../components/NewsList'
 
-import colors from "../lib/colors"
+import colors from '../lib/colors'
 
 export const NEWS = gql`
   query($id: ID, $slug: String) {
     news(slug: $slug, id: $id) {
       id
       media
+      tags {
+        id
+        name
+        slug
+      }
       post {
         id
         title
@@ -50,7 +55,7 @@ export default () => {
                   <BackButton top='52%' />
                 </div>
                 <div className='container'>
-                  <Post {...news.post} media={news.media} />
+                  <Post {...news.post} media={news.media} tags={news.tags} />
                 </div>
                 <div className='list'>
                   <NewsList />
@@ -59,9 +64,9 @@ export default () => {
 
               <style jsx>{`
                 margin: 0 auto;
-                padding: 10vh 0;
+                padding: 5vh 0;
                 background: ${colors.dark2};
-                background-image: url("/static/pattern_2.png");
+                background-image: url('/static/pattern_2.png');
                 background-repeat: round;
                 width: 100%;
                 section {

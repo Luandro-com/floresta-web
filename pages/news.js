@@ -19,6 +19,11 @@ export const NEWS_ALL = gql`
       link
       title
       media
+      tags {
+        id
+        name
+        slug
+      }
       post {
         id
       }
@@ -37,6 +42,7 @@ export default () => {
             <div className='wrapper'>
               <Welcome background={'/static/news.jpeg'} height='95vh' />
               <Pattern pattern='/static/pattern_2.png'>
+                <h1>Notícias</h1>
                 <div className='list'>
                   {newsAll.map(news => (
                     <NewsItem {...news} key={news.id} width='400px' />
@@ -45,6 +51,12 @@ export default () => {
                 {/* <Pagination /> */}
               </Pattern>
               <style jsx>{`
+                h1 {
+                  text-align: center;
+                  color: ${colors.dark};
+                  font-weight: 500;
+                  margin: 70px auto;
+                }
                 .pattern {
                   background: ${colors.light2};
                   // background-image: url("/static/grafismo.png");

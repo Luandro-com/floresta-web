@@ -1,7 +1,9 @@
-import NewsList from "./NewsList"
-import colors from "../lib/colors"
+import NewsList from './NewsList'
+import SmallTagList from './SmallTagList'
 
-export default ({ id, slug, title, body, media }) => {
+import colors from '../lib/colors'
+
+export default ({ id, slug, title, body, media, tags }) => {
   return (
     <main>
       <div className='media' />
@@ -15,6 +17,7 @@ export default ({ id, slug, title, body, media }) => {
               }}
             />
           </div>
+          <SmallTagList tags={tags} />
         </div>
       </div>
       <style jsx>{`

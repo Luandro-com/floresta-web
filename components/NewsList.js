@@ -15,6 +15,11 @@ export const NEWS_ALL = gql`
       intro
       link
       title
+      tags {
+        id
+        name
+        slug
+      }
       media
       post {
         id
