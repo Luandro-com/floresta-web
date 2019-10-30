@@ -9,7 +9,9 @@ export default ({ projects, title }) => (
     <div className='container'>
       {projects &&
         projects.map(project => (
-          <ProjectItem height={projectHeight} {...project} key={project.id} />
+          <div key={project.id} className='project-item'>
+            <ProjectItem height={projectHeight} {...project} />
+          </div>
         ))}
       {!projects && <ProjectItem height={projectHeight} />}
       {/* <Pagination /> */}
@@ -24,6 +26,9 @@ export default ({ projects, title }) => (
       .container {
         width: 100%;
         margin: 0 auto;
+      }
+      .project-item {
+        margin: 10px auto;
       }
       @media screen and (min-width: 845px) {
         .container {

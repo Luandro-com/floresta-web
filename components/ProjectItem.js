@@ -3,29 +3,6 @@ import TagItem from './TagItem'
 import colors from '../lib/colors'
 import Dialog from './Dialog'
 
-const TagList = ({ tags, limit }) => (
-  <div>
-    {tags
-      .filter((t, key) => (limit ? key < limit : key))
-      .map(tag => (
-        <TagItem
-          key={tag.id}
-          {...tag}
-          color={colors.light}
-          backgroundColor={colors.color1}
-          padding='3px 10px'
-          radius={5}
-          margin={'10px 2px'}
-          fontSize={'1em'}
-        />
-      ))}
-    <style jsx>{`
-      display: flex;
-      flex-flow: row wrap;
-    `}</style>
-  </div>
-)
-
 export default function ProjectItem ({
   height,
   slug = '',
@@ -86,14 +63,14 @@ export default function ProjectItem ({
 			border-radius: 35px 35px 0 0;
 			background-image: url("${media}");
 			background-size: cover;
-			height: 350px;
+			height: ${height || '350'}px;
 			width: 100%;
 		}
 		.info {
 			width: 100%;
 		}
 		.info-container {
-      padding: 30px 0;
+      padding: 15px 0;
 			width: 90%;
 			margin: 0 auto;
 			display: flex;
@@ -102,7 +79,7 @@ export default function ProjectItem ({
 		}
 		.description {
 			display: block;
-			max-height: 250px;
+			max-height: ${height || '350'}ox;
 		}
 		.tag-list {
 			display: flex;
@@ -128,10 +105,11 @@ export default function ProjectItem ({
 			color: ${colors.light};
 		}
 		@media screen and (min-width: 845px) {
-			margin: 10px auto;
+			/* margin: 10px auto; */
 			display: flex;
 			flex-flow: row nowrap;
 			align-items: center;
+			margin: 0 auto;
 			.media, .media-link {
 				display: none;
 			}
@@ -140,11 +118,14 @@ export default function ProjectItem ({
 				border-radius: 35px 0 0 35px;
 				background-image: url("${media}");
 				background-size: cover;
-				height: 100%;
-				/* height: ${height}px; */
+				height: ${height}px;
 				width: 60%;
 			}
+			.info-container {
+				padding: 0;
+			}
 			.info {
+				/* height: ${height - 30}px; */
 				width: 40%;
 			}
       	}
@@ -152,3 +133,26 @@ export default function ProjectItem ({
     </div>
   )
 }
+
+const TagList = ({ tags, limit }) => (
+  <div>
+    {tags
+      .filter((t, key) => (limit ? key < limit : key))
+      .map(tag => (
+        <TagItem
+          key={tag.id}
+          {...tag}
+          color={colors.light}
+          backgroundColor={colors.color1}
+          padding='3px 10px'
+          radius={5}
+          margin={'10px 2px'}
+          fontSize={'1em'}
+        />
+      ))}
+    <style jsx>{`
+      display: flex;
+      flex-flow: row wrap;
+    `}</style>
+  </div>
+)
