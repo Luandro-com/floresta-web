@@ -79,11 +79,12 @@ export default () => {
                   background-image: url('/static/grafismo.png');
                   background-repeat: round;
                   margin-top: -5vh;
-                  padding-bottom: 20vh;
+                  padding-bottom: 50vh;
                 }
                 .container {
                   margin: 0 auto;
                   background: ${colors.light2};
+                  padding-bottom: 50vh;
                 }
                 .tag-list {
                   padding-top: 15vh;
