@@ -15,27 +15,28 @@ export default function NewsItem ({
 }) {
   const isPost = !!(post && post.id)
   return (
-    <a
-      target={isPost ? '' : '_blank'}
-      href={isPost ? `/blog?${slug ? `slug=${slug}` : `id=${id}`}` : link || ''}
-    >
-      <div className='container'>
+    <div className='container'>
+      <a
+        target={isPost ? '' : '_blank'}
+        href={
+          isPost ? `/blog?${slug ? `slug=${slug}` : `id=${id}`}` : link || ''
+        }
+      >
         <div className='media' />
         <div className='title'>
           <h3>{title || ''}</h3>
         </div>
-        <div
-          className='description dark'
-          dangerouslySetInnerHTML={{
-            __html:
-              intro ||
-              (description ? description.substring(0, 100) + '...' : '')
-          }}
-        />
-        <div className='tag-wrapper'>
-          <div className='tag-container'>
-            <SmallTagList tags={tags} />
-          </div>
+      </a>
+      <div
+        className='description dark'
+        dangerouslySetInnerHTML={{
+          __html:
+            intro || (description ? description.substring(0, 100) + '...' : '')
+        }}
+      />
+      <div className='tag-wrapper'>
+        <div className='tag-container'>
+          <SmallTagList tags={tags} />
         </div>
       </div>
       <style jsx>{`
@@ -94,6 +95,6 @@ export default function NewsItem ({
 
         }
 			`}</style>
-    </a>
+    </div>
   )
 }
