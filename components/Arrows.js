@@ -1,26 +1,26 @@
-import colors from "../lib/colors"
+import colors from '../lib/colors'
 
 export default ({ top, animate, left, right, size }) => (
   <div className='arrow'>
-    <span className={animate ? "animate" : ""} />
-    <span className={animate ? "animate" : ""} />
-    <span className={animate ? "animate" : ""} />
+    <span className={animate ? 'animate' : ''} />
+    <span className={animate ? 'animate' : ''} />
+    <span className={animate ? 'animate' : ''} />
     <style jsx>{`
       .arrow {
         position: absolute;
-        top: ${top ? top : animate ? "145%" : "200%"};
-        left: ${typeof left === "string" ? left : "50%"};
+        top: ${top || (animate ? '160%' : '200%')};
+        left: ${typeof left === 'string' ? left : '50%'};
         transform: translate(-50%, -50%);
       }
       .arrow span {
-        margin-top: ${animate ? "-40px" : "-100%"};
+        margin-top: ${animate ? '-40px' : '-100%'};
         position: relative;
         display: block;
-        width: ${size || "35px"};
-        height: ${size || "35px"};
+        width: ${size || '35px'};
+        height: ${size || '35px'};
         border-bottom: 2px solid ${colors.light};
         border-right: 2px solid ${colors.light};
-        transform: rotate(${left ? "135" : right ? "315" : "90"}deg);
+        transform: rotate(${left ? '135' : right ? '315' : '90'}deg);
       }
       .arrow span:nth-of-type(1) {
         left: ${animate ? 0 : 5}px;

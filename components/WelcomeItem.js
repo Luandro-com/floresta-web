@@ -2,23 +2,29 @@ import { animateScroll as scroll } from 'react-scroll'
 import Arrows from './Arrows'
 import colors from '../lib/colors'
 
-export default ({ background, text, arrow }) => {
+export default ({ background, text, arrow, link, linkText }) => {
   let viewSize = 800
   if (process.browser) {
     viewSize = window.innerHeight - 50
   }
   return (
     <div className='wrapper'>
-      {text && (
-        <div className='info'>
-          <h2>{text}</h2>
-          {arrow && (
-            <a onClick={() => scroll.scrollTo(viewSize)}>
-              <Arrows animate />
-            </a>
-          )}
-        </div>
-      )}
+      {text ||
+        (link && (
+          <div className='info'>
+            {text && !link && <h2>{text}</h2>}
+            {link && linkText && (
+              <a href={`/category?slug=${link}`}>
+                <h2>{linkText}</h2>
+              </a>
+            )}
+            {arrow && (
+              <a onClick={() => scroll.scrollTo(viewSize)}>
+                <Arrows animate />
+              </a>
+            )}
+          </div>
+        ))}
       <style jsx>{`
       .wrapper {
         background-color: ${colors.color4};
@@ -30,7 +36,7 @@ export default ({ background, text, arrow }) => {
         backgroundsize: cover;
       }
 
-        a {
+      a {
 				margin-top: -50vh;
 			}
 			h2 {

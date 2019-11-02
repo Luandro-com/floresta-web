@@ -13,15 +13,21 @@ export const CONTENT = gql`
       title
       subTitle
     }
+    categories {
+      id
+      slug
+      name
+    }
   }
 `
 
 const HomeWelcome = ({ router: { pathname } }) => (
   <Query query={CONTENT}>
-    {({ loading, error, data: { content } }) => {
+    {({ loading, error, data: { content, categories } }) => {
       return (
         <Welcome
           text={loading || error ? '' : content.subTitle}
+          links={loading || error ? [] : categories}
           logo={loading || error ? '' : content.logo}
           background={loading || error ? '' : content.headerImages}
           arrow

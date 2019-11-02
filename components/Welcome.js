@@ -11,9 +11,9 @@ const Controls = ({ count, current, goToSlide }) => {
         onClick={() => goToSlide(index)}
         style={{
           background: current === index ? colors.color1 : colors.light,
-          width: 10,
-          height: 10,
-          borderRadius: 10,
+          width: 15,
+          height: 15,
+          borderRadius: 15,
           margin: '0 5px',
           cursor: 'pointer'
         }}
@@ -23,14 +23,14 @@ const Controls = ({ count, current, goToSlide }) => {
   return elements
 }
 
-export default ({ text, background, arrow, height }) => {
+export default ({ text, background, arrow, height, links }) => {
   return (
     <section>
       {Array.isArray(background) ? (
         <Carousel
           // wrapAround
           autoplay={background.length > 1}
-          autoplayInterval={800}
+          autoplayInterval={3000}
           renderBottomCenterControls={({
             currentSlide,
             goToSlide,
@@ -47,9 +47,14 @@ export default ({ text, background, arrow, height }) => {
           renderCenterLeftControls={({ previousSlide }) => null}
           renderCenterRightControls={({ nextSlide }) => null}
         >
-          {background.map(image => (
-            <div key={image}>
-              <WelcomeItem background={image} text={text} arrow={arrow} />
+          {links.map((link, index) => (
+            <div key={link.id}>
+              <WelcomeItem
+                background={background[index]}
+                link={`${link.slug}`}
+                linkText={link.name}
+                arrow={arrow}
+              />
             </div>
           ))}
         </Carousel>
