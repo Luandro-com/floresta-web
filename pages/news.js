@@ -84,7 +84,7 @@ export default () => {
                 .container {
                   margin: 0 auto;
                   background: ${colors.light2};
-                  padding-bottom: 50vh;
+                  padding-bottom: 5vh;
                 }
                 .tag-list {
                   padding-top: 15vh;

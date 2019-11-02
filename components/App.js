@@ -1,4 +1,5 @@
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 import colors from '../lib/colors'
 
@@ -6,6 +7,7 @@ export default ({ children }) => (
   <main>
     <Header />
     {children}
+    <Footer />
     <style jsx global>{`
       * {
         font-family: 'Titillium Web', sans-serif;

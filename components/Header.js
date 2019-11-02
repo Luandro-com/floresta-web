@@ -14,10 +14,6 @@ export const CONTENT = gql`
   query {
     content {
       logo
-      youtubeLink
-      facebookLink
-      instagramLink
-      flickrLink
     }
   }
 `
@@ -113,39 +109,6 @@ const Header = ({ router: { pathname } }) => {
                       Notícias
                     </a>
                   </Link>
-                  <div className='social'>
-                    <a
-                      className='icon'
-                      target='_blank'
-                      href={facebookLink || 'https://facebook.com'}
-                    >
-                      <img
-                        src='/static/facebook_icon.png'
-                        style={{ width: 10 }}
-                      />
-                    </a>
-                    <a
-                      className='icon'
-                      target='_blank'
-                      href={youtubeLink || 'https://youtube.com'}
-                    >
-                      <img src='/static/youtube_icon.png' />
-                    </a>
-                    <a
-                      className='icon'
-                      target='_blank'
-                      href={flickrLink || 'https://flickr.com'}
-                    >
-                      <img src='/static/flickr_icon.png' />
-                    </a>
-                    <a
-                      className='icon'
-                      target='_blank'
-                      href={instagramLink || 'https://instagram.com'}
-                    >
-                      <img src='/static/instagram_icon.png' />
-                    </a>
-                  </div>
                 </div>
               </div>
               <style jsx>{`
@@ -195,10 +158,7 @@ const Header = ({ router: { pathname } }) => {
                   border-bottom: 500px solid transparent;
                   border-right: 500px solid ${colors.dark};
                 }
-                img {
-                  width: 15px;
-                  margin: 0 auto;
-                }
+
                 a {
                   text-decoration: none;
                   color: white;
@@ -243,32 +203,12 @@ const Header = ({ router: { pathname } }) => {
                   opacity: 1;
                   transition: all 0.8s ease;
                 }
-                .social {
-                  padding-top: 3vh;
-                  display: flex;
-                  flex-flow: row nowrap;
-                  align-items: center;
-                }
                 .is-active,
                 a:hover {
                   background: ${colors.color1};
                 }
                 .open {
                   left: 0;
-                }
-                a:hover img {
-                  filter: brightness(0) invert(1);
-                }
-                .icon {
-                  width: 24px;
-                  height: 14px;
-                  padding: 10px 5px;
-                  border-radius: 100%;
-                  background: white;
-                  font-size: 0;
-                  text-align: center;
-                  display: flex;
-                  align-items: center;
                 }
                 @media screen and (max-width: 967px) {
                   .logo {
@@ -329,7 +269,7 @@ const Header = ({ router: { pathname } }) => {
                     display: none;
                   }
                 }
-                
+
                 @media screen and (min-width: 1024px) {
                   .menu {
                     width: 85%;
