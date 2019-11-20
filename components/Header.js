@@ -33,13 +33,7 @@ const Header = ({ router: { pathname } }) => {
         if (error) return <h2>Oops</h2>
         if (loading) return <Loading />
         if (data && data.content) {
-          const {
-            logo,
-            youtubeLink,
-            facebookLink,
-            instagramLink,
-            flickrLink
-          } = data.content
+          const { logo } = data.content
           return (
             <header className={scrolled ? 'header-fade' : ''}>
               <div
@@ -255,7 +249,7 @@ const Header = ({ router: { pathname } }) => {
                     height: 7vh;
                   }
                   .menu {
-                    margin: 0 auto;
+                    margin: 25px auto;
                     padding: 25px 0;
                     margin-bottom: 25px;
                     width: 90%;
