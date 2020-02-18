@@ -31,7 +31,7 @@ export default function TagList ({
 }) {
   return (
     <Query query={PROJECT_TAGS}>
-      {({ loading, error, data: { projectTags }, fetchMore }) => {
+      {({ loading, error, data, fetchMore }) => {
         if (error) return <ErrorMessage message='Error loading posts.' />
         if (loading) return <Loading />
         // const areMorePosts = allPosts.length < _allPostsMeta.count
@@ -39,7 +39,7 @@ export default function TagList ({
           <section>
             <h2>Tags</h2>
             <div className='list'>
-              {projectTags.map(tag => (
+              {data.projectTags.map(tag => (
                 <TagItem
                   {...tag}
                   key={tag.id}

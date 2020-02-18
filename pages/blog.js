@@ -45,7 +45,7 @@ export default () => {
   return (
     <App>
       <Query query={NEWS} variables={variable}>
-        {({ loading, error, data: { news } }) => {
+        {({ loading, error, data }) => {
           if (error) return <ErrorMessage message='Error loading posts.' />
           if (loading) return <Loading />
           return (
@@ -55,7 +55,7 @@ export default () => {
                   <BackButton top='52%' />
                 </div>
                 <div className='container'>
-                  <Post {...news.post} media={news.media} tags={news.tags} />
+                  <Post {...data.news.post} media={data.news.media} tags={data.news.tags} />
                 </div>
                 <div className='list'>
                   <NewsList />

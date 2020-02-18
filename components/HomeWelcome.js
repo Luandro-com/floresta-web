@@ -23,13 +23,16 @@ export const CONTENT = gql`
 
 const HomeWelcome = ({ router: { pathname } }) => (
   <Query query={CONTENT}>
-    {({ loading, error, data: { content, categories } }) => {
+    {({ loading, error, data }) => {
+      if (error) return ''
+      if (loading) return ''
+
       return (
         <Welcome
-          text={loading || error ? '' : content.subTitle}
-          links={loading || error ? [] : categories}
-          logo={loading || error ? '' : content.logo}
-          background={loading || error ? '' : content.headerImages}
+          text={loading || error ? '' : data.content.subTitle}
+          links={loading || error ? [] : data.categories}
+          logo={loading || error ? '' : data.content.logo}
+          background={loading || error ? '' : data.content.headerImages}
           arrow
           height='100vh'
         />

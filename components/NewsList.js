@@ -33,7 +33,7 @@ export default function NewsList () {
   const {
     loading,
     error,
-    data: { newsAll },
+    data,
     fetchMore
   } = useQuery(NEWS_ALL, {
     // variables: { page }
@@ -63,11 +63,11 @@ export default function NewsList () {
     })
     setFetching(false)
   }
-  // if (newsAll && newsAll.length > 0 && !fetching && page) {
+  // if (data.newsAll && data.newsAll.length > 0 && !fetching && page) {
   //   more()
   // }
   if (error) return <ErrorMessage message='Error loading posts.' />
-  if (loading || !newsAll) return <Loading />
+  if (loading || !data.newsAll) return <Loading />
   return (
     <section>
       <h2>Notícias</h2>
@@ -98,7 +98,7 @@ export default function NewsList () {
               : null
           }
         >
-          {newsAll.map(news => (
+          {data.newsAll.map(news => (
             <NewsItem {...news} key={news.id} />
           ))}
         </Carousel>

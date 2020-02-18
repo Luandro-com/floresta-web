@@ -35,7 +35,7 @@ export default () => {
   return (
     <App>
       <Query query={NEWS_ALL}>
-        {({ loading, error, data: { newsAll } }) => {
+        {({ loading, error, data }) => {
           if (error) return <ErrorMessage message='Error loading posts.' />
           if (loading) return <Loading />
           return (
@@ -45,7 +45,7 @@ export default () => {
                 <div>
                   <h1>Notícias</h1>
                   <div className='list'>
-                    {newsAll.map(news => (
+                    {data.newsAll.map(news => (
                       <NewsItem {...news} key={news.id} width='400px' />
                     ))}
                   </div>

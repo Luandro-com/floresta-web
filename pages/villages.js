@@ -28,7 +28,7 @@ export default () => {
   return (
     <App>
       <Query query={DESCRIPTION}>
-        {({ loading, error, data: { content } }) => {
+        {({ loading, error, data }) => {
           if (error) return <ErrorMessage message='Error loading posts.' />
           if (loading) return <Loading />
           return (
@@ -36,8 +36,8 @@ export default () => {
               <Welcome background={'/static/village.jpeg'} height='95vh' />
               <Pattern pattern='/static/pattern_3.png'>
                 <VillageList
-                  villages={content.villages}
-                  text={content.villageHtml}
+                  villages={data.content.villages}
+                  text={data.content.villageHtml}
                 />
               </Pattern>
               <style jsx>{`

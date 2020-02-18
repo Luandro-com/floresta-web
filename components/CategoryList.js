@@ -18,7 +18,7 @@ export const PROJECT_CATEGORIES = gql`
 export default function CategoryList ({ noTitle }) {
   return (
     <Query query={PROJECT_CATEGORIES}>
-      {({ loading, error, data: { categories }, fetchMore }) => {
+      {({ loading, error, data, fetchMore }) => {
         if (error) return <ErrorMessage message='Error loading posts.' />
         if (loading) return <Loading />
         // const areMorePosts = allPosts.length < _allPostsMeta.count
@@ -27,7 +27,7 @@ export default function CategoryList ({ noTitle }) {
             <section>
               {!noTitle && <h2>Linhas de ação</h2>}
               <div className='container'>
-                {categories.map(category => (
+                {data.categories.map(category => (
                   <CategoryItem {...category} key={category.id} />
                 ))}
               </div>

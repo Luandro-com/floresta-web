@@ -19,7 +19,7 @@ export default () => {
   return (
     <App>
       <Query query={DESCRIPTION}>
-        {({ loading, error, data: { content } }) => {
+        {({ loading, error, data }) => {
           if (error) return <ErrorMessage message='Error loading posts.' />
           if (loading) return <Loading />
           return (
@@ -30,7 +30,7 @@ export default () => {
                   className='description color1'
                   dangerouslySetInnerHTML={{
                     __html:
-                      content && content.aboutHtml ? content.aboutHtml : ''
+                      data.content && data.content.aboutHtml ? data.content.aboutHtml : ''
                   }}
                 />
               </Pattern>

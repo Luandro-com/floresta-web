@@ -43,13 +43,13 @@ export default function CategoryHeader ({ slug, color, artFilter }) {
   }
   return (
     <Query query={PROJECT_CATEGORIES}>
-      {({ loading, error, data: { categories }, fetchMore }) => {
+      {({ loading, error, data, fetchMore }) => {
         if (error) return <ErrorMessage message='Error loading posts.' />
         if (loading) return <Loading />
         // const areMorePosts = allPosts.length < _allPostsMeta.count
         const thisCategory = slug
-          ? categories.filter(c => c.slug === slug)[0]
-          : categories[0]
+          ? data.categories.filter(c => c.slug === slug)[0]
+          : data.categories[0]
 
         return (
           <section>
@@ -58,16 +58,16 @@ export default function CategoryHeader ({ slug, color, artFilter }) {
                 <div className='title'>
                   <img src='/static/grafismo_p.png' />
                   <h2>
-                    {categories.filter(c => c.slug === slug)[0]
-                      ? categories.filter(c => c.slug === slug)[0].name
+                    {data.categories.filter(c => c.slug === slug)[0]
+                      ? data.categories.filter(c => c.slug === slug)[0].name
                       : 'Inválido'}
                   </h2>
                 </div>
               )}
               {slug && <div className='divider' />}
               <div className='list'>
-                {categories &&
-                  categories.map(category => (
+                {data.categories &&
+                  data.categories.map(category => (
                     <CategoryHeaderItem
                       color={color}
                       {...category}

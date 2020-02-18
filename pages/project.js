@@ -39,21 +39,21 @@ export default () => {
   return (
     <App>
       <Query query={PROJECT} variables={{ slug }}>
-        {({ loading, error, data: { project } }) => {
+        {({ loading, error, data }) => {
           if (error) return <ErrorMessage message='Error loading posts.' />
           if (loading) return <Loading />
           return (
             <div>
               {/* <Welcome
-                background={project ? project.media : ""}
+                background={data.project ? data.project.media : ""}
                 height='95vh'
               /> */}
               <div className='pattern'>
                 {slug ? (
                   <div>
-                    {/* <CategoryHeader slug={project.categories.slug} /> */}
+                    {/* <CategoryHeader slug={data.project.categories.slug} /> */}
                     <PageLayout
-                      project={project}
+                      project={data.project}
                       tagTitleColor={colors.light}
                     />
                   </div>

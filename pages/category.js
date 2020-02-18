@@ -33,14 +33,19 @@ export default () => {
   }
 
   const {
-    data: { categories },
+    data,
     loading,
     error
   } = useQuery(PROJECT_CATEGORIES)
 
+  if (error) return ''
+  if (loading) return ''
+
   useEffect(
     () => {
       if (slug && categories && !loading && !error) {
+        var categories = data.categories
+
         if (slug === categories[0].slug) {
           return setTheme({
             backgroundImage: 'cultura-e-conhecimento',
@@ -79,7 +84,7 @@ export default () => {
         }
       }
     },
-    [slug, categories]
+    [slug, data.categories]
   )
 
   return (

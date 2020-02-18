@@ -15,9 +15,9 @@ export const CONTENT = gql`
 
 const CategoryWelcome = ({ router: { pathname } }) => (
   <Query query={CONTENT}>
-    {({ loading, error, data: { content } }) => {
+    {({ loading, error, data }) => {
       if (error) return <h2>Oops</h2>
-      return <Welcome text={loading ? '' : content.subTitle} />
+      return <Welcome text={loading ? '' : data.content.subTitle} />
     }}
   </Query>
 )

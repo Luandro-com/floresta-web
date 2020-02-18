@@ -17,19 +17,19 @@ export const HTML = gql`
 
 export default () => {
   const {
-    data: { content },
+    data,
     loading,
     error
   } = useQuery(HTML)
   return (
     <App>
       <Welcome background={"/static/default.png"} height='95vh' />
-      {!loading && !error && content && (
+      {!loading && !error && data.content && (
         <div className='info'>
           <div
             className={"description light medium"}
             dangerouslySetInnerHTML={{
-              __html: content.categoriesHtml
+              __html: data.content.categoriesHtml
             }}
           />
         </div>
