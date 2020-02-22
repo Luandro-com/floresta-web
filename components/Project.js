@@ -1,7 +1,7 @@
 import TagItem from "./TagItem"
 import colors from "../lib/colors"
 
-export default ({ name, description, media, tags }) => {
+export default ({ name, description, media, tags, photos }) => {
   return (
     <main>
       <div className='media' />
@@ -27,6 +27,15 @@ export default ({ name, description, media, tags }) => {
                 __html: description
               }}
             />
+            <div>
+              {photos.map(photo => (
+                <div>
+                  <img src={photo} />
+                  <br/>
+                  <br/>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -37,7 +46,7 @@ export default ({ name, description, media, tags }) => {
         max-width: 100%;
         h2 {
           color: ${colors.dark};
-          font-weight: 900;	
+          font-weight: 900;
         }
         .info {
           margin: 0 auto;
