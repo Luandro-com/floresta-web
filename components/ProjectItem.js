@@ -24,15 +24,15 @@ export default function ProjectItem ({
             <a href={`project?slug=${slug}`}>{name}</a>
           </h4>
           <div
-            className='description color1'
+            className='description ql-content color1'
             style={{ color: colors.color1 }}
             dangerouslySetInnerHTML={{
-              __html: description ? description.substring(0, 50) : ''
+              __html: description ? description.substring(0, 200)+'...' : ''
             }}
           />
           <div className='tag-list'>
-            <TagList tags={tags} limit={3} />
-            {tags.length > 3 && (
+            <TagList tags={tags} limit={1} />
+            {tags.length > 1 && (
               <div className='tag-more' onClick={() => setModal(true)}>
                 Mostrar todas
               </div>
@@ -58,7 +58,7 @@ export default function ProjectItem ({
 		}
 		h4 {
 			margin: 0 auto 1vh;
-      font-size: 2em;
+      font-size: 1.5em;
 		}
 		.media {
 			border-radius: 35px 35px 0 0;

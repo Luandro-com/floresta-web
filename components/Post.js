@@ -10,7 +10,7 @@ export default ({ id, slug, title, body, media, tags }) => {
       <div className='info'>
         <div className='info-container'>
           <h1>{title}</h1>
-          <div className='description color1'>
+          <div className='description ql-content color1'>
             <span
               dangerouslySetInnerHTML={{
                 __html: body
@@ -28,7 +28,7 @@ export default ({ id, slug, title, body, media, tags }) => {
         h1 {
           color: ${colors.dark};
           font-size: 2em;
-          font-weight: 900;	
+          font-weight: 900;
         }
         .info {
           margin: 0 auto;

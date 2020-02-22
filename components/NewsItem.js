@@ -28,7 +28,7 @@ export default function NewsItem ({
         </div>
       </a>
       <div
-        className='description dark'
+        className='description ql-content dark'
         dangerouslySetInnerHTML={{
           __html:
             intro || (description ? description.substring(0, 100) + '...' : '')

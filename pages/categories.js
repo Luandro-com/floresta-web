@@ -27,7 +27,7 @@ export default () => {
       {!loading && !error && data.content && (
         <div className='info'>
           <div
-            className={"description light medium"}
+            className={"description ql-content light medium"}
             dangerouslySetInnerHTML={{
               __html: data.content.categoriesHtml
             }}

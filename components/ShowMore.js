@@ -5,7 +5,7 @@ export default ({ open, set, html, color }) => {
     <div>
       <div className={open ? 'open container' : 'container'}>
         <div
-          className={color ? 'description light' : 'description dark'}
+          className={color ? 'description ql-content light' : 'description ql-content dark'}
           dangerouslySetInnerHTML={{
             __html: html
           }}

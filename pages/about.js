@@ -31,7 +31,7 @@ export default () => {
               <Welcome background={'/static/about.jpeg'} height='95vh' />
               <Pattern pattern={'/static/pattern_3.png'}>
                 <div
-                  className='description color1'
+                  className='description ql-content color1 ql-content'
                   dangerouslySetInnerHTML={{
                     __html:
                       data.content && data.content.aboutHtml ? data.content.aboutHtml : ''

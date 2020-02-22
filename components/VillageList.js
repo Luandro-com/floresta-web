@@ -23,7 +23,7 @@ export default ({ villages, text }) => {
   return (
     <div>
       <div
-        className='description color1'
+        className='description ql-content color1'
         dangerouslySetInnerHTML={{
           __html: text || ""
         }}

@@ -21,8 +21,8 @@ export default ({ name, description, media, tags, photos }) => {
               />
             ))}
           </div>
-          <div className='description color1'>
-            <span
+          <div className='description color1 ql-content'>
+            <div
               dangerouslySetInnerHTML={{
                 __html: description
               }}

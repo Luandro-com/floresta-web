@@ -2,6 +2,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 import colors from '../lib/colors'
+import "../lib/quill-content.css"
 
 export default ({ children }) => (
   <main>

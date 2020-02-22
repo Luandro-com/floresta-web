@@ -81,8 +81,8 @@ export default function CategoryHeader ({ slug, color, artFilter }) {
               <div
                 className={
                   color
-                    ? `description medium ${color}`
-                    : 'description medium dark'
+                    ? `description ql-content medium ${color}`
+                    : 'description ql-content medium dark'
                 }
                 dangerouslySetInnerHTML={{
                   __html: projectsHtml || thisCategory.intro

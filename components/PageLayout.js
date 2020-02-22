@@ -137,7 +137,7 @@ export default function PageLayout ({
       {/* {tags && !loading && !error && content && (
         <div className='info'>
           <div
-            className={"description light medium"}
+            className={"description ql-content light medium"}
             dangerouslySetInnerHTML={{
               __html: content.categoriesHtml
             }}
