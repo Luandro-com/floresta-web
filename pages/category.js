@@ -43,9 +43,14 @@ export default () => {
 
   useEffect(
     () => {
-      if (slug && categories && !loading && !error) {
-        var categories = data.categories
+      var categories = data.categories
+      console.log(slug);
+      console.log(categories);
+      console.log(!loading);
+      console.log(!error);
 
+      if (slug && categories && !loading && !error) {
+        console.log(categories[0].slug);
         if (slug === categories[0].slug) {
           return setTheme({
             backgroundImage: 'cultura-e-conhecimento',
