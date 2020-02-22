@@ -64,7 +64,7 @@ const Header = ({ router }) => {
               >
                 <Link href='/'>
                   <div className={scrolled ? 'logo disappear' : 'logo'}>
-                    <AnyImage src={logo} size='25vh' color={'white'} />
+                    <AnyImage src={logo} size='35vh' color={'white'} />
                   </div>
                 </Link>
                 { router &&
