@@ -115,6 +115,9 @@ export default () => {
             display: flex;
             align-items: center;
           }
+          h3 {
+            font-size: 2em;
+          }
         `}</style>
       </div>
     )

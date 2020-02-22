@@ -113,6 +113,7 @@ export default function NewsList () {
         }
         h2 {
           padding-bottom: 5vh;
+          font-size: 2em;
         }
         div {
           display: flex;

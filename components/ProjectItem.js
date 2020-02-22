@@ -58,6 +58,7 @@ export default function ProjectItem ({
 		}
 		h4 {
 			margin: 0 auto 1vh;
+      font-size: 2em;
 		}
 		.media {
 			border-radius: 35px 35px 0 0;

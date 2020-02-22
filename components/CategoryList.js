@@ -46,8 +46,8 @@ export default function CategoryList ({ noTitle }) {
                 text-align: center;
               }
               h2 {
-                /* font-size: 2em;
-                font-weight: 100; */
+                font-size: 2em;
+                /* font-weight: 100; */
                 padding-top: 10vh;
               }
               .container {

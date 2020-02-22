@@ -14,6 +14,10 @@ export const DESCRIPTION = gql`
     }
   }
 `
+const styleObj = {
+  color: 'white',
+  backgroundColor: 'red'
+};
 
 export default () => {
   return (
@@ -37,6 +41,12 @@ export default () => {
               <style jsx>{`
                 .description {
                   color: ${colors.dark};
+                }
+                .description > p {
+                  display: none;
+                }
+                strong {
+                  font-size: 100px !important;
                 }
               `}</style>
             </div>

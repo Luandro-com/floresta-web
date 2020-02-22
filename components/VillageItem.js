@@ -51,6 +51,7 @@ export default function VillageItem({
       position: relative;
       left: 0;
       width: 100px;
+      font-size: 2em;
 		}
     .media {
       display: inherit;

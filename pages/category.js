@@ -44,10 +44,6 @@ export default () => {
   useEffect(
     () => {
       var categories = data.categories
-      console.log(slug);
-      console.log(categories);
-      console.log(!loading);
-      console.log(!error);
 
       if (slug && categories && !loading && !error) {
         console.log(categories[0].slug);
