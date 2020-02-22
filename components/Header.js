@@ -18,7 +18,7 @@ export const CONTENT = gql`
   }
 `
 
-const Header = ({ router: { pathname } }) => {
+const Header = ({ router }) => {
   const [menuState, menuToggle] = React.useState(false)
   let position = {
     y: 0
@@ -67,43 +67,49 @@ const Header = ({ router: { pathname } }) => {
                     <AnyImage src={logo} size='25vh' color={'white'} />
                   </div>
                 </Link>
-
-                <div className='menu'>
-                  <span className={scrolled ? 'home' : 'home disappear'}>
-                    <Link href='/'>
-                      <a className={pathname === '/' ? 'is-active' : ''}>
-                        Início
+                { router &&
+                  <div className='menu'>
+                    <span className={scrolled ? 'home' : 'home disappear'}>
+                      <Link href='/'>
+                        <a className={router.pathname === '/' ? 'is-active' : ''}>
+                          Início
+                        </a>
+                      </Link>
+                    </span>
+                    <Link href='/about'>
+                      <a className={router.pathname === '/about' ? 'is-active' : ''}>
+                        Quem somos
                       </a>
                     </Link>
-                  </span>
-                  <Link href='/about'>
-                    <a className={pathname === '/about' ? 'is-active' : ''}>
-                      Quem somos
-                    </a>
-                  </Link>
-                  <Link href='/villages'>
-                    <a className={pathname === '/villages' ? 'is-active' : ''}>
-                      Aldeias
-                    </a>
-                  </Link>
-                  <Link href='/categories'>
-                    <a
-                      className={pathname === '/categories' ? 'is-active' : ''}
-                    >
-                      Linhas de ação
-                    </a>
-                  </Link>
-                  <Link href='/projects'>
-                    <a className={pathname === '/projects' ? 'is-active' : ''}>
-                      Projetos
-                    </a>
-                  </Link>
-                  <Link href='/news'>
-                    <a className={pathname === '/news' ? 'is-active' : ''}>
-                      Notícias
-                    </a>
-                  </Link>
-                </div>
+                    <Link href='/villages'>
+                      <a className={router.pathname === '/villages' ? 'is-active' : ''}>
+                        Aldeias
+                      </a>
+                    </Link>
+                    <Link href='/categories'>
+                      <a
+                        className={router.pathname === '/categories' ? 'is-active' : ''}
+                      >
+                        Linhas de ação
+                      </a>
+                    </Link>
+                    <Link href='/projects'>
+                      <a className={router.pathname === '/projects' ? 'is-active' : ''}>
+                        Projetos
+                      </a>
+                    </Link>
+                    <Link href='/project?slug=cooperativa-kayapo-de-produtos-da-floresta-cooba-y'>
+                      <a className={(router.pathname === '/project' && router.query.slug === 'cooperativa-kayapo-de-produtos-da-floresta-cooba-y') ? 'is-active' : ''}>
+                        Nossos produtos
+                      </a>
+                    </Link>
+                    <Link href='/news'>
+                      <a className={router.pathname === '/news' ? 'is-active' : ''}>
+                        Notícias
+                      </a>
+                    </Link>
+                  </div>
+                }
               </div>
               <style jsx>{`
                 header {

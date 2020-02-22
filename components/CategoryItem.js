@@ -12,7 +12,7 @@ export default function CategoryItem ({ slug, name, icon, media }) {
       <a href={`category?slug=${slug}`}>
         <div className='images' style={{ backgroundImage: `url(${media})` }}>
           <div className='icon'>
-            <AnyImage src={icon} width={boxHeight - 30} />
+            <AnyImage src={icon} width={boxHeight - 20} />
           </div>
         </div>
         <div className='info'>

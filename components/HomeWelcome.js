@@ -21,7 +21,7 @@ export const CONTENT = gql`
   }
 `
 
-const HomeWelcome = ({ router: { pathname } }) => (
+const HomeWelcome = () => (
   <Query query={CONTENT}>
     {({ loading, error, data }) => {
       if (error) return ''
