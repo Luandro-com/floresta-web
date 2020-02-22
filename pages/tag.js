@@ -16,6 +16,7 @@ export const TAG = gql`
       name
       description
       media
+      intro
       projects {
         id
         slug
@@ -59,7 +60,11 @@ export default () => {
               <h1>{data.projectTags[0].name}</h1>
               {!loading && !error && (
                 <div className='info'>
-                  <div
+                    <h2 dangerouslySetInnerHTML={{
+                        __html: data.projectTags[0].intro
+                      }}
+                    />
+                    <div
                     className={'description ql-content light medium'}
                     dangerouslySetInnerHTML={{
                       __html: data.projectTags[0].description
@@ -77,7 +82,7 @@ export default () => {
         }}
       </Query>
       <style jsx>{`
-        h1 {
+        h1, h2 {
           text-align: center;
         }
         .info {
