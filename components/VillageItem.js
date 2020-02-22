@@ -24,7 +24,7 @@ export default function VillageItem({
       <div className='info'>
         <div className='info-container'>
           <h4>
-            <a href={`project?slug=${slug}`}>{name}</a>
+            <a href={`village?slug=${slug}`}>{name}</a>
           </h4>
         </div>
       </div>

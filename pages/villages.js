@@ -13,13 +13,13 @@ export const DESCRIPTION = gql`
   query {
     content {
       villageHtml
-      villages {
-        id
-        photos
-        slug
-        name
-        media
-      }
+    }
+    villages {
+      id
+      photos
+      slug
+      name
+      media
     }
   }
 `
@@ -36,7 +36,7 @@ export default () => {
               <Welcome background={'/static/village.jpeg'} height='95vh' />
               <Pattern pattern='/static/pattern_3.png'>
                 <VillageList
-                  villages={data.content.villages}
+                  villages={data.villages}
                   text={data.content.villageHtml}
                 />
               </Pattern>
