@@ -44,9 +44,10 @@ export default ({ name, description, media, tags, photos }) => {
         background: ${colors.light};
         margin: 0 auto;
         max-width: 100%;
-        h2 {
+        h1 {
           color: ${colors.dark};
           font-weight: 900;
+          text-align: center;
         }
         .info {
           margin: 0 auto;
