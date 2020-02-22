@@ -41,7 +41,7 @@ export default function NewsItem ({
       </div>
       <style jsx>{`
         width: ${width || '100%'};
-        margin: 15px auto;
+        margin: auto;
 				.container {
 					background: ${colors.light};
 					display: flex;
@@ -58,9 +58,8 @@ export default function NewsItem ({
 				}
 				.title {
           text-align: center;
-          height: 60px;
           margin-top: -15px;
-          padding: 5px 0 15px;
+          padding: 10px 0 15px;
 					width: 100%;
 					background: ${colors.dark};
 				}
@@ -71,6 +70,10 @@ export default function NewsItem ({
           /* white-space: nowrap; */
           width: 98%;
 					/* font-weight: 600; */
+          height: 55px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
 				}
 				.description {
 					color: ${colors.dark};
@@ -78,6 +81,7 @@ export default function NewsItem ({
 					text-align: left;
 					width: 90%;
 					margin: 0 auto;
+          overflow-y: hidden;
 				}
         .tag-wrapper {
           height: 80px;
