@@ -47,6 +47,7 @@ export default function NewsItem ({
 					display: flex;
 					flex-flow: column;
 					border-radius: 20px;
+          margin-bottom: 30px;
 
 				}
 				.media {

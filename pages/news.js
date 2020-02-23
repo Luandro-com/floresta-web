@@ -41,8 +41,8 @@ export default () => {
           return (
             <div className='wrapper'>
               <Welcome background={'/static/news.jpeg'} height='95vh' />
-              <div className='container'>
-                <div>
+              <div className='container pattern'>
+                <div className=''>
                   <h1>Notícias</h1>
                   <div className='list'>
                     {data.newsAll.map(news => (
@@ -54,7 +54,7 @@ export default () => {
                 <div className='tag-list'>
                   <TagList
                     column
-                    titleColor={colors.dark}
+                    titleColor={colors.light}
                     color={colors.color1}
                     hoverColor={colors.light}
                     hoverBackgroundColor={colors.color1}
@@ -70,20 +70,19 @@ export default () => {
               <style jsx>{`
                 h1 {
                   text-align: center;
-                  color: ${colors.dark};
+                  color: ${colors.light};
                   font-weight: 500;
                   margin: 70px auto;
                 }
                 .pattern {
-                  background: ${colors.light2};
-                  background-image: url('/static/grafismo.png');
+                  background: ${colors.dark2};
+                  background-image: url('/static/pattern_2.png');
                   background-repeat: round;
                   margin-top: -5vh;
                   padding-bottom: 50vh;
                 }
                 .container {
                   margin: 0 auto;
-                  background: ${colors.light2};
                   padding-bottom: 5vh;
                 }
                 .tag-list {
