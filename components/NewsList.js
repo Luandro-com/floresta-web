@@ -129,7 +129,7 @@ export default function NewsList () {
           width: 50px;
         }
         .right {
-          left: 50px;
+          left: 35px;
         }
         @media screen and (min-width: 480px) {
           flex-flow: row;

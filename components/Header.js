@@ -187,7 +187,7 @@ const Header = ({ router }) => {
                   justify-content: flex-start;
                 }
                 .links {
-                  width: 100%;
+                  width: 93%;
                   height: 100vh;
                   position: fixed;
                   left: -300vw;

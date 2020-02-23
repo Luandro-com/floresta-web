@@ -33,7 +33,8 @@ export default ({ background, text, arrow, link, linkText }) => {
         height: 100%;
         width: 100%;
         backgroundposition: bottom;
-        backgroundsize: cover;
+        background-size: cover;
+        margin-top: 38px;
       }
 
       a {
@@ -46,7 +47,7 @@ export default ({ background, text, arrow, link, linkText }) => {
 			.info {
 				margin: 0 auto;
 				position: relative;
-				bottom: -65vh;
+				bottom: -45%;
 				width: 80%;
 				text-align: center;
 				text-transform: uppercase;
@@ -84,6 +85,12 @@ export default ({ background, text, arrow, link, linkText }) => {
 					font-size: 30px;
 				}
 			}
+      @media screen and (max-width: 968px) {
+        .wrapper {
+          margin-top: 100px
+        }
+      }
+
       `}</style>
     </div>
   )

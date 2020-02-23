@@ -31,7 +31,7 @@ export default function NewsItem ({
         className='description ql-content dark'
         dangerouslySetInnerHTML={{
           __html:
-            intro || (description ? description.substring(0, 100) + '...' : '')
+            intro || (description ? description.replace(/<\/?[a-z][a-z0-9]*[^<>]*>/ig, "").substring(0, 10) + '...' : '')
         }}
       />
       <div className='tag-wrapper'>
@@ -47,7 +47,7 @@ export default function NewsItem ({
 					display: flex;
 					flex-flow: column;
 					border-radius: 20px;
-          margin-bottom: 30px;
+          margin-top: 45px;
 
 				}
 				.media {
@@ -78,11 +78,12 @@ export default function NewsItem ({
 				}
 				.description {
 					color: ${colors.dark};
-					height: 300px;
+					height: 143px;
 					text-align: left;
 					width: 90%;
 					margin: 0 auto;
           overflow-y: hidden;
+          padding: 10px;
 				}
         .tag-wrapper {
           height: 80px;
@@ -97,6 +98,10 @@ export default function NewsItem ({
           .media, .title {
             margin-top: -40px;
           }
+
+        }
+        @media screen and (max-width: 400px) {
+          width: 100%
 
         }
 			`}</style>

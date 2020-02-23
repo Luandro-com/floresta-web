@@ -72,7 +72,8 @@ export default () => {
                   text-align: center;
                   color: ${colors.light};
                   font-weight: 500;
-                  margin: 70px auto;
+                  margin: 0;
+                  padding-top: 40px;
                 }
                 .pattern {
                   background: ${colors.dark2};

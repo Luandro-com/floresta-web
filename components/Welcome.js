@@ -63,13 +63,16 @@ export default ({ text, background, arrow, height, links }) => {
       )}
       <style jsx>{`
         height: ${height || '40vh'};
+        li > div {
+          top: -4px
+        }
         .bottom-controls {
           height: 50px;
           width: 200px;
           margin: 0 auto;
           text-align: center;
           position: absolute;
-          top: -10vh;
+          top: -18vh;
           right: -100px;
           display: flex;
           flex-flow: row nowrap;

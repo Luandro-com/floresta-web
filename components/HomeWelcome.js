@@ -34,7 +34,7 @@ const HomeWelcome = () => (
           logo={loading || error ? '' : data.content.logo}
           background={loading || error ? '' : data.content.headerImages}
           arrow
-          height='100vh'
+          height='107vh'
         />
       )
     }}
