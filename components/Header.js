@@ -212,7 +212,8 @@ const Header = ({ router }) => {
                 }
                 @media screen and (max-width: 967px) {
                   .logo {
-                    padding-top: 18vh;
+                    // padding-top: 18vh;
+                    top: 30px;
                   }
                   .menu {
                     display: flex;
@@ -224,7 +225,7 @@ const Header = ({ router }) => {
                 }
                 @media screen and (min-width: 968px) {
                   .logo {
-                    display: none;
+                    // display: none;
                   }
                   .disappear {
                     opacity: 0;
@@ -237,7 +238,7 @@ const Header = ({ router }) => {
                   }
                   .links {
                     /* width: 90%; */
-                    margin-left: -50%;
+                    margin-left: -49%;
                     /* font-size: 30px; */
                     height: 11vh;
                     position: absolute;
