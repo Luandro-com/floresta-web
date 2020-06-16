@@ -156,12 +156,10 @@ export default function PageLayout ({
       </div>
           <div className='tag-list'>
           <TagList
-            column
             titleColor={tagTitleColor || colors.dark}
             color={colors.color1}
             hoverColor={colors.light}
             hoverBackgroundColor={colors.color1}
-            width={'250px'}
             weight={600}
             fontSize={'2.5em'}
             padding={'5px 25px'}
@@ -207,7 +205,6 @@ export default function PageLayout ({
             justify-content: space-between;
           }
           .tag-list {
-            width: 200px;
             
           }
         }

@@ -51,23 +51,17 @@ export default () => {
                   </div>
                   {/* <Pagination /> */}
                 </div>
-                <div className='tag-list'>
-                 
-                </div>
                 <TagList
-                    column
                     titleColor={colors.light}
                     color={colors.color1}
                     hoverColor={colors.light}
                     hoverBackgroundColor={colors.color1}
-                    width={'250px'}
                     weight={100}
                     fontSize={'2.5em'}
                     padding={'5px 25px'}
                     radius={5}
                   />
               </div>
-
               <style jsx>{`
                 h1 {
                   text-align: center;
@@ -98,7 +92,6 @@ export default () => {
                     justify-content: space-between;
                   }
                   .container {
-                    display: flex;
                     flex-flow: row nowrap;
                   }
                 }
