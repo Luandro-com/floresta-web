@@ -52,7 +52,9 @@ export default () => {
                   {/* <Pagination /> */}
                 </div>
                 <div className='tag-list'>
-                  <TagList
+                 
+                </div>
+                <TagList
                     column
                     titleColor={colors.light}
                     color={colors.color1}
@@ -64,7 +66,6 @@ export default () => {
                     padding={'5px 25px'}
                     radius={5}
                   />
-                </div>
               </div>
 
               <style jsx>{`

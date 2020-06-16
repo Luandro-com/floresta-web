@@ -29,7 +29,7 @@ export default function VillageItem({
         </div>
       </div>
       <style jsx>{`
-		background: ${colors.light};
+    background: ${colors.light};
 		width: 100%;
     margin: 0 auto;
 		display: flex;

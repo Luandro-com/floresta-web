@@ -13,7 +13,7 @@ export default ({ children, pattern, width, backgrundColor }) => {
         }
         .container {
           margin: 0 auto;
-          width: ${width || '90%'};
+          width: ${width || '100%'};
           background: ${colors.light2};
           min-height: 100vh;
           padding: 2vh;

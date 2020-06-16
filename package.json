@@ -37,5 +37,8 @@
     "react-svg": "^10.0.20"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/runtime-corejs2": "^7.9.6"
+  }
 }
