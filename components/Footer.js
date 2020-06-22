@@ -25,7 +25,8 @@ export default () => {
       youtubeLink,
       facebookLink,
       instagramLink,
-      flickrLink
+      flickrLink,
+      fundoLink
     } = contentQuery.data.content
     return (
       <div>
@@ -64,12 +65,18 @@ export default () => {
                 <img src='/static/instagram_icon.png' />
               </a>
             </div>
+            <a
+             target='_blank'
+             href={fundoLink || 'http://www.fundoamazonia.gov.br/'}
+            >
             <img src='/static/fundo_amazonia.jpg' style={{ width: 200 }} />
+          </a>
+          Rua Lateral nº 38 <br></br>Bairro: JK CEP:68.385-000  <br></br> Tucumã/Pará
           </div>
           <div className='section' />
         </div>
         <style jsx>{`
-          background: ${colors.color3};
+          background: ${colors.color5};
           .container {
             width: 90%;
             max-width: 968px;
@@ -118,6 +125,7 @@ export default () => {
           h3 {
             font-size: 2em;
           }
+          
         `}</style>
       </div>
     )

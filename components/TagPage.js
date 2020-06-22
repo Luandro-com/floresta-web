@@ -38,7 +38,8 @@ export default ({ tagTitleColor, list }) => {
       </div>
       <div className='container'>
         <List list={list} />
-        <div className='tag-list'>
+      </div>
+      <div className='tag-list'>
           <TagList
             column
             titleColor={tagTitleColor || colors.dark}
@@ -52,7 +53,6 @@ export default ({ tagTitleColor, list }) => {
             radius={5}
           />
         </div>
-      </div>
       <style jsx>{`
         section {
           margin: 0 auto;

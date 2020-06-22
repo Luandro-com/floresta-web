@@ -153,21 +153,19 @@ export default function PageLayout ({
         ) : (
           <Project {...project} />
         )}
-        <div className='tag-list'>
+      </div>
+          <div className='tag-list'>
           <TagList
-            column
             titleColor={tagTitleColor || colors.dark}
             color={colors.color1}
             hoverColor={colors.light}
             hoverBackgroundColor={colors.color1}
-            width={'250px'}
             weight={600}
             fontSize={'2.5em'}
             padding={'5px 25px'}
             radius={5}
           />
         </div>
-      </div>
       <style jsx>{`
         section {
           margin: 0 auto;
@@ -186,7 +184,7 @@ export default function PageLayout ({
         }
         .container {
           display: flex;
-          flex-flow: column;
+          flex-flow: horizontal;
           margin: 0 auto;
         }
         .tag-list {
@@ -202,13 +200,12 @@ export default function PageLayout ({
         @media screen and (min-width: 1200px) {
           .container {
             display: flex;
-            flex-flow: row nowrap;
+            flex-direction: row;
             align-items: flex-start;
             justify-content: space-between;
           }
           .tag-list {
-            width: 200px;
-            margin-left: 5vw;
+            
           }
         }
       `}</style>

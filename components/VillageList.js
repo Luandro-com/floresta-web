@@ -3,7 +3,7 @@ import VillageItem from "./VillageItem"
 import Gallery from "./Gallery"
 import colors from "../lib/colors"
 
-const villageHeight = 150
+const villageHeight = 250
 
 export default ({ villages, text }) => {
   const [viewerIsOpen, setViewerIsOpen] = useState(false)

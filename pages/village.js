@@ -60,7 +60,7 @@ export default () => {
         }}
       </Query>
       <style jsx>{`
-        padding-top: 8vh;
+        padding-top: 100h;
         .pattern {
           background: ${colors.dark2};
           background-image: url("/static/pattern_2.png");
