@@ -29,7 +29,7 @@ export default ({ villages, text }) => {
         }}
       />
       <iframe
-        src='https://www.google.com/maps/d/embed?mid=1W28Oyr7k4muzJp270p83OX_rIfc'
+        src='https://afp.maps.arcgis.com/apps/webappviewer/index.html?id=98614b1d13ee4e0cac0477d214a4fc4a'
         width='640'
         height='480'
       />
