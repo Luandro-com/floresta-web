@@ -83,7 +83,7 @@ export default () => {
             margin: 0 auto;
             display: flex;
             flex-flow: row nowrap;
-            padding: 10vh 0;
+            padding: 1vh 0;
             justify-content: space-around;
           }
           .section {
