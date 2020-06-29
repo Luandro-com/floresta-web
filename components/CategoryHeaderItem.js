@@ -21,7 +21,7 @@ export default function CategoryHeaderItem({
           <AnyImage
             src={icon}
             // marginTop={14}
-            size='50px'
+            size='80px'
             color={
               current ? (color ? colors.dark : colors.light2) : currentColor
             }
