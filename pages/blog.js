@@ -64,7 +64,7 @@ export default () => {
 
               <style jsx>{`
                 margin: 0 auto;
-                padding: 5vh 0;
+                padding: 10vh 0;
                 background: ${colors.dark2};
                 background-image: url('/static/pattern_2.png');
                 background-repeat: round;
