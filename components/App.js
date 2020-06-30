@@ -53,7 +53,7 @@ export default ({ children }) => (
       p {
         color: ${colors.light};
         font-size: 1em;
-        line-height: 1.2em;
+        line-height: 1.9em;
       }
       img {
         max-width: 100%;
