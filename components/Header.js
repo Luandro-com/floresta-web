@@ -108,6 +108,11 @@ const Header = ({ router }) => {
                         Notícias
                       </a>
                     </Link>
+                    <Link href='/tag?slug=midia-mekaro'>
+                      <a className={router.pathname === '/midia' ? 'is-active' : ''}>
+                       Mídia Mekarõ
+                      </a>
+                    </Link>
                   </div>
                 }
               </div>
