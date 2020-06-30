@@ -51,14 +51,16 @@ export default ({ name, description, media, tags, photos }) => {
         }
         .info {
           margin: 0 auto;
-          padding: 35px 10%;
-          max-width: 70%;
+          padding: 100px 10%;
+          max-width: 100%;
+          
         }
         .media {
           background: url("${media}");
           background-size: cover;
           height: 60vh;
           border-radius: 30px 30px 0 0;
+          width: 100%;
         }
         .tag-list {
           padding-top: 25px;
@@ -73,7 +75,7 @@ export default ({ name, description, media, tags, photos }) => {
             max-width: 968px;
           }
           .info {
-            max-width: 600px;
+            max-width: 968px;
           }
         }
 	  `}</style>
