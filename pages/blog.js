@@ -70,7 +70,7 @@ export default () => {
                 background-repeat: round;
                 width: 100%;
                 section {
-                  width: 95%;
+                  /* width: 95%; */
                   margin: 0 auto;
                 }
                 .back {
@@ -92,7 +92,7 @@ export default () => {
                 }
                 @media screen and (min-width: 1024px) {
                   .container {
-                    max-width: 1024px;
+                   /* max-width: 1024px; */
                   }
                   /* width: 968px; */
 

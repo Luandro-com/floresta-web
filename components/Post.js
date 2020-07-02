@@ -33,12 +33,12 @@ export default ({ id, slug, title, body, media, tags }) => {
         .info {
           margin: 0 auto;
           padding: 35px 10%;
-          max-width: 70%;
+          max-width: 60%;
         }
         .media {
           background: url("${media}");
           background-size: cover;
-          height: 60vh;
+          height: 80vh;
           border-radius: 30px 30px 0 0;
         }
         .description {
