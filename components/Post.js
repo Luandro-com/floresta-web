@@ -24,7 +24,7 @@ export default ({ id, slug, title, body, media, tags }) => {
         border-radius: 30px;
         background: ${colors.light};
         margin: 0 auto;
-        max-width: 70%;
+        max-width: 90%;
         h1 {
           color: ${colors.dark};
           font-size: 2em;
@@ -33,17 +33,16 @@ export default ({ id, slug, title, body, media, tags }) => {
         .info {
           margin: 0 auto;
           padding: 35px 10%;
-          max-width: 70%;
         }
         .media {
           background: url("${media}");
           background-size: cover;
-          height: 70vh;
+          height: 90vh;
           border-radius: 30px 30px 0 0;
           max-width: 100%;
         }
         .description {
-          min-height: 70vh;
+          min-height: 30vh;
         }
         @media screen and (min-width: 1024px) {
           width: 100%;
@@ -51,7 +50,7 @@ export default ({ id, slug, title, body, media, tags }) => {
             max-width: 968px;
           }
           .info {
-            max-width: 600px;
+            max-width: 1024px;
           }
         }
 	  `}</style>
