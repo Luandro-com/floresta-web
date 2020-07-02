@@ -30,7 +30,7 @@ export default ({ villages, text }) => {
       />
       <iframe
         src='https://afp.maps.arcgis.com/apps/webappviewer/index.html?id=98614b1d13ee4e0cac0477d214a4fc4a'
-        width='968'
+        width='1024'
         height='600'
       />
       <div className='list'>
@@ -53,6 +53,7 @@ export default ({ villages, text }) => {
       <style jsx>{`
         width: 100%;
         margin: 0 auto;
+        border: none;
         .description {
           padding: 5vh 0;
           color: ${colors.dark};
