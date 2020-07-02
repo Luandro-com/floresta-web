@@ -87,7 +87,7 @@ export default () => {
                 }
                 @media screen and (min-width: 480px) {
                   section {
-                    width: 90%;
+                    width: 70%;
                   }
                 }
                 @media screen and (min-width: 1024px) {
