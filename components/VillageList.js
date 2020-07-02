@@ -30,8 +30,8 @@ export default ({ villages, text }) => {
       />
       <iframe
         src='https://afp.maps.arcgis.com/apps/webappviewer/index.html?id=98614b1d13ee4e0cac0477d214a4fc4a'
-        width='640'
-        height='480'
+        width='968'
+        height='600'
       />
       <div className='list'>
         {villages &&
