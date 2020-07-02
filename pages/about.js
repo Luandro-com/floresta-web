@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import App from '../components/App'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -6,6 +7,7 @@ import Pattern from '../components/Pattern'
 import Loading from '../components/Loading'
 import Welcome from '../components/Welcome'
 import colors from '../lib/colors'
+import ShowMore from '../components/ShowMore'
 
 export const DESCRIPTION = gql`
   query {
@@ -20,6 +22,9 @@ const styleObj = {
 };
 
 export default () => {
+
+  const [showMore, setShowMore] = useState(false)
+
   return (
     <App>
       <Query query={DESCRIPTION}>
@@ -36,6 +41,11 @@ export default () => {
                     __html:
                       data.content && data.content.aboutHtml ? data.content.aboutHtml : ''
                   }}
+                />
+                  <ShowMore
+                  open={showMore}
+                  set={setShowMore}
+                  html={'<img src="https://nyc3.digitaloceanspaces.com/terrakryadev/2a203c8f-5a23-4dad-8af3-6389785b9ead-AFP_logo.png"></img>'}
                 />
               </Pattern>
               <style jsx>{`
