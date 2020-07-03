@@ -47,11 +47,19 @@ export default ({ id, slug, title, body, media, tags }) => {
         @media screen and (min-width: 1024px) {
           width: 100%;
           .info-container {
-            max-width: 968px;
+            max-width: 1024px;
           }
           .info {
             max-width: 1024px;
           }
+          @media screen and (min-width: 1200px) {
+            width: 100%;
+            .info-container {
+              max-width: 1200px;
+            }
+            .info {
+              max-width: 1200px;
+            }
         }
 	  `}</style>
     </main>
